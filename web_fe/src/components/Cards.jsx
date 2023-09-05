@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
-
-const socket = io('http://localhost:5000');
+import axios from 'axios'
+import { toast } from 'react-toastify';
 
 function Cards() {
-    const [listCards, setListCards] = useState([])
+    const [listCards, setListCards] = useState([]);
+
+    const handleClear = async () => {
+        await axios.get('http://localhost:5000/clear-card')
+            .then(res => { toast.success(res.data); return res.data })
+            .catch(error => { toast.error(error.response.data); return error.response.data });
+    }
 
     useEffect(() => {
-        socket.on('updatecardid', (card_id) => {
-            console.log(card_id);
+        const socket = io('http://localhost:5000');
+
+        socket.on('add-card', (card_id) => {
+            setListCards(prevListCards => [...prevListCards, card_id.card_id]);
         });
 
         return () => {
@@ -17,9 +25,10 @@ function Cards() {
     }, []);
 
     return (
-        <div>
-            <h1>RFID Card ID: </h1>
-            {listCards.map((item, index) => (<ul key={index}><li>{item.card_id}</li></ul>))}
+        <div className='container'>
+            <h1>RFID Card ID:</h1>
+            <ul>{listCards.map((item, index) => (<li key={index}>{item}</li>))}</ul>
+            <button onClick={handleClear} className='btn btn-success'>Clear</button>
         </div>
     );
 }

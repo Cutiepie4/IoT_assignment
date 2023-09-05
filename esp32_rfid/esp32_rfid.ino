@@ -3,7 +3,6 @@
 #include <SPI.h>
 #include <MFRC522.h>
 #include <ArduinoJson.h>
-
 #include <ESPAsyncWebServer.h>
 #include <set>
 
@@ -14,7 +13,8 @@ MFRC522 mfrc522(SS_PIN, RST_PIN);
 
 const char *ssid = "wifi nha ai day 2,4Ghz";
 const char *password = "khongcomatkhaudau";
-const char *serverUrl = "http://192.168.0.104:5000/send-card-id"; // Replace with your server URL
+String serverUrl = "http://192.168.0.101:5000";
+String sendCardApi = serverUrl + "/receive-card"; // Replace with your server URL
 
 AsyncWebServer server(80);
 
@@ -29,7 +29,7 @@ void setup() {
   }
 
   Serial.println("Connected to Wifi: wifi nha ai day 2,4Ghz");
-  Serial.print("IP:");
+  Serial.print("IP: ");
   Serial.println(WiFi.localIP());
 
   SPI.begin();
@@ -37,9 +37,9 @@ void setup() {
   delay(4);
   Serial.println(F("Scanning RFID card..."));
  
-  server.on("/clearcard", HTTP_GET, [](AsyncWebServerRequest *request){
+  server.on("/clear-card", HTTP_GET, [](AsyncWebServerRequest *request){
     list_cards.clear();
-    Serial.println("Received /clearcard request");
+    Serial.println("Received /clear-card request");
     request->send(200, "text/plain", "Card data cleared");
   });
 
@@ -73,7 +73,7 @@ void loop() {
     WiFiClient client;
     HTTPClient http;
 
-    http.begin(client, serverUrl);
+    http.begin(client, sendCardApi);
     http.addHeader("Content-Type", "application/json");
 
     DynamicJsonDocument jsonDocument(200); // Use DynamicJsonDocument for sending
@@ -92,5 +92,9 @@ void loop() {
       Serial.println("HTTP request failed");
     }
     http.end();
+  }
+  else {
+    Serial.println("Wifi disconnected...");
+    delay(3000);
   }
 }
