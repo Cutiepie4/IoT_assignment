@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "tên": "Nguyễn Văn A",
+        "tuổi": 30,
+        "giới tính": "Nam",
+        "địa chỉ": "123 Đường ABC, Quận XYZ, Thành phố HCM"
+    },
+    {
+        "id": 2,
+        "tên": "Trần Thị B",
+        "tuổi": 25,
+        "giới tính": "Nữ",
+        "địa chỉ": "456 Đường DEF, Quận GHI, Thành phố Hà Nội"
+    },
+    {
+        "id": 3,
+        "tên": "Lê Hoàng C",
+        "tuổi": 28,
+        "giới tính": "Nam",
+        "địa chỉ": "789 Đường XYZ, Quận ABC, Thành phố Đà Nẵng"
+    },
+    {
+        "id": 4,
+        "tên": "Phạm Thị D",
+        "tuổi": 22,
+        "giới tính": "Nữ",
+        "địa chỉ": "101 Đường LMN, Quận OPQ, Thành phố Cần Thơ"
+    },
+    {
+        "id": 5,
+        "tên": "Hoàng Văn E",
+        "tuổi": 40,
+        "giới tính": "Nam",
+        "địa chỉ": "111 Đường UVW, Quận XYZ, Thành phố Hà Nội"
+    }
+]

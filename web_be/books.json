@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Book 1",
+        "author": "Author 1",
+        "description": "Description of Book 1",
+        "pages": 200,
+        "genre": "Fiction"
+    },
+    {
+        "name": "Book 2",
+        "author": "Author 2",
+        "description": "Description of Book 2",
+        "pages": 300,
+        "genre": "Mystery"
+    },
+    {
+        "name": "Book 3",
+        "author": "Author 3",
+        "description": "Description of Book 3",
+        "pages": 150,
+        "genre": "Romance"
+    }
+]
