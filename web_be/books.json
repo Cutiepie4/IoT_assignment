@@ -1,5 +1,6 @@
 [
     {
+        "card_id": "cedef11d",
         "name": "Book 1",
         "author": "Author 1",
         "description": "Description of Book 1",
@@ -7,6 +8,7 @@
         "genre": "Fiction"
     },
     {
+        "card_id": "80bbd914",
         "name": "Book 2",
         "author": "Author 2",
         "description": "Description of Book 2",
@@ -14,10 +16,35 @@
         "genre": "Mystery"
     },
     {
+        "card_id": "31251ad",
         "name": "Book 3",
         "author": "Author 3",
         "description": "Description of Book 3",
         "pages": 150,
+        "genre": "Historical"
+    },
+    {
+        "card_id": "f3744bad",
+        "name": "Book 4",
+        "author": "Author 4",
+        "description": "Description of Book 4",
+        "pages": 150,
         "genre": "Romance"
+    },
+    {
+        "card_id": "934855ad",
+        "name": "Book 5",
+        "author": "Author 5",
+        "description": "Description of Book 5",
+        "pages": 150,
+        "genre": "Romance"
+    },
+    {
+        "card_id": "b3cd2ead",
+        "name": "Book 6",
+        "author": "Author 6",
+        "description": "Description of Book 6",
+        "pages": 150,
+        "genre": "Action"
     }
 ]

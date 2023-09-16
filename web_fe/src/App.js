@@ -1,17 +1,24 @@
 import React from 'react';
-import ColorPicking from './components/ColorPicking';
-import Cards from './components/Cards';
 import { ToastContainer } from 'react-toastify';
+import { Route, Routes } from 'react-router-dom';
+import Book from './components/Book';
+import Books from './components/Books';
+import Import from './components/Import';
+import Copies from './components/Copies';
+import Checkout from './components/Checkout';
 function App(props) {
 
   return (
     <>
-      <div>
-        {/* <ColorPicking /> */}
-        <Cards />
-      </div>
+      <Routes>
+        <Route element={<Book />} path={"/book/:id"} />
+        <Route element={<Books />} path={"/books"} />
+        <Route element={<Import />} path={"/import/:bookId"} />
+        <Route element={<Copies />} path={"/copies/:bookId"} />
+        <Route element={<Checkout />} path={"/checkout"} />
+      </Routes>
       <ToastContainer
-        position="top-center"
+        position="top-right"
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
