@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { add_book, find_book, update_book } from '../services/API';
+import { toast } from 'react-toastify';
 
 function Book() {
 
     const { id } = useParams();
     const [book, setBook] = useState({});
+    const [image, setImage] = useState(null);
+    const [imageExists, setImageExists] = useState(false);
 
     const [titleMessage, setTitleMessage] = useState('');
     const [authorMessage, setAuthorMessage] = useState('');
@@ -18,10 +21,15 @@ function Book() {
         const asyncFunction = async () => {
             const foundBook = await find_book(id);
             setBook(foundBook);
+            const img = new Image();
+            img.src = `/images/${foundBook.imagePath}`; // Đường dẫn đến hình ảnh
+            img.onload = () => {
+                setImageExists(true);
+            };
         }
-        if (id != 0)
+        if (id !== 0)
             asyncFunction();
-    }, [])
+    }, [id])
 
     const checkEmptyInput = (text) => {
         if (!text || text.trim().length === 0) {
@@ -35,9 +43,8 @@ function Book() {
         return num > 0;
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = () => {
         let ok = true;
-        e.preventDefault();
         if (!checkEmptyInput(book.title)) {
             setTitleMessage('Required.');
             ok = false;
@@ -54,7 +61,7 @@ function Book() {
             ok = false;
             setPageMessage('Must be positive');
         }
-        if (!checkNumber(book.sold)) {
+        if (checkNumber(book.sold) < 0) {
             ok = false;
             setSoldMessage('Must be positive');
         }
@@ -63,43 +70,67 @@ function Book() {
             setPriceMessage('Must be positive');
         }
 
+        if (!image && !imageExists) {
+            ok = false;
+            toast.info('Please choose a book cover.');
+        }
+
         if (ok) {
-            if (id == 0)
-                add_book(book);
-            else update_book(book);
+            const formData = new FormData();
+            if (image !== null) formData.append('image', image);
+            formData.append('book', JSON.stringify(book))
+            if (id === 0)
+                add_book(formData);
+            else update_book(formData);
         }
     }
 
     return (
-        <form className="container form-control" >
+        <div className="container form-control" >
             <h1>Book</h1>
             <div className="row">
                 <div className="col-lg-6">
                     <div className="row">
                         <div className="col">
-                            <label className="col-lg-10 form-label"><span className='required'>Title</span> <span style={{ color: 'red' }}>{titleMessage}</span></label>
-                            <input type="text" className="col-lg-10  form-control" value={book.title} onChange={(e) => { setBook({ ...book, title: e.target.value }) }} />
+                            <label className="col-lg-10 form-label">
+                                <span className='required'>Title</span>
+                                <span style={{ color: 'red' }}>{titleMessage}</span>
+                            </label>
+                            <input type="text" className="col-lg-10  form-control" value={book.title}
+                                onChange={(e) => { setBook({ ...book, title: e.target.value }) }} />
                         </div>
                         <div className="col">
-                            <label className="col-lg-10 form-label"><span className='required'>Author</span> <span style={{ color: 'red' }}>{authorMessage}</span></label>
-                            <input type="text" className="col-lg-10  form-control" value={book.author} onChange={(e) => { setBook({ ...book, author: e.target.value }) }} />
+                            <label className="col-lg-10 form-label">
+                                <span className='required'>Author</span>
+                                <span style={{ color: 'red' }}>{authorMessage}</span>
+                            </label>
+                            <input type="text" className="col-lg-10  form-control" value={book.author}
+                                onChange={(e) => { setBook({ ...book, author: e.target.value }) }} />
                         </div>
                     </div>
                     <hr />
                     <div className="col">
                         <label className="col-lg-12 form-label">Description about the book</label>
-                        <textarea className="col-lg-11  form-control" cols="30" value={book.description} onChange={(e) => { setBook({ ...book, description: e.target.value }) }}  ></textarea>
+                        <textarea className="col-lg-11  form-control" cols="30" value={book.description}
+                            onChange={(e) => { setBook({ ...book, description: e.target.value }) }} />
                     </div>
                     <hr />
 
                     <div className="row">
                         <div className="col">
-                            <label className="col-lg-10 form-label"><span className='required'>Date Imported</span> <span style={{ color: 'red' }}>{dateMessage}</span></label>
-                            <input type="date" className="col-lg-10  form-control" value={book.date} onChange={(e) => { setBook({ ...book, date: e.target.value }) }} />
+                            <label className="col-lg-10 form-label">
+                                <span className='required'>Date Imported</span>
+                                <span style={{ color: 'red' }}>{dateMessage}</span>
+                            </label>
+                            <input type="date" className="col-lg-10  form-control"
+                                value={book.date} onChange={(e) => { setBook({ ...book, date: e.target.value }) }} />
                         </div>
                         <div className="col">
-                            <label className="col-lg-10 form-label"><span>Pages</span> <span style={{ color: 'red' }}>{pageMessage}</span></label>
-                            <input min={1} type="number" className="col-lg-10  form-control" value={book.page} onChange={(e) => { setBook({ ...book, page: e.target.value }) }} />
+                            <label className="col-lg-10 form-label">
+                                <span>Pages</span> <span style={{ color: 'red' }}>{pageMessage}</span>
+                            </label>
+                            <input min={1} type="number" className="col-lg-10  form-control"
+                                value={book.page} onChange={(e) => { setBook({ ...book, page: e.target.value }) }} />
                         </div>
                     </div>
                     <hr />
@@ -109,7 +140,6 @@ function Book() {
                             <select
                                 className="border-1 form-select"
                                 onChange={(e) => { setBook({ ...book, genre: e.target.value }) }}
-
                                 defaultValue={book.genre ? book.genre : "default"}
                             >
                                 <option disabled value="default">Select a genre</option>
@@ -123,21 +153,57 @@ function Book() {
                             </select>
                         </div>
                         <div className="col-4">
-                            <label className="col-lg-10 form-label"><span>Sold Copies</span> <span style={{ color: 'red' }}>{soldMessage}</span></label>
-                            <input min={0} type="number" className="col-lg-10  form-control" value={book.sold} onChange={(e) => { setBook({ ...book, sold: e.target.value }) }} />
+                            <label className="col-lg-10 form-label">
+                                <span>Sold Copies</span>
+                                <span style={{ color: 'red' }}>{soldMessage}</span>
+                            </label>
+                            <input min={0} type="number" className="col-lg-10  form-control"
+                                value={book.sold} onChange={(e) => { setBook({ ...book, sold: e.target.value }) }}
+                                disabled />
                         </div>
                         <div className="col-4">
-                            <label className="col-lg-10 form-label"><span>Price (vnđ)</span> <span style={{ color: 'red' }}>{priceMessage}</span></label>
+                            <label className="col-lg-10 form-label">
+                                <span>Price (vnđ)</span>
+                                <span style={{ color: 'red' }}>{priceMessage}</span>
+                            </label>
                             <input min={1} type="number" className="col-lg-10  form-control" value={book.price} onChange={(e) => { setBook({ ...book, price: e.target.value }) }} />
                         </div>
                     </div>
+
                     <hr />
                     <div className="col-12">
-                        <button className="btn btn-success" onClick={handleSubmit}>{id == 0 ? 'Add' : 'Save'}</button>
+                        <button className="btn btn-success" onClick={handleSubmit}>
+                            {id === 0 ? 'Add' : 'Save'}
+                        </button>
+                    </div>
+                </div>
+                <div className="col-lg-6">
+                    <div>
+                        <input type="file" accept="image/*"
+                            onChange={(e) => { setImage(e.target.files[0]) }} />
+                    </div>
+                    <div className="card">
+                        <div className="card-body">
+                            <div className="upload-preview">
+                                {image ?
+                                    (<img style={{ maxHeight: '480px', width: 'auto' }}
+                                        className="card-img-top"
+                                        src={URL.createObjectURL(image)}
+                                        alt='book-cover'
+                                    />)
+                                    : imageExists && book.imagePath && (
+                                        <img style={{ maxHeight: '480px', width: 'auto' }}
+                                            className="card-img-top"
+                                            src={`/images/${book.imagePath}`}
+                                            alt='book-cover'
+                                        />
+                                    )}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </form >
+        </div >
     );
 }
 

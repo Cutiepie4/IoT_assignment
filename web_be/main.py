@@ -4,6 +4,8 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 from flask_socketio import SocketIO
 from flask_jwt_extended import jwt_required, JWTManager, get_jwt_identity, create_access_token
+from datetime import datetime
+import uuid, json, os
 
 client = MongoClient('mongodb://localhost:27017')
 db = client['iot_db']
@@ -13,51 +15,82 @@ app.config['JWT_SECRET_KEY'] = 'nhom10'
 jwt = JWTManager(app)
 CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
+UPLOAD_FOLDER = 'C://Users//trvie//Documents//Code//iot//web_fe//public//images//'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 esp32_host = 'http://192.168.0.104'
 
-def find_book_by_copy_id(id_copy):
+def find_by_copy_id(id_copy):
     result = books_collection.aggregate([
         {
+            "$unwind": "$copies"
+        },
+        {
             "$match": {
-                "copies": id_copy
+                "copies.copy_id": id_copy
             }
         },
         {
             "$project": {
-                "_id": 1,  
+                "_id": 1,
                 "title": 1,
-                "author" : 1,
-                "description" : 1,
-                "genre" : 1,
-                "page": 1
-            }
-        },
-        {
-            "$addFields": {
-                "copy_id": id_copy
+                "author": 1,
+                "description": 1,
+                "genre": 1,
+                "page": 1,
+                "copy_id": "$copies.copy_id"  # Thêm trường copy_id
             }
         }
     ])
-    book_data = list(result)
-    if book_data:
-        for i in book_data:
-            i['_id'] = str(i['_id'])
-        return book_data[0]
+    
+    if result:
+        book_data = list(result)[0]
+        book_data['_id'] = str(book_data['_id'])
+        return book_data
     else:
         return None
+    
+def find_by_book_id(id):
+    book_data = list(books_collection.find({'_id' : ObjectId(id)}))[0]
+    book_data['_id'] = str(book_data['_id'])
+    return book_data
+
+def delete_image(image_path):
+    try:
+        if os.path.exists(image_path):
+            os.remove(image_path)
+            return True
+        else:
+            print("File does not exist")
+            return False
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+        return False
 
 # Route
 @app.route('/add-book', methods=['POST'])
 def add_book():
-    book = request.get_json()
+    image = request.files.get('image')
+    book = json.loads(request.form.get('book'))
+    filename = str(uuid.uuid4()) + os.path.splitext(image.filename)[-1].lower()
+    image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
     book["copies"] = []
-    result = books_collection.insert_one(book)
+    book["imagePath"] = filename
+    books_collection.insert_one(book)
     return jsonify({"message": "Book added successfully!"}), 200
 
 @app.route('/update-book', methods=['PUT'])
 def update_book():
-    book = request.get_json()
+    image = request.files.get('image')
+    filename = str(uuid.uuid4()) + os.path.splitext(image.filename)[-1].lower()
+    image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+    book = json.loads(request.form.get('book'))
+    book['imagePath'] = filename
+    old_book = find_by_book_id(book['_id'])
+    if 'imagePath' in old_book:
+        delete_image(UPLOAD_FOLDER + old_book['imagePath'])
     id = ObjectId(book['_id'])
     book.pop('_id', None)
     books_collection.update_one({'_id': id}, {"$set": book})
@@ -67,13 +100,14 @@ def update_book():
 def add_copy():
     data = request.get_json()
     book_id = data['book_id']
-    copy_id = list(data['copy_id'])
+    copy_ids = list(data['copy_id'])
 
-    list_id = [i['card_id'] for i in copy_id]
+    current_time = datetime.now()
+    copies = [{"copy_id": i['card_id'], "date_imported": current_time} for i in copy_ids]
 
     books_collection.update_one(
         {"_id": ObjectId(book_id)},
-        {"$addToSet": {"copies": {"$each": list_id}}}
+        {"$addToSet": {"copies": {"$each": copies}}}
     )
     return jsonify({"message": "Book copy added successfully!"}), 200
 
@@ -103,10 +137,8 @@ def find_all_books():
     return jsonify(list_books), 200
 
 @app.route('/find-by-book-id/<string:id>')
-def find_by_book_id(id):
-    book_data = list(books_collection.find({'_id' : ObjectId(id)}))[0]
-    book_data['_id'] = str(book_data['_id'])
-    return jsonify(book_data), 200
+def find_by_book_id_route(id):
+    return jsonify(find_by_book_id(id)), 200
 
 @app.route('/find-copies/<string:id>')
 def find_copies(id):
@@ -116,10 +148,21 @@ def find_copies(id):
 @app.route('/receive-card', methods=['POST'])
 def receive_card_id():
     card = request.get_json()
-    # book = find_book_by_copy_id(card['card_id'])
+    book = find_by_copy_id(card['card_id'])
+    print(book)
+    if book != None:
+        socketio.emit('add-to-cart', book)
     socketio.emit('add-copy', card)
     return 'Card ID received successfully', 200
 
+@app.route('/upload', methods=['POST'])
+def upload_image():
+    if 'image' not in request.files:
+        return jsonify({'error': 'Không có tệp hình ảnh nào được gửi lên'}), 400
+    image = request.files['image']
+    if image:
+        image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
+        return jsonify({'message': 'Tệp hình ảnh đã được tải lên thành công'}), 200
 
 
 
@@ -135,11 +178,10 @@ def receive_card_id():
 
 
 
-
-@app.route('/clear-card')
+@app.route('/clear')
 def clear_card_id():
     import requests
-    requests.get(esp32_host + '/clear-card')
+    requests.get(esp32_host + '/clear')
     return 'Clear cards!', 200
 
 @app.route('/enable')

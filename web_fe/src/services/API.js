@@ -30,14 +30,14 @@ export const find_book = async (book_id) => {
     return res.data;
 }
 
-export const add_book = async (book) => {
-    await api.post('/add-book', book)
+export const add_book = async (formData) => {
+    await api.post('/add-book', formData)
         .then(res => { toast.success(res.data.message) })
         .catch(error => { toast.error(error.message) });
 }
 
-export const update_book = async (book) => {
-    await api.put('/update-book', book)
+export const update_book = async (payload) => {
+    await api.put('/update-book', payload)
         .then(res => { toast.success(res.data.message) })
         .catch(error => { toast.error(error.message) });
 }
@@ -49,7 +49,7 @@ export const add_copy = async (payload) => {
 }
 
 export const delete_book = async (card_id) => {
-    const res = await api.delete(`/delete-book/${card_id}`)
+    await api.delete(`/delete-book/${card_id}`)
         .then(res => { toast.success(res.data.message) })
         .catch(error => { toast.error(error.message) });
 }
@@ -67,7 +67,7 @@ export const disableRFID = async () => {
 }
 
 export const clearRFID = async () => {
-    await api.get('/clear-card')
+    await api.get('/clear')
         .then(res => { toast.success(res.data); })
         .catch(error => { toast.error(error.response); });
 }

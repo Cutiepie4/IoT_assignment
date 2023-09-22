@@ -3,7 +3,6 @@ import { delete_book, find_all_books } from '../services/API';
 import { useNavigate } from 'react-router-dom';
 
 function Books() {
-
     const [listBooks, setListBooks] = useState([]);
     const navigate = useNavigate();
 
@@ -23,7 +22,7 @@ function Books() {
 
     return (
         <div className='px-5'>
-            <h1>Book Storage</h1>
+            <h2>Book Storage</h2>
             <div className='pt-2'>
                 <button className="btn btn-primary" style={{ marginRight: '5px' }} onClick={() => { navigate('/book/0') }}>Add New Book</button>
             </div>
@@ -39,7 +38,6 @@ function Books() {
                             <th>Description</th>
                             <th>Genre</th>
                             <th>Page</th>
-                            <th>Date</th>
                             <th>Price (vnd)</th>
                             <th>Action</th>
                         </tr>
@@ -59,7 +57,6 @@ function Books() {
                                 }}>{item.description}</td>
                                 <td>{item.genre}</td>
                                 <td>{item.page}</td>
-                                <td>{item.date}</td>
                                 <td>{item.price}</td>
                                 <td>
                                     <button style={{ 'marginRight': '8px' }} className="btn btn-success" onClick={() => { navigate(`/book/${item._id}`) }}>Edit</button>

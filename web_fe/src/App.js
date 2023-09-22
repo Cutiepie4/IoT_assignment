@@ -6,16 +6,19 @@ import Books from './components/Books';
 import Import from './components/Import';
 import Copies from './components/Copies';
 import Checkout from './components/Checkout';
-function App(props) {
+import Nav from './components/Nav';
 
+function App(props) {
   return (
     <>
       <Routes>
-        <Route element={<Book />} path={"/book/:id"} />
-        <Route element={<Books />} path={"/books"} />
-        <Route element={<Import />} path={"/import/:bookId"} />
-        <Route element={<Copies />} path={"/copies/:bookId"} />
-        <Route element={<Checkout />} path={"/checkout"} />
+        <Route element={<Nav />} path='/'>
+          <Route element={<Book />} path={"/book/:id"} />
+          <Route element={<Books />} path={"/books"} />
+          <Route element={<Import />} path={"/import/:bookId"} />
+          <Route element={<Copies />} path={"/copies/:bookId"} />
+          <Route element={<Checkout />} path={"/checkout"} />
+        </Route>
       </Routes>
       <ToastContainer
         position="top-right"

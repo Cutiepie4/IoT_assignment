@@ -4,7 +4,6 @@
 #include <MFRC522.h>
 #include <ArduinoJson.h>
 #include <ESPAsyncWebServer.h>
-#include <set>
 
 #define RST_PIN 22
 #define SS_PIN 21
@@ -20,8 +19,6 @@ int ledPin = 2;
 bool isEnable = false;
 
 AsyncWebServer server(80);
-
-std::set<String> list_cards;
 
 void setup() {
   Serial.begin(115200);
@@ -39,14 +36,12 @@ void setup() {
   mfrc522.PCD_Init();
   delay(4);
 
-  server.on("/clear-card", HTTP_GET, [](AsyncWebServerRequest *request) {
-    list_cards.clear();
-    Serial.println("Received /clear-card request");
+  server.on("/clear", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Serial.println("Received /clear request");
     request->send(200, "text/plain", "Card data cleared");
   });
 
   server.on("/enable", HTTP_GET, [](AsyncWebServerRequest *request) {
-    list_cards.clear();
     Serial.println("Received /enable request");
     isEnable = true;
     request->send(200, "text/plain", "RFID is enabled!");
@@ -81,12 +76,6 @@ void loop() {
       String cardIdString = "";
       for (byte i = 0; i < mfrc522.uid.size; i++) {
         cardIdString += String(cardId[i], HEX);
-      }
-
-      int size = list_cards.size();
-      list_cards.insert(cardIdString);
-      if (size == list_cards.size()) {
-        return;
       }
 
       Serial.println(cardIdString);
