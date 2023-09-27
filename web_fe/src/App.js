@@ -7,12 +7,14 @@ import Import from './components/Import';
 import Copies from './components/Copies';
 import Checkout from './components/Checkout';
 import Nav from './components/Nav';
+import Home from './components/Home';
 
 function App(props) {
   return (
     <>
       <Routes>
         <Route element={<Nav />} path='/'>
+          <Route index element={<Home />} />
           <Route element={<Book />} path={"/book/:id"} />
           <Route element={<Books />} path={"/books"} />
           <Route element={<Import />} path={"/import/:bookId"} />

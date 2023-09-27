@@ -67,6 +67,7 @@ def delete_image(image_path):
         print(f"An error occurred: {str(e)}")
         return False
 
+#==================================================================
 # Route
 @app.route('/add-book', methods=['POST'])
 def add_book():
@@ -124,10 +125,10 @@ def delete_by_copy_id(id):
 
 @app.route('/delete-book/<string:id>', methods=['DELETE'])
 def delete_by_book_id(id):
-    result = books_collection.delete_one({"_id": ObjectId(id)})
-    if result.deleted_count == 1:
-        return jsonify({"message": "Delete book successfully."}), 200
-    return None
+    book = find_by_book_id(id)
+    delete_image(UPLOAD_FOLDER + book['imagePath'])
+    books_collection.delete_one({"_id": ObjectId(id)})
+    return jsonify({"message": "Delete book successfully."}), 200
 
 @app.route('/find-all-books')
 def find_all_books():
@@ -155,29 +156,7 @@ def receive_card_id():
     socketio.emit('add-copy', card)
     return 'Card ID received successfully', 200
 
-@app.route('/upload', methods=['POST'])
-def upload_image():
-    if 'image' not in request.files:
-        return jsonify({'error': 'Không có tệp hình ảnh nào được gửi lên'}), 400
-    image = request.files['image']
-    if image:
-        image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
-        return jsonify({'message': 'Tệp hình ảnh đã được tải lên thành công'}), 200
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# ===============================================================
 @app.route('/clear')
 def clear_card_id():
     import requests
@@ -196,6 +175,7 @@ def disable_RFID ():
     requests.get(esp32_host + '/disable')
     return 'Turn off RFID', 200
 
+#===================================================================
 # Authentication
 @app.route('/login', methods=['POST'])
 def login():

@@ -44,7 +44,7 @@ function Books() {
                     </thead>
 
                     <tbody>
-                        {listBooks.map((item, index) => (
+                        {listBooks.map((item) => (
                             <tr key={item._id} className='row-hover'>
                                 <td>{item._id}</td>
                                 <td>{item.title}</td>
@@ -59,10 +59,10 @@ function Books() {
                                 <td>{item.page}</td>
                                 <td>{item.price}</td>
                                 <td>
-                                    <button style={{ 'marginRight': '8px' }} className="btn btn-success" onClick={() => { navigate(`/book/${item._id}`) }}>Edit</button>
-                                    <button style={{ 'marginRight': '8px' }} className="btn btn-primary" onClick={() => { navigate(`/import/${item._id}`) }}>Import</button>
-                                    <button style={{ 'marginRight': '8px' }} className="btn btn-secondary" onClick={() => { navigate(`/copies/${item._id}`) }}>View Copies</button>
-                                    <button className="btn btn-danger" onClick={() => { handleDelete(item._id); setListBooks(listBooks.filter(itemFilter => itemFilter._id != item._id)) }}>Delete</button>
+                                    <button style={{ 'marginRight': '8px' }} className="btn btn-success" onClick={() => { navigate(`/book/${item._id}`) }}><i className="fa-solid fa-gear"></i></button>
+                                    <button style={{ 'marginRight': '8px' }} className="btn btn-primary" onClick={() => { navigate(`/import/${item._id}`) }}><i className="fa-solid fa-file-import"></i></button>
+                                    <button style={{ 'marginRight': '8px' }} className="btn btn-secondary" onClick={() => { navigate(`/copies/${item._id}`) }}><i className="fa-solid fa-warehouse"></i></button>
+                                    <button className="btn btn-danger" onClick={() => { handleDelete(item._id); setListBooks(listBooks.filter(itemFilter => itemFilter._id != item._id)) }}><i className="fa-solid fa-trash-can"></i></button>
                                 </td>
                             </tr>
                         ))}

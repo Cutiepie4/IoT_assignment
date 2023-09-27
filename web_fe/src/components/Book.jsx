@@ -27,7 +27,7 @@ function Book() {
                 setImageExists(true);
             };
         }
-        if (id !== 0)
+        if (id !== '0')
             asyncFunction();
     }, [id])
 
