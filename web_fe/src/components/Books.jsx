@@ -1,10 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import { delete_book, find_all_books } from '../services/API';
 import { useNavigate } from 'react-router-dom';
+import { Modal } from 'react-bootstrap';
+import Book from './Book';
+import Import from './Import';
+import Copies from './Copies';
 
 function Books() {
     const [listBooks, setListBooks] = useState([]);
-    const navigate = useNavigate();
+    const [bookId, setBookId] = useState(0);
+    const [showBookDetailModal, setShowBookDetailModal] = useState(false);
+    const [showImportModal, setShowImportModal] = useState(false);
+    const [showCopiesModal, setShowCopiesModal] = useState(false);
+
+    const openBookDetailModal = (bookId) => {
+        setShowBookDetailModal(true);
+        setBookId(bookId);
+    };
+
+    const closeBookDetailModal = () => {
+        setShowBookDetailModal(false);
+    };
+
+    const openImportModal = (bookId) => {
+        setBookId(bookId);
+        setShowImportModal(true);
+    }
+
+    const closeImportModal = () => {
+        setShowImportModal(false);
+    }
+
+    const openCopiesModal = (bookId) => {
+        setBookId(bookId);
+        setShowCopiesModal(true);
+    }
+
+    const closeCopiesModal = () => {
+        setShowCopiesModal(false);
+    }
 
     useEffect(() => {
         const asyncFunction = async () => {
@@ -14,9 +48,9 @@ function Books() {
         asyncFunction();
     }, []);
 
-    const handleDelete = (id) => {
+    const handleDelete = (bookId) => {
         if (window.confirm('Are you sure to delete ?')) {
-            delete_book(id);
+            delete_book(bookId);
         }
     }
 
@@ -24,14 +58,14 @@ function Books() {
         <div className='px-5'>
             <h2>Book Storage</h2>
             <div className='pt-2'>
-                <button className="btn btn-primary" style={{ marginRight: '5px' }} onClick={() => { navigate('/book/0') }}>Add New Book</button>
+                <button className="btn btn-primary" style={{ marginRight: '5px' }} onClick={() => { openBookDetailModal('0') }}>Add New Book</button>
             </div>
-
             <br />
             <div>
-                <table className="table table-bordered table-hover" >
+                <table className="table table-hover" >
                     <thead className="table-primary">
                         <tr>
+                            <th>#</th>
                             <th>Id</th>
                             <th>Title</th>
                             <th>Author</th>
@@ -44,8 +78,9 @@ function Books() {
                     </thead>
 
                     <tbody>
-                        {listBooks.map((item) => (
+                        {listBooks.map((item, index) => (
                             <tr key={item._id} className='row-hover'>
+                                <td>{index}</td>
                                 <td>{item._id}</td>
                                 <td>{item.title}</td>
                                 <td>{item.author}</td>
@@ -59,9 +94,9 @@ function Books() {
                                 <td>{item.page}</td>
                                 <td>{item.price}</td>
                                 <td>
-                                    <button style={{ 'marginRight': '8px' }} className="btn btn-success" onClick={() => { navigate(`/book/${item._id}`) }}><i className="fa-solid fa-gear"></i></button>
-                                    <button style={{ 'marginRight': '8px' }} className="btn btn-primary" onClick={() => { navigate(`/import/${item._id}`) }}><i className="fa-solid fa-file-import"></i></button>
-                                    <button style={{ 'marginRight': '8px' }} className="btn btn-secondary" onClick={() => { navigate(`/copies/${item._id}`) }}><i className="fa-solid fa-warehouse"></i></button>
+                                    <button style={{ 'marginRight': '8px' }} className="btn btn-success" onClick={() => { openBookDetailModal(item._id); }}><i className="fa-solid fa-gear"></i></button>
+                                    <button style={{ 'marginRight': '8px' }} className="btn btn-primary" onClick={() => { openImportModal(item._id); }}><i className="fa-solid fa-file-import"></i></button>
+                                    <button style={{ 'marginRight': '8px' }} className="btn btn-secondary" onClick={() => { openCopiesModal(item._id); }}><i className="fa-solid fa-warehouse"></i></button>
                                     <button className="btn btn-danger" onClick={() => { handleDelete(item._id); setListBooks(listBooks.filter(itemFilter => itemFilter._id != item._id)) }}><i className="fa-solid fa-trash-can"></i></button>
                                 </td>
                             </tr>
@@ -69,6 +104,21 @@ function Books() {
                     </tbody>
                 </table>
             </div>
+            <Modal show={showBookDetailModal} onHide={closeBookDetailModal} dialogClassName="modal-lg">
+                <Modal.Body>
+                    <Book bookId={bookId} />
+                </Modal.Body>
+            </Modal>
+            <Modal show={showImportModal} onHide={closeImportModal}>
+                <Modal.Body>
+                    <Import bookId={bookId} />
+                </Modal.Body>
+            </Modal>
+            <Modal show={showCopiesModal} onHide={closeCopiesModal}>
+                <Modal.Body>
+                    <Copies bookId={bookId} />
+                </Modal.Body>
+            </Modal>
         </div >
     )
 };

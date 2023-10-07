@@ -10,6 +10,8 @@ import uuid, json, os
 client = MongoClient('mongodb://localhost:27017')
 db = client['iot_db']
 books_collection = db['books']
+users_collection = db["users"]
+
 app = Flask(__name__)
 app.config['JWT_SECRET_KEY'] = 'nhom10'
 jwt = JWTManager(app)
@@ -84,14 +86,18 @@ def add_book():
 @app.route('/update-book', methods=['PUT'])
 def update_book():
     image = request.files.get('image')
-    filename = str(uuid.uuid4()) + os.path.splitext(image.filename)[-1].lower()
-    image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
     book = json.loads(request.form.get('book'))
-    book['imagePath'] = filename
     old_book = find_by_book_id(book['_id'])
-    if 'imagePath' in old_book:
-        delete_image(UPLOAD_FOLDER + old_book['imagePath'])
+
+    if image:
+        filename = str(uuid.uuid4()) + os.path.splitext(image.filename)[-1].lower()
+        image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        book['imagePath'] = filename
+        if 'imagePath' in old_book:
+            delete_image(UPLOAD_FOLDER + old_book['imagePath'])
+    else:
+        book['imagePath'] = old_book['imagePath']
+
     id = ObjectId(book['_id'])
     book.pop('_id', None)
     books_collection.update_one({'_id': id}, {"$set": book})
@@ -114,14 +120,15 @@ def add_copy():
 
 @app.route('/delete-copy/<string:id>', methods=['DELETE'])
 def delete_by_copy_id(id):
-    book_data = list(books_collection.find())
-    for book in book_data:
-        if 'copies' in book and id in book['copies']:
-            books_collection.update_one(
-                {"_id": book["_id"]},
-                {"$pull": {"copies": id}}
-            )
-    return jsonify({"message" : "Delete book copy successfully."}), 200
+    try:
+        books_collection.update_many(
+            {"copies.copy_id": id},
+            {"$pull": {"copies": {"copy_id": id}}}
+        )
+        return jsonify({"message": f"Deleted the copy successfully."}), 200
+    except Exception as e:
+        return jsonify({"error": "An error occurred while deleting the copies."}), 500
+
 
 @app.route('/delete-book/<string:id>', methods=['DELETE'])
 def delete_by_book_id(id):
@@ -155,6 +162,49 @@ def receive_card_id():
         socketio.emit('add-to-cart', book)
     socketio.emit('add-copy', card)
     return 'Card ID received successfully', 200
+
+# ===============================================================
+@app.route('/find-all-users')
+def find_all_users():
+    list_users = list(users_collection.find())
+    for i in list_users:
+        i['_id'] = str(i['_id'])
+    return jsonify(list_users), 200
+
+@app.route('/add-user', methods=['POST'])
+def create_user():
+    data = request.get_json()
+    customer_data = {
+        "name": data['name'],
+        "username": data['username'],
+        "phone_number": data['phone_number'],
+        "password": data['password'],
+        "member_id": data['member_id'],
+        "role": data['role'],
+        "date_created": datetime.now(),
+        "status": "active"
+    }
+
+    result = users_collection.insert_one(customer_data)
+    return jsonify({"message": "Customer created successfully!", "customer_id": str(result.inserted_id)}), 201
+
+@app.route('/find-user/<string:member_id>')
+def find_user(member_id):
+    customer = list(users_collection.find({"member_id": member_id}))[0]
+    if customer:
+        customer["_id"] = str(customer["_id"])
+        return jsonify(customer), 200
+    else:
+        return jsonify({"message": "Customer not found"}), 404
+
+@app.route('/delete-user/<string:id>', methods=['DELETE'])
+def delete_customer(id):
+    result = users_collection.delete_one({"_id": ObjectId(id)})
+
+    if result.deleted_count > 0:
+        return jsonify({"message": "User deleted successfully"}), 200
+    else:
+        return jsonify({"message": "User not found"}), 404
 
 # ===============================================================
 @app.route('/clear')

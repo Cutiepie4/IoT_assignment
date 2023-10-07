@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 import { add_book, find_book, update_book } from '../services/API';
 import { toast } from 'react-toastify';
 
-function Book() {
+function Book(props) {
 
-    const { id } = useParams();
+    const { bookId } = props;
     const [book, setBook] = useState({});
     const [image, setImage] = useState(null);
     const [imageExists, setImageExists] = useState(false);
@@ -19,7 +19,7 @@ function Book() {
 
     useEffect(() => {
         const asyncFunction = async () => {
-            const foundBook = await find_book(id);
+            const foundBook = await find_book(bookId);
             setBook(foundBook);
             const img = new Image();
             img.src = `/images/${foundBook.imagePath}`; // Đường dẫn đến hình ảnh
@@ -27,9 +27,9 @@ function Book() {
                 setImageExists(true);
             };
         }
-        if (id !== '0')
+        if (bookId !== '0')
             asyncFunction();
-    }, [id])
+    }, [bookId])
 
     const checkEmptyInput = (text) => {
         if (!text || text.trim().length === 0) {
@@ -41,6 +41,15 @@ function Book() {
     const checkNumber = (num) => {
         if (!num) return false;
         return num > 0;
+    }
+
+    const clearWarning = () => {
+        setAuthorMessage('');
+        setTitleMessage('');
+        setDateMessage('');
+        setPageMessage('');
+        setSoldMessage('');
+        setPriceMessage('');
     }
 
     const handleSubmit = () => {
@@ -78,10 +87,11 @@ function Book() {
         if (ok) {
             const formData = new FormData();
             if (image !== null) formData.append('image', image);
-            formData.append('book', JSON.stringify(book))
-            if (id === 0)
+            formData.append('book', JSON.stringify(book));
+            if (bookId == 0)
                 add_book(formData);
             else update_book(formData);
+            clearWarning();
         }
     }
 
@@ -173,7 +183,7 @@ function Book() {
                     <hr />
                     <div className="col-12">
                         <button className="btn btn-success" onClick={handleSubmit}>
-                            {id === 0 ? 'Add' : 'Save'}
+                            {bookId === 0 ? 'Add' : 'Save'}
                         </button>
                     </div>
                 </div>

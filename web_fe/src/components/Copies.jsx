@@ -4,7 +4,7 @@ import { deleteCopy, find_copies } from '../services/API';
 
 function Copies(props) {
 
-    const { bookId } = useParams();
+    const { bookId } = props;
 
     const [listCopies, setListCopies] = useState([]);
 

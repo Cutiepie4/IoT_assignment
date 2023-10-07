@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 
 function Import(props) {
 
-    const { bookId } = useParams();
+    const { bookId } = props;
     const [id, setId] = useState('');
 
     const [enable, setEnable] = useState(false);
@@ -42,8 +42,16 @@ function Import(props) {
     return (
         <div className='container form-control mt-3' style={{ maxWidth: '300px' }}>
             <div className='d-flex justify-content-between align-items-center mb-3'>
-                <input type='text' className='form-control me-2' placeholder='Enter the copy id here...' onChange={(e) => setId(e.target.value)} value={id} />
-                <button className='btn btn-success' onClick={() => { setListId([...listId, { 'card_id': id }]); setId(''); }} disabled={id.length == 0 ? true : false}>Add</button>
+                <input type='text' className='form-control me-2' placeholder='Enter the copy id here...'
+                    onChange={(e) => setId(e.target.value)} value={id} />
+                <button className='btn btn-success'
+                    onClick={() => {
+                        if (!listId.some(item => item.card_id === id)) {
+                            setListId([...listId, { card_id: id }]);
+                        };
+                        setId('');
+                    }}
+                    disabled={id.length == 0 ? true : false}>Add</button>
             </div>
             <ul className="list-group mb-3">
                 {listId.map((item) => (

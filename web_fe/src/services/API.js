@@ -84,3 +84,10 @@ export const deleteCopy = async (copyId) => {
         .then(res => { toast.success(res.data.message) })
         .catch(error => { toast.error(error.response) });
 }
+
+export const find_all_user = async () => {
+    const res = await api.get('/find-all-users')
+        .then(res => res)
+        .catch(error => { toast.error(error.response); });
+    return res.data;
+}
