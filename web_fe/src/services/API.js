@@ -54,22 +54,28 @@ export const delete_book = async (card_id) => {
         .catch(error => { toast.error(error.message) });
 }
 
-export const enableRFID = async () => {
-    await api.get('/enable')
+export const enableRFIDSingle = async () => {
+    await api.get('/enable_single_mode')
         .then(res => { toast.success(res.data); })
         .catch(error => { toast.error(error.response.data); });
+}
+
+export const enableRFIDContinuous = async () => {
+    await api.get('/enable_continuous_mode')
+        .then(res => { toast.success(res.data); })
+        .catch(error => { toast.error(error.response.data); });
+}
+
+export const disableRFIDContinuous = async () => {
+    await api.get('/disable_continuous_mode')
+        .then(res => { })
+        .catch(error => { });
 }
 
 export const disableRFID = async () => {
     await api.get('/disable')
         .then(res => { toast.success(res.data); })
         .catch(error => { toast.error(error.response.data); });
-}
-
-export const clearRFID = async () => {
-    await api.get('/clear')
-        .then(res => { toast.success(res.data); })
-        .catch(error => { toast.error(error.response); });
 }
 
 export const find_copies = async (bookId) => {
@@ -90,4 +96,11 @@ export const find_all_user = async () => {
         .then(res => res)
         .catch(error => { toast.error(error.response); });
     return res.data;
+}
+
+export const create_user = async (account) => {
+    api.post('/create-user', account)
+        .then(res => { toast.success(res.data); })
+        .catch(error => { toast.error(error.response) });
+    console.log(account)
 }

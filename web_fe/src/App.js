@@ -1,7 +1,6 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import { Route, Routes } from 'react-router-dom';
-import Book from './components/Book';
 import Books from './components/Books';
 import Import from './components/Import';
 import Copies from './components/Copies';
@@ -10,7 +9,8 @@ import Nav from './components/Nav';
 import Home from './components/Home';
 import BookDetail from './components/BookDetail';
 import UserList from './components/UserList';
-import LoginRegistration from './components/LoginRegistration';
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 
 function App(props) {
   return (
@@ -25,7 +25,8 @@ function App(props) {
           <Route element={<Checkout />} path={"/checkout"} />
           <Route element={<UserList />} path={"/users"} />
         </Route>
-        <Route element={<LoginRegistration />} path={"/login"} />
+        <Route element={<SignIn />} path={"/sign-in"} />
+        <Route element={<SignUp />} path={"/sign-up"} />
       </Routes>
       <ToastContainer
         position="top-right"

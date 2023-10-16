@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { deleteCopy, find_copies } from '../services/API';
 
 function Copies(props) {

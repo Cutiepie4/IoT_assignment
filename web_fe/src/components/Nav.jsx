@@ -3,7 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { find_all_books } from '../services/API';
 
 function Nav() {
-    const [count, setCount] = useState(1);
+    const [count, setCount] = useState(0);
     const [keyword, setKeyword] = useState('');
     const [filteredBook, setFilteredBook] = useState([]);
     const [isFocused, setIsFocused] = useState(false);
@@ -46,7 +46,7 @@ function Nav() {
                             <div className="dropdown card" >
                                 {filteredBook && filteredBook.map(book => (
                                     <NavLink key={book._id} className={'text-muted'}
-                                        to={`/book/${book._id}`} style={{ textDecoration: 'none' }}>
+                                        to={`/book-detail/${book._id}`} style={{ textDecoration: 'none' }}>
                                         <div className='result-item' onClick={() => { setIsFocused(false) }}>
                                             {book.title}
                                         </div>
@@ -65,7 +65,7 @@ function Nav() {
                     <NavLink style={{ textDecoration: 'none', color: '#8b939c' }} to={'/checkout'}>
                         <div className="user-profile pe-3">
                             <i className="fa-solid fa-cart-shopping fa-lg pe-2"></i>
-                            Cart
+                            Checkout
                         </div>
                     </NavLink>
                     <div className="profile-menu">

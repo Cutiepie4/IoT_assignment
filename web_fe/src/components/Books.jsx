@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { delete_book, find_all_books } from '../services/API';
-import { useNavigate } from 'react-router-dom';
+import { delete_book, disableRFIDContinuous, find_all_books } from '../services/API';
 import { Modal } from 'react-bootstrap';
 import Book from './Book';
 import Import from './Import';
@@ -28,6 +27,7 @@ function Books() {
     }
 
     const closeImportModal = () => {
+        disableRFIDContinuous();
         setShowImportModal(false);
     }
 
@@ -62,26 +62,27 @@ function Books() {
             </div>
             <br />
             <div>
-                <table className="table table-hover" >
+                <table className="table table-hover">
                     <thead className="table-primary">
                         <tr>
                             <th>#</th>
-                            <th>Id</th>
+                            {/* <th>Id</th> */}
                             <th>Title</th>
                             <th>Author</th>
                             <th>Description</th>
                             <th>Genre</th>
                             <th>Page</th>
                             <th>Price (vnd)</th>
+                            <th>In-Stock</th>
                             <th>Action</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         {listBooks.map((item, index) => (
-                            <tr key={item._id} className='row-hover'>
+                            <tr key={item._id} className={item.in_stock == 0 ? 'row-hover out-of-stock' : 'row-hover'} style={{ backgroundColor: '#ff0000' }}>
                                 <td>{index}</td>
-                                <td>{item._id}</td>
+                                {/* <td>{item._id}</td> */}
                                 <td>{item.title}</td>
                                 <td>{item.author}</td>
                                 <td style={{
@@ -93,6 +94,7 @@ function Books() {
                                 <td>{item.genre}</td>
                                 <td>{item.page}</td>
                                 <td>{item.price}</td>
+                                <td>{item.in_stock}</td>
                                 <td>
                                     <button style={{ 'marginRight': '8px' }} className="btn btn-success" onClick={() => { openBookDetailModal(item._id); }}><i className="fa-solid fa-gear"></i></button>
                                     <button style={{ 'marginRight': '8px' }} className="btn btn-primary" onClick={() => { openImportModal(item._id); }}><i className="fa-solid fa-file-import"></i></button>

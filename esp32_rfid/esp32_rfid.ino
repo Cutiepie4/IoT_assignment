@@ -12,17 +12,20 @@ MFRC522 mfrc522(SS_PIN, RST_PIN);
 
 const char *ssid = "wifi nha ai day 2,4Ghz";
 const char *password = "khongcomatkhaudau";
-String serverUrl = "http://192.168.0.103:5000";
-String sendCardApi = serverUrl + "/receive-card";  // Replace with your server URL
+String serverUrl = "http://192.168.0.101:5000";
+String readCardApi = serverUrl + "/read-card";  // Replace with your server URL
 
-int ledPin = 2;
-bool isEnable = false;
+bool singleMode = false;
+bool continuousMode = false;
 
 AsyncWebServer server(80);
 
 void setup() {
   Serial.begin(115200);
+  SPI.begin();
+  mfrc522.PCD_Init();
   WiFi.begin(ssid, password);
+
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
     Serial.println("Connecting to WiFi...");
@@ -32,65 +35,56 @@ void setup() {
   Serial.print("IP: ");
   Serial.println(WiFi.localIP());
 
-  SPI.begin();
-  mfrc522.PCD_Init();
-  delay(4);
 
-  server.on("/clear", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Serial.println("Received /clear request");
-    request->send(200, "text/plain", "Card data cleared");
-  });
-
-  server.on("/enable", HTTP_GET, [](AsyncWebServerRequest *request) {
+  server.on("/enable_single_mode", HTTP_GET, [](AsyncWebServerRequest *request) {
     Serial.println("Received /enable request");
-    isEnable = true;
+    singleMode = true;
+    continuousMode = false;
     request->send(200, "text/plain", "RFID is enabled!");
   });
 
-  server.on("/disable", HTTP_GET, [](AsyncWebServerRequest *request) {
-    Serial.println("Received /disable request");
-    isEnable = false;
-    request->send(200, "text/plain", "RFID is disabled.");
+  server.on("/enable_continuous_mode", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Serial.println("Received /enable_continuous_mode request");
+    singleMode = false;
+    continuousMode = true;
+    request->send(200, "text/plain", "Continuous RFID mode is enabled!");
+  });
+
+  server.on("/disable_continuous_mode", HTTP_GET, [](AsyncWebServerRequest *request) {
+    Serial.println("Received /disable_continuous_mode request");
+    singleMode = false;
+    continuousMode = false;
+    request->send(200, "text/plain", "Continuous RFID mode is disabled.");
   });
 
   server.begin();
-
-  pinMode(ledPin, OUTPUT);
 }
 
 void loop() {
-  if (isEnable) {
-    digitalWrite(ledPin, HIGH);
-    if (WiFi.status() == WL_CONNECTED) {
-      if (!mfrc522.PICC_IsNewCardPresent()) {
-        return;
-      }
+  if (WiFi.status() == WL_CONNECTED) {
+    if (!mfrc522.PICC_IsNewCardPresent()) {
+      return;
+    }
 
-      if (!mfrc522.PICC_ReadCardSerial()) {
-        return;
-      }
+    if (!mfrc522.PICC_ReadCardSerial()) {
+      return;
+    }
 
-      digitalWrite(ledPin, HIGH);
+    byte *cardId = mfrc522.uid.uidByte;
+    String cardIdString = "";
+    for (byte i = 0; i < mfrc522.uid.size; i++) {
+      cardIdString += String(cardId[i], HEX);
+    }
 
-      byte *cardId = mfrc522.uid.uidByte;
-      String cardIdString = "";
-      for (byte i = 0; i < mfrc522.uid.size; i++) {
-        cardIdString += String(cardId[i], HEX);
-      }
+    Serial.println(cardIdString);
 
-      Serial.println(cardIdString);
-
+    if (singleMode) {
       WiFiClient client;
       HTTPClient http;
-
-      http.begin(client, sendCardApi);
+      http.begin(client, readCardApi);
       http.addHeader("Content-Type", "application/json");
-
-      DynamicJsonDocument jsonDocument(200);  // Use DynamicJsonDocument for sending
-
-      // Add the card ID to the JSON object
+      DynamicJsonDocument jsonDocument(200);
       jsonDocument["card_id"] = cardIdString;
-
       String jsonString;
       serializeJson(jsonDocument, jsonString);
 
@@ -102,12 +96,32 @@ void loop() {
         Serial.println("HTTP request failed");
       }
       http.end();
-    } else {
-      Serial.println("Wifi disconnected...");
-      delay(3000);
+      singleMode = false;
+      
+    } else if (continuousMode) {
+      WiFiClient client;
+      HTTPClient http;
+      http.begin(client, readCardApi);
+      http.addHeader("Content-Type", "application/json");
+
+      DynamicJsonDocument jsonDocument(200);
+      jsonDocument["card_id"] = cardIdString;
+      String jsonString;
+      serializeJson(jsonDocument, jsonString);
+
+      int httpCode = http.POST(jsonString);
+      if (httpCode > 0) {
+        String payload = http.getString();
+        Serial.println(payload);
+      } else {
+        Serial.println("HTTP request failed");
+      }
+      http.end();
     }
-  }
-  else {
-    digitalWrite(ledPin, LOW);
+
+    delay(800);
+  } else {
+    Serial.println("Wifi disconnected...");
+    delay(3000);
   }
 }

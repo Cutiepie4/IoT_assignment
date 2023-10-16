@@ -5,7 +5,8 @@ from bson.objectid import ObjectId
 from flask_socketio import SocketIO
 from flask_jwt_extended import jwt_required, JWTManager, get_jwt_identity, create_access_token
 from datetime import datetime
-import uuid, json, os
+from bson.json_util import dumps
+import uuid, json, os, jwt
 
 client = MongoClient('mongodb://localhost:27017')
 db = client['iot_db']
@@ -20,7 +21,7 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 UPLOAD_FOLDER = 'C://Users//trvie//Documents//Code//iot//web_fe//public//images//'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-esp32_host = 'http://192.168.0.104'
+esp32_host = 'http://192.168.0.100'
 
 def find_by_copy_id(id_copy):
     result = books_collection.aggregate([
@@ -40,6 +41,8 @@ def find_by_copy_id(id_copy):
                 "description": 1,
                 "genre": 1,
                 "page": 1,
+                "imagePath": 1,
+                "price": 1,
                 "copy_id": "$copies.copy_id"  # Thêm trường copy_id
             }
         }
@@ -142,6 +145,7 @@ def find_all_books():
     list_books = list(books_collection.find())
     for i in list_books:
         i['_id'] = str(i['_id'])
+        i['in_stock'] = len(i.get('copies', []))
     return jsonify(list_books), 200
 
 @app.route('/find-by-book-id/<string:id>')
@@ -153,15 +157,16 @@ def find_copies(id):
     book_data = list(books_collection.find({'_id' : ObjectId(id)}))[0]
     return jsonify(book_data['copies']), 200
 
-@app.route('/receive-card', methods=['POST'])
-def receive_card_id():
+@app.route('/read-card', methods=['POST'])
+def read_rfid_card():
     card = request.get_json()
     book = find_by_copy_id(card['card_id'])
-    print(book)
     if book != None:
-        socketio.emit('add-to-cart', book)
-    socketio.emit('add-copy', card)
-    return 'Card ID received successfully', 200
+        socketio.emit('checkout', book)
+    socketio.emit('import', card)
+    socketio.emit('sign-up', card)
+    print(card)
+    return jsonify('Card ID received successfully'), 200
 
 # ===============================================================
 @app.route('/find-all-users')
@@ -171,7 +176,7 @@ def find_all_users():
         i['_id'] = str(i['_id'])
     return jsonify(list_users), 200
 
-@app.route('/add-user', methods=['POST'])
+@app.route('/create-user', methods=['POST'])
 def create_user():
     data = request.get_json()
     customer_data = {
@@ -186,7 +191,7 @@ def create_user():
     }
 
     result = users_collection.insert_one(customer_data)
-    return jsonify({"message": "Customer created successfully!", "customer_id": str(result.inserted_id)}), 201
+    return jsonify({"message": "User created successfully!", "customer_id": str(result.inserted_id)}), 201
 
 @app.route('/find-user/<string:member_id>')
 def find_user(member_id):
@@ -205,25 +210,27 @@ def delete_customer(id):
         return jsonify({"message": "User deleted successfully"}), 200
     else:
         return jsonify({"message": "User not found"}), 404
+    
+
 
 # ===============================================================
-@app.route('/clear')
-def clear_card_id():
+@app.route('/enable_single_mode')
+def enable_RFID_single():
     import requests
-    requests.get(esp32_host + '/clear')
-    return 'Clear cards!', 200
+    requests.get(esp32_host + '/enable_single_mode')
+    return 'Enable RFID Single mode!', 200
 
-@app.route('/enable')
-def enable_RFID():
+@app.route('/enable_continuous_mode')
+def enable_RFID_continous():
     import requests
-    requests.get(esp32_host + '/enable')
-    return 'Enable RFID!', 200
+    requests.get(esp32_host + '/enable_continuous_mode')
+    return 'Enable RFID Continuous mode!', 200
 
-@app.route('/disable')
-def disable_RFID ():
+@app.route('/disable_continuous_mode')
+def disable_RFID_continous():
     import requests
-    requests.get(esp32_host + '/disable')
-    return 'Turn off RFID', 200
+    requests.get(esp32_host + '/disable_continuous_mode')
+    return 'Turn off RFID Continuous mode', 200
 
 #===================================================================
 # Authentication
@@ -231,13 +238,14 @@ def disable_RFID ():
 def login():
     username = request.get_json()['username']
     password = request.get_json()['password']
-    
-    if username == 'admin' and password == '123':
+    user = users_collection.find_one({"username": username, "password": password})
+
+    if user:
         access_token = create_access_token(identity=username)
         return jsonify(access_token=access_token), 200
     else:
         return jsonify(message='Invalid credentials'), 401
-    
+
 @app.route('/protected', methods=['GET'])
 @jwt_required()
 def protected():
