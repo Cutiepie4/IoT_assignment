@@ -9,7 +9,6 @@ function Book(props) {
     const [book, setBook] = useState({});
     const [image, setImage] = useState(null);
     const [imageExists, setImageExists] = useState(false);
-
     const [titleMessage, setTitleMessage] = useState('');
     const [authorMessage, setAuthorMessage] = useState('');
     const [dateMessage, setDateMessage] = useState('');

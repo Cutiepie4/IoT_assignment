@@ -3,11 +3,13 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { io } from 'socket.io-client';
+import { enableRFIDSingle, formatDate } from '../services/API';
 
 function Checkout(props) {
     const customer = useState({});
     const [order, setOrder] = useState({});
     const [listCarts, setListCarts] = useState([]);
+    const [user, setUser] = useState(null);
 
     const handlePlaceOrder = (e) => {
         let ok = true;
@@ -26,7 +28,6 @@ function Checkout(props) {
         const socket = io('http://localhost:5000');
 
         socket.on('checkout', (book) => {
-
             const bookIndex = listCarts.findIndex((item) => item.book._id === book._id);
 
             if (bookIndex !== -1) {
@@ -38,6 +39,9 @@ function Checkout(props) {
             setListCarts([...listCarts]);
         });
 
+        socket.on('checkout-user', (user) => {
+            setUser(prev => user);
+        });
 
         return () => {
             socket.disconnect();
@@ -97,49 +101,55 @@ function Checkout(props) {
                 <div className="col col-lg-4">
                     <div className="row d-flex">
                         <div className="col mb-4 mb-lg-0">
-                            <div className="card mb-3" style={{ boxShadow: '5px 5px 5px #888888', background: '#ccc' }}>
-                                <div className="row g-0">
-                                    <div className="col-md-4 gradient-custom text-center text-white">
-                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                                            alt="Avatar" className="img-fluid my-5" style={{ width: '80px' }} />
-                                        <h5>Marie Horwitz</h5>
-                                        <p>Web Designer</p>
-                                        <i className="far fa-edit mb-5"></i>
-                                    </div>
-                                    <div className="col-md-8">
-                                        <div className="card-body p-4">
-                                            <h6>Information</h6>
-                                            <hr className="mt-0 mb-4" />
-                                            <div className="row pt-1">
-                                                <div className="col-6 mb-3">
-                                                    <h6>Email</h6>
-                                                    <p className="text-muted">info@example.com</p>
+                            <div className="card mb-3" style={{ boxShadow: '5px 5px 5px #888888', background: '#faf9ba', minHeight: '300px' }}>
+                                {user ? (
+                                    <div className="row g-0">
+                                        <div className="col-md-4 gradient-custom text-center">
+                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                                                alt="Avatar" className="img-fluid my-5" style={{ width: '80px' }} />
+                                            <h5>{user.name}</h5>
+                                            <p>{user.gender}</p>
+                                            <p>{user.role}</p>
+                                            {/* <i className="far fa-edit mb-5"></i> */}
+                                        </div>
+                                        <div className="col-md-8">
+                                            <div className="card-body p-4">
+                                                <h5 style={{ color: 'red' }}>Information</h5>
+                                                <hr className="mt-0 mb-4" />
+                                                <div className="row pt-1">
+                                                    <div className="col-6 mb-3">
+                                                        <h6>Member ID</h6>
+                                                        <p className="text-muted">{user.member_id}</p>
+                                                    </div>
+                                                    <div className="col-6 mb-3">
+                                                        <h6>Phone</h6>
+                                                        <p className="text-muted">{user.phone_number}</p>
+                                                    </div>
                                                 </div>
-                                                <div className="col-6 mb-3">
-                                                    <h6>Phone</h6>
-                                                    <p className="text-muted">123 456 789</p>
+                                                <hr className="mt-0 mb-4" />
+                                                <div className="row pt-1">
+                                                    <div className="col-6 mb-3">
+                                                        <h6>Recent</h6>
+                                                        <p className="text-muted">{user.recent_purchase}</p>
+                                                    </div>
+                                                    <div className="col-6 mb-3">
+                                                        <h6>Date Joined</h6>
+                                                        <p className="text-muted">{formatDate(user.date_created)}</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <h6>Projects</h6>
-                                            <hr className="mt-0 mb-4" />
-                                            <div className="row pt-1">
-                                                <div className="col-6 mb-3">
-                                                    <h6>Recent</h6>
-                                                    <p className="text-muted">Lorem ipsum</p>
+                                                <div className="d-flex justify-content-start">
+                                                    <button className='btn btn-outline-dark' onClick={enableRFIDSingle}>Scan</button>
                                                 </div>
-                                                <div className="col-6 mb-3">
-                                                    <h6>Most Viewed</h6>
-                                                    <p className="text-muted">Dolor sit amet</p>
-                                                </div>
-                                            </div>
-                                            <div className="d-flex justify-content-start">
-                                                <a href="#!"><i className="fab fa-facebook-f fa-lg me-3"></i></a>
-                                                <a href="#!"><i className="fab fa-twitter fa-lg me-3"></i></a>
-                                                <a href="#!"><i className="fab fa-instagram fa-lg"></i></a>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                ) : (<div className='d-flex justify-content-center align-items-center'  >
+                                    <p className='text-muted' style={{ fontStyle: 'italic' }}>Scan customer here</p>
+                                    <div className="d-flex justify-content-start">
+                                        <button className='btn btn-outline-dark' onClick={enableRFIDSingle}>Scan</button>
+                                    </div>
+                                </div>)}
+
                             </div>
                         </div>
                     </div>

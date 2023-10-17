@@ -43,13 +43,14 @@ def find_by_copy_id(id_copy):
                 "page": 1,
                 "imagePath": 1,
                 "price": 1,
+                "date": 1,
                 "copy_id": "$copies.copy_id"  # Thêm trường copy_id
             }
         }
     ])
-    
-    if result:
-        book_data = list(result)[0]
+    result = list(result)
+    if len(result) > 0:
+        book_data = result[0]
         book_data['_id'] = str(book_data['_id'])
         return book_data
     else:
@@ -157,18 +158,30 @@ def find_copies(id):
     book_data = list(books_collection.find({'_id' : ObjectId(id)}))[0]
     return jsonify(book_data['copies']), 200
 
+#============================================================
 @app.route('/read-card', methods=['POST'])
 def read_rfid_card():
     card = request.get_json()
     book = find_by_copy_id(card['card_id'])
     if book != None:
         socketio.emit('checkout', book)
+    user = find_by_member_id(card['card_id'])
+    if user != None:
+        socketio.emit('checkout-user', user)
     socketio.emit('import', card)
     socketio.emit('sign-up', card)
     print(card)
     return jsonify('Card ID received successfully'), 200
 
 # ===============================================================
+def find_by_member_id(member_id):
+    user = users_collection.find_one({"member_id": member_id})
+    if user:
+        user["_id"] = str(user["_id"])
+        return user
+    else:
+        return None
+
 @app.route('/find-all-users')
 def find_all_users():
     list_users = list(users_collection.find())
@@ -179,6 +192,7 @@ def find_all_users():
 @app.route('/create-user', methods=['POST'])
 def create_user():
     data = request.get_json()
+
     customer_data = {
         "name": data['name'],
         "username": data['username'],
@@ -186,7 +200,8 @@ def create_user():
         "password": data['password'],
         "member_id": data['member_id'],
         "role": data['role'],
-        "date_created": datetime.now(),
+        "date_created": str(datetime.now().date()),
+        "coins" : 0,
         "status": "active"
     }
 
@@ -195,12 +210,11 @@ def create_user():
 
 @app.route('/find-user/<string:member_id>')
 def find_user(member_id):
-    customer = list(users_collection.find({"member_id": member_id}))[0]
-    if customer:
-        customer["_id"] = str(customer["_id"])
-        return jsonify(customer), 200
+    user = find_by_member_id(member_id)
+    if user:
+        return jsonify(user), 200
     else:
-        return jsonify({"message": "Customer not found"}), 404
+        return jsonify({"message": "user not found"}), 404
 
 @app.route('/delete-user/<string:id>', methods=['DELETE'])
 def delete_customer(id):
@@ -211,8 +225,6 @@ def delete_customer(id):
     else:
         return jsonify({"message": "User not found"}), 404
     
-
-
 # ===============================================================
 @app.route('/enable_single_mode')
 def enable_RFID_single():

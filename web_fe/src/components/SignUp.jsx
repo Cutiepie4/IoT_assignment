@@ -77,6 +77,16 @@ function SignUp(props) {
                                                 </div>
                                             </div>
                                             <div className="d-flex flex-row align-items-center mb-4">
+                                                <i className="fas fa-venus-mars fa-lg me-3 fa-fw"></i>
+                                                <select
+                                                    className="border-1 form-select"
+                                                    onChange={(e) => { setAccount({ ...account, gender: e.target.value }) }}
+                                                >
+                                                    <option value="Male" selected={account.gender == 'Male'}>Male</option>
+                                                    <option value="Female" selected={account.gender == 'Female'}>Female</option>
+                                                </select>
+                                            </div>
+                                            <div className="d-flex flex-row align-items-center mb-4">
                                                 <i className="fas fa-phone fa-lg me-3 fa-fw"></i>
                                                 <div className="form-outline flex-fill mb-0">
                                                     <input type="number" className="form-control hidden-number-input" placeholder='Phone number' value={account.phone_number} onChange={e => setAccount({ ...account, phone_number: e.target.value })} />
@@ -105,6 +115,10 @@ function SignUp(props) {
                                                     <option value="Admin" selected={account.role == 'Admin'}>Admin</option>
                                                 </select>
                                             </div>
+
+
+
+
 
                                             <div className="d-flex justify-content-center">
                                                 <button type="button" className="btn btn-success" onClick={handleRegister}>Sign Up</button>

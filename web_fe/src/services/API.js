@@ -16,6 +16,12 @@ export const createConfig = () => {
     }
 }
 
+export const formatDate = (dateString) => {
+    const options = { weekday: 'short', month: 'short', day: 'numeric' };
+    const date = new Date(dateString);
+    return date.toLocaleDateString(undefined, options);
+};
+
 export const find_all_books = async () => {
     const res = await api.get('/find-all-books')
         .then(res => res)
@@ -100,7 +106,8 @@ export const find_all_user = async () => {
 
 export const create_user = async (account) => {
     api.post('/create-user', account)
-        .then(res => { toast.success(res.data); })
+        .then(res => { toast.success(res.data.message); })
         .catch(error => { toast.error(error.response) });
     console.log(account)
 }
+
