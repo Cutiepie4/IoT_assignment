@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
-
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
 :root {
@@ -36,7 +35,15 @@ body {
     margin: 0;
 }
 
-%display {
+.header,
+.browse,
+.browse-category,
+.profile,
+.profile-menu,
+.main-menu,
+.author,
+.year-book,
+.likes {
     display: flex;
     align-items: center;
 }
@@ -53,7 +60,6 @@ body {
 }
 
 .header {
-    @extend %display;
     height: 70px;
     width: 100%;
     background-color: #ffffff;
@@ -67,52 +73,47 @@ body {
 
 .search-bar {
     position: relative;
-
-    input {
-        height: 100%;
-        width: 100%;
-        display: block;
-        background-color: transparent;
-        border: none;
-        font-weight: 600;
-        padding: 0 10px 0 40px;
-        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%238b939c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' class='feather feather-search'%3e%3ccircle cx='11' cy='11' r='8'/%3e%3cpath d='M21 21l-4.35-4.35'/%3e%3c/svg%3e");
-        background-repeat: no-repeat;
-        background-size: 15px;
-        background-position: 15px 50%;
-        color: var(--body-color);
-        font-family: var(--body-font);
-
-        &::placeholder {
-            color: var(--placeholder);
-        }
-    }
 }
 
-.browse {
-    @extend %display;
+.search-bar input {
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    padding: 0 10px 0 40px;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%238b939c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' class='feather feather-search'%3e%3ccircle cx='11' cy='11' r='8'/%3e%3cpath d='M21 21l-4.35-4.35'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position: 15px 50%;
+    color: var(--body-color);
+    font-family: var(--body-font);
+}
 
-    &-category {
-        @extend %display;
-        border-right: 1px solid var(--border-color);
-        white-space: nowrap;
+.search-bar input::placeholder {
+    color: var(--placeholder);
+}
 
-        svg {
-            width: 16px;
-            margin: 2px 10px 0 8px;
-        }
-    }
+.browse-category {
+    border-right: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.browse-category svg {
+    width: 16px;
+    margin: 2px 10px 0 8px;
 }
 
 .header-title {
     font-size: 38px;
     font-weight: 400;
     margin-right: 120px;
+}
 
-    span {
-        font-weight: 500;
-        color: var(--body-color) !important;
-    }
+.header-title span {
+    font-weight: 500;
+    color: var(--body-color) !important;
 }
 
 .user-img {
@@ -129,17 +130,15 @@ body {
 }
 
 .profile {
-    @extend %display;
     flex-shrink: 0;
+}
 
-    &-menu {
-        @extend %display;
-        border-left: 1px solid var(--border-color);
-    }
+.profile-menu {
+    border-left: 1px solid var(--border-color);
+}
 
-    :hover {
-        cursor: pointer;
-    }
+.profile :hover {
+    cursor: pointer;
 }
 
 .book-slide {
@@ -157,26 +156,26 @@ body {
     width: 40%;
     height: 250px;
     margin-right: 1px;
+}
 
-    &:nth-child(1) {
-        background-color: #fbadaf;
-    }
+.book-cell:nth-child(1) {
+    background-color: #fbadaf;
+}
 
-    &:nth-child(2) {
-        background-color: #a4e0eb;
-    }
+.book-cell:nth-child(2) {
+    background-color: #a4e0eb;
+}
 
-    &:nth-child(3) {
-        background-color: #edb9d6;
-    }
+.book-cell:nth-child(3) {
+    background-color: #edb9d6;
+}
 
-    &:nth-child(4) {
-        background-color: #fdca95;
-    }
+.book-cell:nth-child(4) {
+    background-color: #fdca95;
+}
 
-    &:nth-child(5) {
-        background-color: #cbb5e2;
-    }
+.book-cell:nth-child(5) {
+    background-color: #cbb5e2;
 }
 
 .flickity-page-dots {
@@ -194,14 +193,12 @@ body {
     height: 50%;
 }
 
-.flickity-prev-next-button {
-    &.previous {
-        left: 15px;
-    }
+.flickity-prev-next-button.previous {
+    left: 15px;
+}
 
-    &.next {
-        right: 15px;
-    }
+.flickity-prev-next-button.next {
+    right: 15px;
 }
 
 .flickity-viewport {
@@ -215,11 +212,11 @@ body {
     left: 35px;
     border-radius: 2px;
     box-shadow: -2px 6px 19px 0px #7f818e;
-    transition: .3s ease;
+    transition: 0.3s ease;
+}
 
-    &:hover {
-        transform: scale(1.03);
-    }
+.book-photo:hover {
+    transform: scale(1.03);
 }
 
 .book-img {
@@ -373,49 +370,48 @@ label {
     font-size: 14px;
     width: 160px;
     border-radius: 20px;
+}
 
-    &:hover {
-        color: #ff6e72;
-    }
+.book-see:hover {
+    color: #ff6e72;
+}
 
-    &.book-blue {
-        color: #a4e0eb;
+.book-see.book-blue {
+    color: #a4e0eb;
+}
 
-        &:hover {
-            color: #22cdec;
-        }
-    }
+.book-see.book-blue:hover {
+    color: #22cdec;
+}
 
-    &.book-pink {
-        color: #edb9d6;
+.book-see.book-pink {
+    color: #edb9d6;
+}
 
-        &:hover {
-            color: #ff6dbe;
-        }
-    }
+.book-see.book-pink:hover {
+    color: #ff6dbe;
+}
 
-    &.book-yellow {
-        color: #fdca95;
+.book-see.book-yellow {
+    color: #fdca95;
+}
 
-        &:hover {
-            color: #fb9124;
-        }
-    }
+.book-see.book-yellow:hover {
+    color: #fb9124;
+}
 
-    &.book-purple {
-        color: #cbb5e2;
+.book-see.book-purple {
+    color: #cbb5e2;
+}
 
-        &:hover {
-            color: #a764ec;
-        }
-    }
+.book-see.book-purple:hover {
+    color: #a764ec;
 }
 
 .main-wrapper {
     width: 100%;
     display: flex;
     flex-grow: 1;
-    // margin-top: 100px;
     overflow: hidden;
 }
 
@@ -441,7 +437,6 @@ label {
 }
 
 .main-menu {
-    @extend %display;
     white-space: nowrap;
     padding: 15px 0;
     border-bottom: 1px solid #dcddde;
@@ -456,13 +451,13 @@ label {
 .book-types {
     margin-left: auto;
     margin-right: 20px;
+}
 
-    div {
-        cursor: pointer;
-        text-decoration: none;
-        color: var(--body-color);
-        font-size: 14px;
-    }
+.book-types div {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--body-color);
+    font-size: 14px;
 }
 
 .book-type+.book-type {
@@ -472,41 +467,38 @@ label {
 .book-type {
     position: relative;
     transition: 0.2s;
+}
 
-    &.active,
-    &:hover {
-        -webkit-text-stroke: .3px;
+.book-type.active,
+.book-type:hover {
+    -webkit-text-stroke: 0.3px;
+}
 
-        &:before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -17px;
-            background-color: #67d4ea;
-            box-shadow: 0px -1px 5px 0px #67d4ea;
-        }
-    }
+.book-type.active:before,
+.book-type:hover:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -17px;
+    background-color: #67d4ea;
+    box-shadow: 0px -1px 5px 0px #67d4ea;
 }
 
 .week {
     padding: 0 30px;
 }
 
-.author {
-    @extend %display;
+.author+.author {
+    margin-top: 20px;
+}
 
-    &+& {
-        margin-top: 20px;
-    }
+.author-name {
+    font-size: 14px;
+}
 
-    &-name {
-        font-size: 14px;
-    }
-
-    &:last-child {
-        margin-bottom: 40px;
-    }
+.author:last-child {
+    margin-bottom: 40px;
 }
 
 .author-title {
@@ -524,26 +516,22 @@ label {
     object-position: center;
 }
 
-.year-book {
-    @extend %display;
+.year-book-img {
+    width: 45px;
+    margin-right: 16px;
+}
 
-    &-img {
-        width: 45px;
-        margin-right: 16px;
-    }
+.year-book-name {
+    margin-bottom: 15px;
+    font-weight: 500;
+}
 
-    &-name {
-        margin-bottom: 15px;
-        font-weight: 500;
-    }
+.year-book-author {
+    font-size: 13px;
+}
 
-    &-author {
-        font-size: 13px;
-    }
-
-    &+& {
-        margin-top: 20px;
-    }
+.year-book+.year-book {
+    margin-top: 20px;
 }
 
 .year-book-content {
@@ -558,10 +546,7 @@ label {
     left: 0;
     width: 340px;
     flex-shrink: 0;
-    background: linear-gradient(to bottom,
-            rgba(255, 255, 255, 0) 0%,
-            #f2f5f7 65%,
-            #f2f5f7 100%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #f2f5f7 65%, #f2f5f7 100%);
     height: 60px;
     margin-left: -35px;
 }
@@ -596,13 +581,12 @@ label {
     border-bottom: 1px solid #dcddde;
     object-fit: cover;
     margin-bottom: 20px;
-    transition: .3s ease;
-
-    &:hover {
-        transform: scale(1.04);
-    }
+    transition: 0.3s ease;
 }
 
+.book-card-img:hover {
+    transform: scale(1.04);
+}
 
 .card-content {
     color: var(--body-color);
@@ -672,32 +656,32 @@ label {
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
+}
 
-    &:before {
-        content: "";
-        position: absolute;
-        background-color: #8f98a9;
-        width: 4px;
-        height: 4px;
-        border: 0;
-        padding: 0;
-        right: 12px;
-        top: 17px;
-        border-radius: 50%;
-        margin-left: auto;
-    }
+.content-wrapper:before {
+    content: "";
+    position: absolute;
+    background-color: #8f98a9;
+    width: 4px;
+    height: 4px;
+    border: 0;
+    padding: 0;
+    right: 12px;
+    top: 17px;
+    border-radius: 50%;
+    margin-left: auto;
+}
 
-    :hover {
-        background-color: (var(--page-bg-color));
-    }
+.content-wrapper :hover {
+    background-color: var(--page-bg-color);
 }
 
 .like-profile {
     margin-top: 8px;
+}
 
-    &+& {
-        margin-left: -5px;
-    }
+.like-profile+.like-profile {
+    margin-left: -5px;
 }
 
 .like-img {
@@ -713,16 +697,11 @@ label {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-
-    span {
-        font-weight: 600;
-    }
 }
 
-.likes {
-    @extend %display;
+.like-name span {
+    font-weight: 600;
 }
-
 
 @media (max-width: 1103px) {
     .book-cell {
@@ -781,7 +760,7 @@ label {
 
 @media (max-width: 1085px) {
     .book-rate>label {
-        font-size: .7em;
+        font-size: 0.7em;
     }
 }
 
@@ -818,7 +797,6 @@ label {
 }
 
 /****/
-
 .profile-menu {
     position: relative;
     display: inline-block;
@@ -871,14 +849,13 @@ label {
 }
 
 /****/
-
 .notification-icon {
     color: white !important;
     font-size: 10px;
     position: relative;
     width: 16px;
     height: 16px;
-    background-color: rgb(240, 0, 0);
+    background-color: #f00000;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -909,7 +886,6 @@ label {
 }
 
 /**/
-
 .trash-can-icon:hover {
     cursor: pointer;
     color: red;
@@ -917,10 +893,10 @@ label {
 
 .book-row {
     cursor: pointer;
+}
 
-    &:hover {
-        background-color: #f2f2f2;
-    }
+.book-row:hover {
+    background-color: #f2f2f2;
 }
 
 .action-form {
@@ -933,7 +909,6 @@ i.hover-red:hover {
 }
 
 /***/
-
 .star-full {
     color: darkorange;
 }
@@ -943,7 +918,6 @@ i.hover-red:hover {
 }
 
 /***/
-
 .search-bar {
     position: relative;
 }
@@ -961,12 +935,12 @@ div.dropdown {
 
 .result-item {
     padding: 10px;
+}
 
-    &:hover {
-        background-color: #ccc;
-        cursor: pointer;
-        color: black;
-    }
+.result-item:hover {
+    background-color: #ccc;
+    cursor: pointer;
+    color: black;
 }
 
 @keyframes slider {
@@ -982,24 +956,20 @@ div.dropdown {
 }
 
 /****************/
-
 tr.row-hover {
-    &:hover {
-        /* Your hover styles here */
-        background-color: #ccc;
-    }
-
     cursor: pointer;
 }
 
-.custom-hover {
-    &:hover {
-        cursor: pointer;
-    }
+tr.row-hover:hover {
+    /* Your hover styles here */
+    background-color: #ccc;
+}
+
+.custom-hover:hover {
+    cursor: pointer;
 }
 
 /***************/
-
 .dropdown-option {
     position: absolute;
     top: 90%;
@@ -1007,18 +977,16 @@ tr.row-hover {
     border: 1px solid black;
     padding: 0;
     list-style: none;
-
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .dropdown-option li {
     padding: 8px;
-
     cursor: pointer;
+}
 
-    &:hover {
-        background-color: #ccc;
-    }
+.dropdown-option li:hover {
+    background-color: #ccc;
 }
 
 /*************/
@@ -1032,4 +1000,9 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.custom-container {
+    align-items: center;
+    height: 100%;
 }

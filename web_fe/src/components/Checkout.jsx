@@ -143,13 +143,11 @@ function Checkout(props) {
                                             </div>
                                         </div>
                                     </div>
-                                ) : (<div className='d-flex justify-content-center align-items-center'  >
+                                ) : (<div className='d-flex flex-column justify-content-between custom-container' style={{ height: '290px' }}>
                                     <p className='text-muted' style={{ fontStyle: 'italic' }}>Scan customer here</p>
-                                    <div className="d-flex justify-content-start">
-                                        <button className='btn btn-outline-dark' onClick={enableRFIDSingle}>Scan</button>
-                                    </div>
-                                </div>)}
-
+                                    <button className='btn btn-outline-dark' onClick={enableRFIDSingle}>Scan</button>
+                                </div>
+                                )}
                             </div>
                         </div>
                     </div>

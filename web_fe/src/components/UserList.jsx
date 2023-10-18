@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/userList.scss';
 import { find_all_user } from '../services/API';
 
 function UserList(props) {
