@@ -1,3 +1,4 @@
+from bson import BSON
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
@@ -11,7 +12,8 @@ import uuid, json, os, jwt
 client = MongoClient('mongodb://localhost:27017')
 db = client['iot_db']
 books_collection = db['books']
-users_collection = db["users"]
+users_collection = db['users']
+orders_collection = db['orders']
 
 app = Flask(__name__)
 app.config['JWT_SECRET_KEY'] = 'nhom10'
@@ -34,18 +36,7 @@ def find_by_copy_id(id_copy):
             }
         },
         {
-            "$project": {
-                "_id": 1,
-                "title": 1,
-                "author": 1,
-                "description": 1,
-                "genre": 1,
-                "page": 1,
-                "imagePath": 1,
-                "price": 1,
-                "date": 1,
-                "copy_id": "$copies.copy_id"  # Thêm trường copy_id
-            }
+            "$replaceRoot": { "newRoot": "$$ROOT" }
         }
     ])
     result = list(result)
@@ -84,6 +75,8 @@ def add_book():
 
     book["copies"] = []
     book["imagePath"] = filename
+    book["price"] = int(book["price"])
+    book["discount"] = int(book["discount"])
     books_collection.insert_one(book)
     return jsonify({"message": "Book added successfully!"}), 200
 
@@ -91,6 +84,8 @@ def add_book():
 def update_book():
     image = request.files.get('image')
     book = json.loads(request.form.get('book'))
+    book["price"] = int(book["price"])
+    book["discount"] = int(book["discount"])
     old_book = find_by_book_id(book['_id'])
 
     if image:
@@ -224,7 +219,31 @@ def delete_customer(id):
         return jsonify({"message": "User deleted successfully"}), 200
     else:
         return jsonify({"message": "User not found"}), 404
-    
+
+#===============================================================
+@app.route('/checkout', methods=['POST'])
+def checkout():
+    data = request.get_json()
+    if 'member_id' in data['user']:
+        user_id = data['user']['member_id']
+    else:
+        user_id = None
+    items = data['items']
+    current_time = datetime.now()
+    new_items = [{'book': item['book']['copies']['copy_id'], 'quantity': item['quantity']} for item in items]
+    orders_collection.insert_one({'user': user_id, 'items': new_items, 'timestamp': current_time, 'total_cost': data['total_cost']})
+    return jsonify('Checkout Success!'), 201
+
+@app.route('/find-all-orders')
+def find_all_orders():
+    orders = list(orders_collection.find())
+    for order in orders:
+        order['timestamp'] = {"$gte": order['timestamp']}
+        order['_id'] = str(order['_id'])
+        order['items'] = [{'book': find_by_copy_id(item['book']), 'quantity': item['quantity']} for item in order['items']]
+        order['user'] = find_by_member_id(order['user'])
+    return jsonify({'orders': orders}), 200
+
 # ===============================================================
 @app.route('/enable_single_mode')
 def enable_RFID_single():

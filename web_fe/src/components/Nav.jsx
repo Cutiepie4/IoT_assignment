@@ -73,7 +73,7 @@ function Nav() {
                         {username ? username : 'Login'}
                         <ul className="dropdown">
                             {isLoggedIn ? (<li className='border-bottom'>
-                                <NavLink to={'#'}>Manage user</NavLink>
+                                <NavLink to={'/users'}>Manage user</NavLink>
                             </li>) : (<li><NavLink to="/login">Login</NavLink></li>)}
                             {role === 'ADMIN' && (<li className='border-bottom'><NavLink to='/books'>Book Storage</NavLink></li>)}
                             {role === 'ADMIN' && (<li className='border-bottom'><NavLink to='/orders'>Orders</NavLink></li>)}

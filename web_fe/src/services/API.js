@@ -108,6 +108,10 @@ export const create_user = async (account) => {
     api.post('/create-user', account)
         .then(res => { toast.success(res.data.message); })
         .catch(error => { toast.error(error.response) });
-    console.log(account)
 }
 
+export const checkout = async (order) => {
+    return await api.post('/checkout', order)
+        .then(res => { toast.success(res.data); return true })
+        .catch(error => { toast.error(error.response); return false });
+}

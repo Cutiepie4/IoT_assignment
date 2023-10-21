@@ -903,7 +903,7 @@ label {
     display: inline-block;
 }
 
-i.hover-red:hover {
+.hover-red:hover {
     cursor: pointer;
     color: red;
 }
@@ -1005,4 +1005,20 @@ input::-webkit-inner-spin-button {
 .custom-container {
     align-items: center;
     height: 100%;
+}
+
+@keyframes flicker {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.flickering-icon {
+    animation: flicker 1s infinite;
 }

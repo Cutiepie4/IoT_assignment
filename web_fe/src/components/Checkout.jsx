@@ -3,24 +3,27 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { io } from 'socket.io-client';
-import { enableRFIDSingle, formatDate } from '../services/API';
+import { checkout, enableRFIDSingle, formatDate } from '../services/API';
 
-function Checkout(props) {
-    const customer = useState({});
-    const [order, setOrder] = useState({});
-    const [listCarts, setListCarts] = useState([]);
-    const [user, setUser] = useState(null);
+function Checkout() {
+    const [items, setItems] = useState([]);
+    const [user, setUser] = useState({});
 
-    const handlePlaceOrder = (e) => {
-        let ok = true;
-        e.preventDefault();
+    const handleCheckout = () => {
+        const asyncFunction = async () => {
+            const flag = await checkout({
+                user, items, 'total_cost': items.reduce((res, curr) => {
+                    return Math.round(res + curr.book.price * curr.quantity * (100 - curr.book.discount) / 100);
+                }, 0)
+            })
 
-        if (ok) {
-            const asyncDelete = async () => {
-
+            if (flag) {
+                setUser({});
+                setItems([]);
             }
-            if (window.confirm('Are you sure to place this order ?\nYou can not change after this.'))
-                asyncDelete();
+        }
+        if (window.confirm('Are you sure to place this order ?')) {
+            asyncFunction();
         }
     }
 
@@ -28,15 +31,15 @@ function Checkout(props) {
         const socket = io('http://localhost:5000');
 
         socket.on('checkout', (book) => {
-            const bookIndex = listCarts.findIndex((item) => item.book._id === book._id);
+            const bookIndex = items.findIndex((orderItem) => orderItem.book._id === book._id);
 
             if (bookIndex !== -1) {
-                listCarts[bookIndex].quantity += 1;
+                items[bookIndex].quantity += 1;
             } else {
-                listCarts.push({ book, quantity: 1 });
+                items.push({ book, quantity: 1 });
             }
 
-            setListCarts([...listCarts]);
+            setItems([...items]);
         });
 
         socket.on('checkout-user', (user) => {
@@ -49,51 +52,51 @@ function Checkout(props) {
     }, [])
 
     return (
-        <div className="container" style={{ maxWidth: '1200px' }}>
-            <div className="row">
+        <div className="container" style={{ maxWidth: '1400px' }}>
+            <div className="row d-flex">
                 <div className="col col-lg-8 card" style={{ boxShadow: '0 0 3px 3px #ccc' }}>
                     <div className="table-responsive">
                         <table className="table">
                             <thead>
                                 <tr>
                                     <th className="h2" style={{ paddingLeft: '0px', color: 'red' }}>New Checkout</th>
+                                    <th className='text-center'>Discount</th>
                                     <th className='text-center'>Quantity</th>
                                     <th className='text-center'>Price</th>
                                     <th className='text-center'>Remove</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {listCarts.length > 0 ? listCarts.map(cart => (
-                                    <tr key={cart.book._id}>
+                                {items.length > 0 && items.map(orderItem => (
+                                    <tr key={orderItem.book._id}>
                                         <td>
                                             <div className="d-flex align-items-center">
-                                                <img src={`/images/${cart.book.imagePath}`} className="img-fluid rounded-3"
+                                                <img src={`/images/${orderItem.book.imagePath}`} className="img-fluid rounded-3"
                                                     style={{ maxWidth: '80px' }} alt="book-cover" />
                                                 <div className="flex-column ms-4 col-lg-8">
-                                                    <NavLink style={{ textDecoration: 'none' }} to={`/book-detail/${cart.book._id}`}>
-                                                        <p className="mb-2 text-black" style={{ fontWeight: '500' }}>{cart.book.title}</p>
+                                                    <NavLink style={{ textDecoration: 'none' }} to={`/book-detail/${orderItem.book._id}`}>
+                                                        <p className="mb-2 text-black" style={{ fontWeight: '500' }}>{orderItem.book.title}</p>
                                                     </NavLink>
-                                                    <p className="mb-0 text-muted" style={{ fontSize: '12px' }} >{cart.book.author}</p>
+                                                    <p className="mb-0 text-muted" style={{ fontSize: '12px' }} >{orderItem.book.author}</p>
                                                 </div>
                                             </div>
                                         </td>
                                         <td className="align-middle col-lg-1 text-center" style={{ fontWeight: 500 }}>
-                                            <p className='mb-0'>{cart.quantity}</p>
+                                            <p className='mb-0'>{orderItem.book.discount > 0 ? `${orderItem.book.discount}%` : 'Không'}</p>
+                                        </td>
+                                        <td className="align-middle col-lg-1 text-center" style={{ fontWeight: 500 }}>
+                                            <p className='mb-0'>{orderItem.quantity}</p>
                                         </td>
                                         <td className="align-middle col-lg-2 text-center">
                                             <p className="mb-0" style={{ fontWeight: 500 }}>
-                                                {`${(cart.book.price * cart.quantity).toLocaleString()} vnđ`}
+                                                {`${(orderItem.book.price * orderItem.quantity).toLocaleString()} vnđ`}
                                             </p>
                                         </td>
-                                        <td className="align-middle col-lg-1">
-                                            <div className="d-flex justify-content-center align-items-center" style={{ height: '100%' }}>
-                                                <div className="text-center" style={{ width: '100%' }}>
-                                                    <i className="fa-regular fa-trash-can fa-lg trash-can-icon"></i>
-                                                </div>
-                                            </div>
+                                        <td className="align-middle col-lg-1 text-center">
+                                            <i className="fa-regular fa-trash-can fa-lg trash-can-icon"></i>
                                         </td>
                                     </tr>
-                                )) : <td><h3>Nothing here...</h3></td>}
+                                ))}
                             </tbody>
                         </table>
                     </div>
@@ -102,7 +105,7 @@ function Checkout(props) {
                     <div className="row d-flex">
                         <div className="col mb-4 mb-lg-0">
                             <div className="card mb-3" style={{ boxShadow: '5px 5px 5px #888888', background: '#faf9ba', minHeight: '300px' }}>
-                                {user ? (
+                                {Object.keys(user).length > 0 ? (
                                     <div className="row g-0">
                                         <div className="col-md-4 gradient-custom text-center">
                                             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
@@ -144,7 +147,7 @@ function Checkout(props) {
                                         </div>
                                     </div>
                                 ) : (<div className='d-flex flex-column justify-content-between custom-container' style={{ height: '290px' }}>
-                                    <p className='text-muted' style={{ fontStyle: 'italic' }}>Scan customer here</p>
+                                    <p className='text-muted' style={{ fontStyle: 'italic' }}>Scan member card</p>
                                     <button className='btn btn-outline-dark' onClick={enableRFIDSingle}>Scan</button>
                                 </div>
                                 )}
@@ -152,8 +155,38 @@ function Checkout(props) {
                         </div>
                     </div>
                 </div>
+                <div className="col-lg-3 card mt-3 p-3">
+                    <div className="d-flex justify-content-between" style={{ fontWeight: 500 }}>
+                        <p className="mb-2">Original Price</p>
+                        <p className="mb-2" style={{ color: 'red' }}>{
+                            `${(items.reduce((res, curr) => {
+                                return res + curr.book.price * curr.quantity;
+                            }, 0)).toLocaleString()} vnđ`
+                        }</p>
+                    </div>
+
+                    <div className="d-flex justify-content-between" style={{ fontWeight: 500 }}>
+                        <p className="mb-2">Discount</p>
+                        <p className="mb-2" style={{ color: 'red' }}>{
+                            `-${(items.reduce((res, curr) => {
+                                return Math.round(res + curr.book.price * curr.quantity * curr.book.discount / 100);
+                            }, 0)).toLocaleString()} vnđ`
+                        }</p>
+                    </div>
+                    <hr className="my-4" />
+                    <div className="d-flex justify-content-between mb-4" style={{ fontWeight: 500 }}>
+                        <p className="mb-2">Total</p>
+                        <p className="mb-2" style={{ color: 'red' }}>{`${(items.reduce((res, curr) => {
+                            return Math.round(res + curr.book.price * curr.quantity * (100 - curr.book.discount) / 100);
+                        }, 0)).toLocaleString()} vnđ`}</p>
+                    </div>
+
+                    <button className="btn btn-success btn-block btn-lg d-flex justify-content-center align-items-center" onClick={handleCheckout}>
+                        <h5 className='m-0'>Checkout</h5>
+                    </button>
+                </div>
             </div>
-        </div>
+        </div >
     );
 }
 

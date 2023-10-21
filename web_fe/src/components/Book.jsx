@@ -6,14 +6,14 @@ import { toast } from 'react-toastify';
 function Book(props) {
 
     const { bookId } = props;
-    const [book, setBook] = useState({});
+    const [book, setBook] = useState({ discount: 0 });
     const [image, setImage] = useState(null);
     const [imageExists, setImageExists] = useState(false);
     const [titleMessage, setTitleMessage] = useState('');
     const [authorMessage, setAuthorMessage] = useState('');
     const [dateMessage, setDateMessage] = useState('');
     const [pageMessage, setPageMessage] = useState('');
-    const [soldMessage, setSoldMessage] = useState('');
+    const [discountMessage, setSoldMessage] = useState('');
     const [priceMessage, setPriceMessage] = useState('');
 
     useEffect(() => {
@@ -163,12 +163,12 @@ function Book(props) {
                         </div>
                         <div className="col-4">
                             <label className="col-lg-10 form-label">
-                                <span>Sold Copies</span>
-                                <span style={{ color: 'red' }}>{soldMessage}</span>
+                                <span>Discount(%)</span>
+                                <span style={{ color: 'red' }}>{discountMessage}</span>
                             </label>
-                            <input min={0} type="number" className="col-lg-10  form-control"
-                                value={book.sold} onChange={(e) => { setBook({ ...book, sold: e.target.value }) }}
-                                disabled />
+                            <input min={0} max={100} type="number" className="col-lg-10  form-control"
+                                value={book.discount} onChange={(e) => { setBook({ ...book, discount: e.target.value }) }}
+                            />
                         </div>
                         <div className="col-4">
                             <label className="col-lg-10 form-label">

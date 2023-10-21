@@ -4,6 +4,7 @@ import { find_all_user } from '../services/API';
 function UserList(props) {
 
     const [listUsers, setListUsers] = useState([]);
+    const [tab, setTab] = useState('User');
 
     useEffect(() => {
         const asyncFunction = async () => {
@@ -22,15 +23,15 @@ function UserList(props) {
                             <table className="table user-list">
                                 <thead>
                                     <tr>
-                                        <th><span>User</span></th>
+                                        <th><span className='hover-red' onClick={() => setTab('User')}>User</span> <span onClick={() => setTab('Admin')} className='hover-red'>Admin</span></th>
                                         <th><span>Created</span></th>
                                         <th className="text-center"><span>Status</span></th>
-                                        <th><span>Email</span></th>
+                                        <th><span>Phone</span></th>
                                         <th>&nbsp;</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {listUsers.length > 0 && listUsers.map(item => (
+                                    {listUsers.length > 0 && listUsers.filter(item => item.role == tab).map(item => (
                                         <tr key={item._id}>
                                             <td>
                                                 <img src="https://s3.ap-southeast-2.amazonaws.com/cdn.greekherald.com.au/wp-content/uploads/2020/07/05194617/default-avatar.png" alt="avatar" />
@@ -52,7 +53,7 @@ function UserList(props) {
                                                 <a href="#" className="table-link">
                                                     <span className="fa-stack">
                                                         <i className="fa fa-square fa-stack-2x"></i>
-                                                        <i className="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                        <i className="fa fa-coins fa-stack-1x fa-inverse"></i>
                                                     </span>
                                                 </a>
                                                 <a href="#" className="table-link">
@@ -64,7 +65,7 @@ function UserList(props) {
                                                 <a href="#" className="table-link danger">
                                                     <span className="fa-stack">
                                                         <i className="fa fa-square fa-stack-2x"></i>
-                                                        <i className="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                        <i className="fa fa-trash-can fa-stack-1x fa-inverse"></i>
                                                     </span>
                                                 </a>
                                             </td>
@@ -74,13 +75,13 @@ function UserList(props) {
                                 </tbody>
                             </table>
                         </div>
-                        <ul className="pagination pagination-sm pull-right">
+                        {/* <ul className="pagination pagination-sm pull-right">
                             <li className="page-item active" aria-current="page">
                                 <span className="page-link">1</span>
                             </li>
                             <li className="page-item"><a className="page-link" href="#">2</a></li>
                             <li className="page-item"><a className="page-link" href="#">3</a></li>
-                        </ul>
+                        </ul> */}
                     </div>
                 </div>
             </div>

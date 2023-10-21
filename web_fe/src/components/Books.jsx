@@ -73,6 +73,7 @@ function Books() {
                             <th>Genre</th>
                             <th>Page</th>
                             <th>Price (vnd)</th>
+                            <th>Discount (%)</th>
                             <th>In-Stock</th>
                             <th>Action</th>
                         </tr>
@@ -93,7 +94,8 @@ function Books() {
                                 }}>{item.description}</td>
                                 <td>{item.genre}</td>
                                 <td>{item.page}</td>
-                                <td>{item.price}</td>
+                                <td>{item.price.toLocaleString()}</td>
+                                <td>{item.discount}</td>
                                 <td>{item.in_stock}</td>
                                 <td>
                                     <button style={{ 'marginRight': '8px' }} className="btn btn-success" onClick={() => { openBookDetailModal(item._id); }}><i className="fa-solid fa-gear"></i></button>
