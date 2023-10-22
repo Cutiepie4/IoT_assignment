@@ -200,6 +200,11 @@ def find_all_users():
 @app.route('/create-user', methods=['POST'])
 def create_user():
     data = request.get_json()
+    
+    user = find_by_member_id(data['member_id'])
+
+    if user:
+        return jsonify({"message": "Member ID already exists, please use another RFID card!"}), 400
 
     customer_data = {
         "name": data['name'],
@@ -215,6 +220,7 @@ def create_user():
 
     result = users_collection.insert_one(customer_data)
     return jsonify({"message": "User created successfully!", "customer_id": str(result.inserted_id)}), 201
+
 
 @app.route('/find-user/<string:member_id>')
 def find_user(member_id):
