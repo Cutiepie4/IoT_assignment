@@ -124,6 +124,12 @@ def add_copy():
     current_time = datetime.now()
     copies = [{"copy_id": i['card_id'], "date_imported": current_time} for i in copy_ids]
 
+    
+    existing_copy_ids = books_collection.distinct("copies.copy_id", {"_id": ObjectId(book_id)})
+    duplicate_copy_ids = set(copy_ids) & set(existing_copy_ids)
+    if duplicate_copy_ids:
+        return jsonify({"error": f"The following books are already in the database, please check back: {duplicate_copy_ids}"}), 400
+
     books_collection.update_one(
         {"_id": ObjectId(book_id)},
         {"$addToSet": {"copies": {"$each": copies}}}
