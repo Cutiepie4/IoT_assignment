@@ -96,15 +96,18 @@ function BookDetail() {
                                                 alt="sale-icon"
                                                 style={{
                                                     maxWidth: '100%',
-                                                    height: '1em', // Adjust the height to match the text size
+                                                    height: '1em',
                                                     verticalAlign: 'middle',
-                                                    marginLeft: '3px', // Add some spacing
+                                                    marginLeft: '3px',
                                                 }}
                                             />
                                         </>
                                     )}
                                 </div>
                             </div>
+                            {order.book.discount > 0 && <div className='text-muted' style={{ fontStyle: 'italic', fontSize: '0.8rem' }}>
+                                <p>The discount applies to member-only.</p>
+                            </div>}
 
                             <div className="d-flex align-items-center mb-3 mt-3">
                                 <i className="fa-solid fa-minus me-2 order-quantity" onClick={() => { order.quantity > 1 && setOrder({ ...order, quantity: order.quantity - 1 }) }}></i>

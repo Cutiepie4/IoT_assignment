@@ -12,7 +12,13 @@ import UserList from './components/UserList';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 
-function App(props) {
+import '@fortawesome/fontawesome-free/css/all.css';
+import './styles/customStyle.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
+import './styles/userList.css';
+
+function App() {
   return (
     <>
       <Routes>

@@ -3,40 +3,21 @@
     "$oid": "64f74a033fa07b3c62ab8bcb"
   },
   "author": "Author 1",
-  "description": "Description of Book 1",
+  "description": "Description of Book 134",
   "genre": "Romance",
   "page": "207",
-  "title": "Book 2",
+  "title": "Book 2234",
   "copies": [
     {
-      "copy_id": "f3744bad",
-      "date_imported": "Fri, 22 Sep 2023 10:16:29 GMT"
-    },
-    {
-      "copy_id": "80bbd914",
-      "date_imported": "Fri, 22 Sep 2023 10:16:29 GMT"
-    },
-    {
-      "copy_id": "b3cd2ead",
-      "date_imported": "Fri, 22 Sep 2023 10:16:29 GMT"
-    },
-    {
-      "copy_id": "934855ad",
-      "date_imported": "Sat, 14 Oct 2023 22:20:50 GMT"
-    },
-    {
-      "copy_id": "b3cd2ead",
-      "date_imported": "Sat, 14 Oct 2023 22:20:50 GMT"
-    },
-    {
-      "copy_id": "31251ad",
-      "date_imported": "Sat, 14 Oct 2023 22:20:50 GMT"
+      "copy_id": "aaa",
+      "date_imported": "Tue, 24 Oct 2023 16:00:32 GMT"
     }
   ],
   "date": "2023-09-23",
-  "price": "111111",
+  "price": 531423,
   "sold": "1",
-  "imagePath": "a3a0ca8b-c07d-4545-80ca-6f4784fc12f6.webp"
+  "imagePath": "a3a0ca8b-c07d-4545-80ca-6f4784fc12f6.webp",
+  "discount": 12
 },
 {
   "_id": {
@@ -46,25 +27,18 @@
   "description": "Description of Book 2",
   "genre": "Romance",
   "page": 300,
-  "title": "Book 2",
+  "title": "Book 23",
   "copies": [
     {
-      "copy_id": "934855ad",
-      "date_imported": "Fri, 22 Sep 2023 10:17:01 GMT"
-    },
-    {
-      "copy_id": "31251ad",
-      "date_imported": "Fri, 22 Sep 2023 10:17:01 GMT"
-    },
-    {
-      "copy_id": "f3744bad",
-      "date_imported": "Fri, 22 Sep 2023 10:17:01 GMT"
+      "copy_id": "a1234",
+      "date_imported": "Wed, 18 Oct 2023 23:04:51 GMT"
     }
   ],
   "date": "2023-09-23",
   "imagePath": "65e70e88-b4ff-4f5a-83ed-5eb558d7170d.webp",
-  "price": "1234",
-  "sold": "1234"
+  "price": 1234,
+  "sold": "1234",
+  "discount": 11
 },
 {
   "_id": {
@@ -75,11 +49,19 @@
   "genre": "Fantasy",
   "page": 150,
   "title": "Book 3",
-  "copies": [],
+  "copies": [
+    {
+      "copy_id": "ccc",
+      "date_imported": {
+        "$date": "2023-10-24T16:10:21.660Z"
+      }
+    }
+  ],
   "date": "2023-09-29",
   "imagePath": "2c8e0767-626e-4eac-aef1-ac9cbd5edd3e.webp",
-  "price": "1234",
-  "sold": "1234"
+  "price": 1234,
+  "sold": "1234",
+  "discount": 0
 },
 {
   "_id": {
@@ -93,7 +75,8 @@
   "copies": [],
   "date": "2023-09-30",
   "imagePath": "9d0528f1-0516-4e37-a09a-438027439b61.jpg",
-  "price": "1234"
+  "price": 1234,
+  "discount": 0
 },
 {
   "_id": {
@@ -107,7 +90,8 @@
   "copies": [],
   "date": "2023-10-28",
   "imagePath": "2e78f4d9-cd26-4c1e-8007-82cb88e60565.jpg",
-  "price": "4"
+  "price": 4,
+  "discount": 0
 },
 {
   "_id": {
@@ -120,14 +104,10 @@
   "title": "Book 6",
   "date": "2023-09-22",
   "imagePath": "629ea87b-6fca-414b-b012-d45526517790.jpg",
-  "price": "123456",
+  "price": 123456,
   "sold": "2",
-  "copies": [
-    {
-      "copy_id": "asdf",
-      "date_imported": "Mon, 16 Oct 2023 14:45:45 GMT"
-    }
-  ]
+  "copies": [],
+  "discount": 0
 },
 {
   "_id": {
@@ -137,12 +117,13 @@
   "author": "asdfasdf",
   "description": "adsfas",
   "page": "1234",
-  "price": "1234",
+  "price": 1234,
   "sold": "1234",
   "genre": "Fantasy",
   "date": "2023-10-07",
   "copies": [],
-  "imagePath": "80d47eb0-4bf0-42d9-a4aa-8374f7fb15b1.webp"
+  "imagePath": "80d47eb0-4bf0-42d9-a4aa-8374f7fb15b1.webp",
+  "discount": 0
 },
 {
   "_id": {
@@ -152,9 +133,10 @@
   "author": "tac gia",
   "description": "ádfjaisdjfiasdjfiasdfa\nádfasdfj\nádfjasdifjasdfj\nádfjaisdfjasdf",
   "page": "1234",
-  "price": "12343",
+  "price": 12343,
   "genre": "Thriller",
   "date": "2023-10-21",
   "copies": [],
-  "imagePath": "23f3c96c-d87b-49d0-8cd1-a6f0b2779037.jpg"
+  "imagePath": "23f3c96c-d87b-49d0-8cd1-a6f0b2779037.jpg",
+  "discount": 0
 }]

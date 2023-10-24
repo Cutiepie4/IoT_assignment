@@ -8,13 +8,13 @@ import { checkout, enableRFIDSingle, formatDate } from '../services/API';
 function Checkout() {
     const [items, setItems] = useState([]);
     const [user, setUser] = useState({});
+    const [discountPrice, setDiscountPrice] = useState(0);
+    const [originalPrice, setOriginalPrice] = useState(0);
 
     const handleCheckout = () => {
         const asyncFunction = async () => {
             const flag = await checkout({
-                user, items, 'total_cost': items.reduce((res, curr) => {
-                    return Math.round(res + curr.book.price * curr.quantity * (100 - curr.book.discount) / 100);
-                }, 0)
+                user, items, 'total_cost': originalPrice - discountPrice
             })
 
             if (flag) {
@@ -26,6 +26,20 @@ function Checkout() {
             asyncFunction();
         }
     }
+
+    useEffect(() => {
+        if (Object.keys(user).length == 0) {
+            setDiscountPrice(0);
+        }
+        else {
+            setDiscountPrice(items.reduce((res, curr) => {
+                return Math.round(res + curr.book.price * curr.quantity * curr.book.discount / 100);
+            }, 0));
+        }
+        setOriginalPrice(items.reduce((res, curr) => {
+            return Math.round(res + curr.book.price * curr.quantity);
+        }, 0))
+    }, [items, user])
 
     useEffect(() => {
         const socket = io('http://localhost:5000');
@@ -82,7 +96,7 @@ function Checkout() {
                                             </div>
                                         </td>
                                         <td className="align-middle col-lg-1 text-center" style={{ fontWeight: 500 }}>
-                                            <p className='mb-0'>{orderItem.book.discount > 0 ? `${orderItem.book.discount}%` : 'Không'}</p>
+                                            <p className='mb-0'>{(orderItem.book.discount > 0 && Object.keys(user).length > 0) ? `${orderItem.book.discount}%` : 'Không'}</p>
                                         </td>
                                         <td className="align-middle col-lg-1 text-center" style={{ fontWeight: 500 }}>
                                             <p className='mb-0'>{orderItem.quantity}</p>
@@ -147,7 +161,7 @@ function Checkout() {
                                         </div>
                                     </div>
                                 ) : (<div className='d-flex flex-column justify-content-between custom-container' style={{ height: '290px' }}>
-                                    <p className='text-muted' style={{ fontStyle: 'italic' }}>Scan member card</p>
+                                    <p className='text-muted' style={{ fontStyle: 'italic' }}>Scan member card for discount</p>
                                     <button className='btn btn-outline-dark' onClick={enableRFIDSingle}>Scan</button>
                                 </div>
                                 )}
@@ -159,26 +173,20 @@ function Checkout() {
                     <div className="d-flex justify-content-between" style={{ fontWeight: 500 }}>
                         <p className="mb-2">Original Price</p>
                         <p className="mb-2" style={{ color: 'red' }}>{
-                            `${(items.reduce((res, curr) => {
-                                return res + curr.book.price * curr.quantity;
-                            }, 0)).toLocaleString()} vnđ`
+                            `${originalPrice.toLocaleString()} vnđ`
                         }</p>
                     </div>
 
                     <div className="d-flex justify-content-between" style={{ fontWeight: 500 }}>
                         <p className="mb-2">Discount</p>
                         <p className="mb-2" style={{ color: 'red' }}>{
-                            `-${(items.reduce((res, curr) => {
-                                return Math.round(res + curr.book.price * curr.quantity * curr.book.discount / 100);
-                            }, 0)).toLocaleString()} vnđ`
+                            `- ${discountPrice.toLocaleString()} vnđ`
                         }</p>
                     </div>
                     <hr className="my-4" />
                     <div className="d-flex justify-content-between mb-4" style={{ fontWeight: 500 }}>
                         <p className="mb-2">Total</p>
-                        <p className="mb-2" style={{ color: 'red' }}>{`${(items.reduce((res, curr) => {
-                            return Math.round(res + curr.book.price * curr.quantity * (100 - curr.book.discount) / 100);
-                        }, 0)).toLocaleString()} vnđ`}</p>
+                        <p className="mb-2" style={{ color: 'red' }}>{`${(originalPrice - discountPrice).toLocaleString()} vnđ`}</p>
                     </div>
 
                     <button className="btn btn-success btn-block btn-lg d-flex justify-content-center align-items-center" onClick={handleCheckout}>

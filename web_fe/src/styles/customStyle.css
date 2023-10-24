@@ -961,7 +961,6 @@ tr.row-hover {
 }
 
 tr.row-hover:hover {
-    /* Your hover styles here */
     background-color: #ccc;
 }
 
@@ -1021,4 +1020,12 @@ input::-webkit-inner-spin-button {
 
 .flickering-icon {
     animation: flicker 1s infinite;
+}
+
+table.table.table-striped tr.found td {
+    background-color: coral;
+}
+
+table.table.table-striped {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), -5px -5px 10px rgba(0, 0, 0, 0.2);
 }

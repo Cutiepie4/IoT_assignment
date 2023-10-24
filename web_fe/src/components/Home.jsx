@@ -34,7 +34,26 @@ function Home() {
                                 <img src={`./images/${book.imagePath}`} alt="book-cover" className="year-book-img" />
                                 <div className="year-book-content">
                                     <NavLink style={{ textDecoration: 'none', color: 'black' }} to={`/book-detail/${book._id}`}>
-                                        <div className="year-book-name ">{book.title}</div>
+                                        <div className='d-flex'>
+                                            <div className="year-book-name me-2">{book.title}</div>
+                                            <div className='align-items-center flickering-icon pt-1' style={{ color: 'red', fontSize: '0.6rem' }}>
+                                                {book.discount > 0 && (
+                                                    <>
+                                                        {book.discount}%
+                                                        <img
+                                                            src="/sale-icon.png"
+                                                            alt="sale-icon"
+                                                            style={{
+                                                                maxWidth: '100%',
+                                                                height: '1em', // Adjust the height to match the text size
+                                                                verticalAlign: 'middle',
+                                                                marginLeft: '3px', // Add some spacing
+                                                            }}
+                                                        />
+                                                    </>
+                                                )}
+                                            </div>
+                                        </div>
                                     </NavLink>
                                     <div className="year-book-author">by {book.author}</div>
                                 </div>

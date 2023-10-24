@@ -3,15 +3,23 @@ import { useParams } from 'react-router-dom';
 import { add_book, find_book, update_book } from '../services/API';
 import { toast } from 'react-toastify';
 
+
+function getTodayDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
 function Book(props) {
 
     const { bookId } = props;
-    const [book, setBook] = useState({ discount: 0 });
+    const [book, setBook] = useState({ discount: 0, date: getTodayDate(), genre: 'Action' });
     const [image, setImage] = useState(null);
     const [imageExists, setImageExists] = useState(false);
     const [titleMessage, setTitleMessage] = useState('');
     const [authorMessage, setAuthorMessage] = useState('');
-    const [dateMessage, setDateMessage] = useState('');
     const [pageMessage, setPageMessage] = useState('');
     const [discountMessage, setSoldMessage] = useState('');
     const [priceMessage, setPriceMessage] = useState('');
@@ -21,7 +29,7 @@ function Book(props) {
             const foundBook = await find_book(bookId);
             setBook(foundBook);
             const img = new Image();
-            img.src = `/images/${foundBook.imagePath}`; // Đường dẫn đến hình ảnh
+            img.src = `/images/${foundBook.imagePath}`;
             img.onload = () => {
                 setImageExists(true);
             };
@@ -45,7 +53,6 @@ function Book(props) {
     const clearWarning = () => {
         setAuthorMessage('');
         setTitleMessage('');
-        setDateMessage('');
         setPageMessage('');
         setSoldMessage('');
         setPriceMessage('');
@@ -61,17 +68,9 @@ function Book(props) {
             ok = false;
             setAuthorMessage('Required.');
         }
-        if (!checkEmptyInput(book.date)) {
-            ok = false;
-            setDateMessage('Required.');
-        }
         if (!checkNumber(book.page)) {
             ok = false;
             setPageMessage('Must be positive');
-        }
-        if (checkNumber(book.sold) < 0) {
-            ok = false;
-            setSoldMessage('Must be positive');
         }
         if (!checkNumber(book.price)) {
             ok = false;
@@ -87,6 +86,7 @@ function Book(props) {
             const formData = new FormData();
             if (image !== null) formData.append('image', image);
             formData.append('book', JSON.stringify(book));
+            console.log(formData)
             if (bookId == 0)
                 add_book(formData);
             else update_book(formData);
@@ -128,11 +128,10 @@ function Book(props) {
                     <div className="row">
                         <div className="col">
                             <label className="col-lg-10 form-label">
-                                <span className='required'>Date Imported</span>
-                                <span style={{ color: 'red' }}>{dateMessage}</span>
+                                <span>Date Imported</span>
                             </label>
                             <input type="date" className="col-lg-10  form-control"
-                                value={book.date} onChange={(e) => { setBook({ ...book, date: e.target.value }) }} />
+                                value={book.date} onChange={(e) => { setBook({ ...book, date: e.target.value }) }} disabled />
                         </div>
                         <div className="col">
                             <label className="col-lg-10 form-label">

@@ -15,19 +15,19 @@ function UserList(props) {
     }, [])
 
     return (
-        <div className="container">
+        <div className="container user-list">
             <div className="row">
                 <div className="col-lg-12">
                     <div className="main-box clearfix">
                         <div className="table-responsive">
-                            <table className="table user-list">
+                            <table className="table">
                                 <thead>
                                     <tr>
                                         <th><span className='hover-red' onClick={() => setTab('User')}>User</span> <span onClick={() => setTab('Admin')} className='hover-red'>Admin</span></th>
                                         <th><span>Created</span></th>
                                         <th className="text-center"><span>Status</span></th>
                                         <th><span>Phone</span></th>
-                                        <th>&nbsp;</th>
+                                        <th><span>Action</span></th>
                                     </tr>
                                 </thead>
                                 <tbody>
