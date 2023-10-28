@@ -13,6 +13,20 @@
       "date_imported": "Tue, 24 Oct 2023 16:00:32 GMT"
     }
   ],
+  "comments": [
+    {
+        "comment_id": "32132",
+        "user": "aaa12",
+        "comment": "Rất hay",
+        "time_comment": "Tue, 26 Oct 2023 16:00:32 GMT"
+    },
+    {
+        "comment_id": "4545",
+        "user": "aaa12",
+        "comment": "Tuyệt vời",
+        "time_comment": "Tue, 27 Oct 2023 16:00:32 GMT"
+    }
+  ],
   "date": "2023-09-23",
   "price": 531423,
   "sold": "1",
@@ -32,6 +46,20 @@
     {
       "copy_id": "a1234",
       "date_imported": "Wed, 18 Oct 2023 23:04:51 GMT"
+    }
+  ],
+  "comments": [
+    {
+        "comment_id": "454545",      
+        "user": "aaa12",
+        "comment": "Rất hay",
+        "time_comment": "Tue, 26 Oct 2023 16:00:32 GMT"
+    },
+    {
+        "comment_id": "43894",
+        "user": "aaa12",
+        "comment": "Tuyệt vời",
+        "time_comment": "Tue, 27 Oct 2023 16:00:32 GMT"
     }
   ],
   "date": "2023-09-23",
@@ -57,6 +85,20 @@
       }
     }
   ],
+  "comments": [
+    {
+        "comment_id": "43856",
+        "user": "aaa12",
+        "comment": "Rất hay",
+        "time_comment": "Tue, 26 Oct 2023 16:00:32 GMT"
+    },
+    {
+        "comment_id": "455894",
+        "user": "aaa12",
+        "comment": "Tuyệt vời",
+        "time_comment": "Tue, 27 Oct 2023 16:00:32 GMT"
+    }
+  ],
   "date": "2023-09-29",
   "imagePath": "2c8e0767-626e-4eac-aef1-ac9cbd5edd3e.webp",
   "price": 1234,
@@ -73,6 +115,20 @@
   "page": 150,
   "title": "Book 4",
   "copies": [],
+  "comments": [
+    {
+        "comment_id": "4356894",
+        "user": "aaa12",
+        "comment": "Rất hay",
+        "time_comment": "Tue, 26 Oct 2023 16:00:32 GMT"
+    },
+    {
+        "comment_id": "4383494",
+        "user": "aaa12",
+        "comment": "Tuyệt vời",
+        "time_comment": "Tue, 27 Oct 2023 16:00:32 GMT"
+    }
+  ],
   "date": "2023-09-30",
   "imagePath": "9d0528f1-0516-4e37-a09a-438027439b61.jpg",
   "price": 1234,
@@ -88,6 +144,18 @@
   "page": 150,
   "title": "Book 5",
   "copies": [],
+  "comments": [
+    {
+        "user": "aaa12",
+        "comment": "Rất hay",
+        "time_comment": "Tue, 26 Oct 2023 16:00:32 GMT"
+    },
+    {
+        "user": "aaa12",
+        "comment": "Tuyệt vời",
+        "time_comment": "Tue, 27 Oct 2023 16:00:32 GMT"
+    }
+  ],
   "date": "2023-10-28",
   "imagePath": "2e78f4d9-cd26-4c1e-8007-82cb88e60565.jpg",
   "price": 4,
@@ -107,6 +175,18 @@
   "price": 123456,
   "sold": "2",
   "copies": [],
+  "comments": [
+    {
+        "user": "aaa12",
+        "comment": "Rất hay",
+        "time_comment": "Tue, 26 Oct 2023 16:00:32 GMT"
+    },
+    {
+        "user": "aaa12",
+        "comment": "Tuyệt vời",
+        "time_comment": "Tue, 27 Oct 2023 16:00:32 GMT"
+    }
+  ],
   "discount": 0
 },
 {
@@ -122,6 +202,18 @@
   "genre": "Fantasy",
   "date": "2023-10-07",
   "copies": [],
+  "comments": [
+    {
+        "user": "aaa12",
+        "comment": "Rất hay",
+        "time_comment": "Tue, 26 Oct 2023 16:00:32 GMT"
+    },
+    {
+        "user": "aaa12",
+        "comment": "Tuyệt vời",
+        "time_comment": "Tue, 27 Oct 2023 16:00:32 GMT"
+    }
+  ],
   "imagePath": "80d47eb0-4bf0-42d9-a4aa-8374f7fb15b1.webp",
   "discount": 0
 },
@@ -137,6 +229,18 @@
   "genre": "Thriller",
   "date": "2023-10-21",
   "copies": [],
+  "comments": [
+    {
+        "user": "aaa12",
+        "comment": "Rất hay",
+        "time_comment": "Tue, 26 Oct 2023 16:00:32 GMT"
+    },
+    {
+        "user": "aaa12",
+        "comment": "Tuyệt vời",
+        "time_comment": "Tue, 27 Oct 2023 16:00:32 GMT"
+    }
+  ],
   "imagePath": "23f3c96c-d87b-49d0-8cd1-a6f0b2779037.jpg",
   "discount": 0
 }]

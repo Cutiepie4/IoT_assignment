@@ -109,3 +109,15 @@ export const checkout = async (order) => {
         .then(res => { toast.success(res.data); return true })
         .catch(error => { toast.error(error.response.data.message); return false });
 }
+
+export const addComment = async (bookId, commentData) => {
+    await api.post(`/add-comment/${bookId}`, commentData)
+        .then(res => { toast.success(res.data.message) })
+        .catch(error => { toast.error(error.response.data.message) });
+}
+
+export const deleteComment = async (bookId, commentId) => {
+    await api.delete(`/delete-comment/${bookId}/${commentId}`)
+        .then(res => { toast.success(res.data.message) })
+        .catch(error => { toast.error(error.response.data.message) });
+}

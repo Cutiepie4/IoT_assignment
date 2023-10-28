@@ -294,6 +294,47 @@ def find_all_orders():
     return jsonify({'orders': orders}), 200
 
 # ===============================================================
+@app.route('/add-comment/<string:book_id>', methods=['POST'])
+@jwt_required()  
+def add_comment(book_id):
+    current_user = get_jwt_identity() 
+    comment_data = request.get_json()
+
+    book = find_by_book_id(book_id)
+    if not book:
+        return jsonify({"message": "Books do not exist!"}), 404
+    if current_user != comment_data['user']:
+        return jsonify({"message": "Login error"}), 403
+    comment_id = str(uuid.uuid4())
+    new_comment = {
+        "comment_id": comment_id,
+        "user": comment_data['user'],
+        "comment": comment_data['comment'],
+        "time_comment": str(datetime.now())
+    }
+    books_collection.update_one({"_id": ObjectId(book_id)}, {"$push": {"comments": new_comment}})
+
+    return jsonify({"message": "Commentary has been added to the book"}), 201
+
+@app.route('/delete-comment/<string:book_id>/<string:comment_id>', methods=['DELETE'])
+@jwt_required()
+def delete_comment(book_id, comment_id):
+    current_user = get_jwt_identity()
+    book = find_by_book_id(book_id)
+    if not book:
+        return jsonify({"message": "Books do not exist!"}), 404
+
+    for comment in book['comments']:
+        if comment['_id'] == ObjectId(comment_id):
+            if comment['user'] == current_user:
+                books_collection.update_one({"_id": ObjectId(book_id)}, {"$pull": {"comments": {"_id": ObjectId(comment_id)}}})
+                return jsonify({"message": "Comment has been deleted"}), 200
+            else:
+                return jsonify({"message": "You do not have the right to delete other people's comments"}), 403
+
+    return jsonify({"message": "Comments do not exist"}), 404
+
+# ===============================================================
 @app.route('/enable_single_mode')
 def enable_RFID_single():
     import requests
