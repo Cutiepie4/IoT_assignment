@@ -286,6 +286,46 @@ def delete_comment(book_id, comment_id):
     return jsonify({"message": "Comments do not exist"}), 404
 
 # ===============================================================
+@app.route('/rating/<string:book_id>', methods=['POST'])
+@jwt_required()
+def rating(book_id):
+    current_user = get_jwt_identity()
+    rating_data = request.get_json()
+    book = find_by_book_id(book_id)
+    print(current_user, rating_data['user'])
+
+    if not book:
+        return jsonify({"message": "Books do not exist!"}), 404
+    if current_user['username'] != rating_data['user']['username']:
+        return jsonify({"message": "Login error"}), 403
+
+    user_username = current_user['username']
+    new_rating = rating_data['rating']
+
+    if 'ratings' in book:
+        for rating in book['ratings']:
+            if rating['user'] == user_username:
+                rating['rating'] = new_rating
+                rating['timestamp'] = datetime.now()
+                books_collection.update_one(
+                    {"_id": ObjectId(book_id)},
+                    {"$set": {"ratings": book['ratings']}}
+                )
+                rating['timestamp'] = {"$gte": rating['timestamp']}
+                return jsonify({"message": "Your rating has been updated.", "rating": rating}), 200
+            
+    rating_id = str(uuid.uuid4())
+    new_rating = {
+        "rating_id": rating_id,
+        "user": rating_data['user']['username'],
+        "rating": rating_data['rating'],
+        "timestamp": datetime.now()
+    }
+    books_collection.update_one({"_id": ObjectId(book_id)}, {"$push": {"ratings": new_rating}})
+    new_rating['timestamp'] = {"$gte": new_rating['timestamp']}
+    return jsonify({"message": "Your rating is uploaded.", "rating": new_rating}), 201
+
+# ===============================================================
 @app.route('/enable_single_mode')
 def enable_RFID_single():
     import requests
