@@ -121,3 +121,10 @@ export const deleteComment = async (bookId, commentId) => {
         .then(res => { toast.success(res.data.message) })
         .catch(error => { toast.error(error.response.data.message) });
 }
+
+export const get_comments = async (book_id) => {
+    const res = await api.get(`/get-comments/${book_id}`)
+        .then(res => res)
+        .catch(error => { toast.error(error.response.data.message); return [] });
+    return res.data;
+}
