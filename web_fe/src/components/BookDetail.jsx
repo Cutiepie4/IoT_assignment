@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Rating from 'react-rating';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { toast } from 'react-toastify';
-import { find_book } from '../services/API';
+import { addComment, deleteComment, find_book, formatMongoDate, identifyUser } from '../services/API';
 
 function BookDetail() {
     const { id } = useParams();
@@ -13,6 +13,7 @@ function BookDetail() {
     const [listComments, setListCommments] = useState([]);
     const [currentComment, setCurrentComment] = useState('');
     const [vote, setVote] = useState(0)
+    const [user, setUser] = useState({});
 
     const toggleExpanded = () => {
         setExpanded(!expanded);
@@ -31,22 +32,34 @@ function BookDetail() {
         const asyncFunction = async () => {
             const bookData = await find_book(id);
             setOrder({ ...order, book: bookData });
+            setListCommments(bookData.comments)
+            const userData = await identifyUser();
+            if (userData) {
+                setUser(userData);
+            }
+
         }
         asyncFunction();
     }, [id])
 
     const handlePostComment = async () => {
-        if (vote === 0) {
-            toast.info('You must rating before comment.');
-            return;
-        }
-        // const newComment = await postComment({ username, bookId: order.book.id, comment: currentComment });
-        // setListCommments([...listComments, newComment]);
-        // setCurrentComment('');
+        // if (vote === 0) {
+        //     toast.info('You must rating before comment.');
+        //     return;
+        // }
+        const newComment = await addComment(id, { user, 'comment': currentComment });
+        setListCommments([...listComments, newComment]);
+        setCurrentComment('');
     }
 
     const handleDeleteComment = (commentId) => {
-        // deleteComment(commentId).then(res => setListCommments(listComments.filter(item => item.id !== commentId)));
+        console.log(commentId)
+        const asyncFunction = async () => {
+            let flag = await deleteComment(id, commentId);
+            if (flag)
+                setListCommments(listComments.filter(comment => comment.comment_id != commentId));
+        }
+        asyncFunction();
     }
 
     const handleVoting = async () => {
@@ -136,19 +149,19 @@ function BookDetail() {
                                     <p className="fw-light mb-4">Latest Comments section by users</p>
                                 </div>
                                 {listComments.length > 0 ? listComments.map(comment => comment && (
-                                    <div key={comment.id}>
+                                    <div key={comment.comment_id}>
                                         <div className="card-body p-4" >
                                             <div className="d-flex flex-start">
                                                 <img className="rounded-circle shadow-1-strong me-3"
-                                                    src={` /images/default.png`} alt="avatar" width="60"
+                                                    src={`/images/default.png`} alt="avatar" width="60"
                                                     height="60" />
                                                 <div>
-                                                    <h6 className="fw-bold mb-1" style={{ color: 'red' }}>{comment.user.username}</h6>
+                                                    <h6 className="fw-bold mb-1" style={{ color: 'red' }}>{comment.user}</h6>
                                                     <div className="d-flex align-items-center mb-2">
                                                         <p className="mb-0 text-muted">
-                                                            {formatDate(comment.date)}
+                                                            {formatMongoDate(comment.timestamp)}
                                                         </p>
-                                                        <div className="link-muted" onClick={() => handleDeleteComment(comment.id)}>
+                                                        <div className="link-muted trash-can-icon" onClick={() => handleDeleteComment(comment.comment_id)}>
                                                             <i className="fa-solid fa-trash fa-sm order-quantity ms-2"></i>
                                                         </div>
                                                     </div>

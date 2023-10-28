@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
-import { find_all_books } from '../services/API';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { find_all_books, identifyUser } from '../services/API';
 
 function Nav() {
+    const navigate = useNavigate();
     const [count, setCount] = useState(0);
     const [keyword, setKeyword] = useState('');
     const [filteredBook, setFilteredBook] = useState([]);
     const [isFocused, setIsFocused] = useState(false);
     const [listBooks, setListBooks] = useState([]);
-    const [role, setRole] = useState('ADMIN');
-    const [isLoggedIn, setLogIn] = useState(true);
+    const [role, setRole] = useState('GUEST');
+    const [isLogIn, setLogIn] = useState(false);
     const [username, setUsername] = useState('');
 
     useEffect(() => {
         const asyncFunction = async () => {
             const booksData = await find_all_books();
             setListBooks(booksData);
+            const userData = await identifyUser();
+            if (userData) {
+                setUsername(userData.username);
+                setRole(userData.role);
+                setLogIn(true);
+            }
         };
         asyncFunction();
     }, [])
@@ -72,13 +79,13 @@ function Nav() {
                         <i className="fa-solid fa-user fa-lg p-2"></i>
                         {username ? username : 'Login'}
                         <ul className="dropdown">
-                            {isLoggedIn ? (<li className='border-bottom'>
+                            {isLogIn ? (<li className='border-bottom'>
                                 <NavLink to={'/users'}>Manage user</NavLink>
-                            </li>) : (<li><NavLink to="/login">Login</NavLink></li>)}
-                            {role === 'ADMIN' && (<li className='border-bottom'><NavLink to='/books'>Book Storage</NavLink></li>)}
-                            {role === 'ADMIN' && (<li className='border-bottom'><NavLink to='/orders'>Orders</NavLink></li>)}
-                            {role === 'USER' && (<li className='border-bottom'><NavLink to='/user-orders'>Your Orders</NavLink></li>)}
-                            {isLoggedIn && (<li className='border-bottom'><a href='#'>Logout</a></li>)}
+                            </li>) : (<li><NavLink to="/sign-in">Login</NavLink></li>)}
+                            {role === 'Admin' && (<li className='border-bottom'><NavLink to='/books'>Book Storage</NavLink></li>)}
+                            {role === 'Admin' && (<li className='border-bottom'><NavLink to='/orders'>Orders</NavLink></li>)}
+                            {role === 'User' && (<li className='border-bottom'><NavLink to='/user-orders'>Your Orders</NavLink></li>)}
+                            {isLogIn && (<li className='border-bottom' onClick={() => { sessionStorage.clear(); }}><NavLink to={'/sign-in'}>Logout</NavLink></li>)}
                         </ul>
                     </div>
                 </div>

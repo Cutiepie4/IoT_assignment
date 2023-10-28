@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom'
+import { signIn } from '../services/API';
 
 function SignIn() {
 
@@ -8,7 +9,12 @@ function SignIn() {
     const [rememberMe, setRememberMe] = useState(false);
 
     const handleLogin = () => {
-
+        const asyncFunction = async () => {
+            const flag = await signIn(account);
+            if (flag)
+                navigate('/');
+        }
+        asyncFunction();
     }
 
     useEffect(() => {
