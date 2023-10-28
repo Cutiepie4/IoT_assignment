@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Rating from 'react-rating';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { toast } from 'react-toastify';
-import { find_book } from '../services/API';
+import { find_book, addComment, deleteComment, getComments } from '../services/API';
 
 function BookDetail() {
     const { id } = useParams();
@@ -35,6 +35,19 @@ function BookDetail() {
         asyncFunction();
     }, [id])
 
+    useEffect(() => {
+        const fetchComments = async () => {
+            try {
+                const comments = await getComments(id); // Gọi hàm getComments với bookID
+                setListCommments(comments); // Cập nhật state listComments với dữ liệu comments
+            } catch (error) {
+                console.error('Error fetching comments:', error);
+            }
+        }
+    
+        fetchComments();
+    }, [id]);
+    
     const handlePostComment = async () => {
         if (vote === 0) {
             toast.info('You must rating before comment.');
