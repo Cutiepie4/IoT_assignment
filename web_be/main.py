@@ -72,6 +72,9 @@ def check_book_title_exists(book_title, current_id='default'):
 def find_by_book_id(id):
     book_data = books_collection.find_one({'_id' : ObjectId(id)})
     book_data['_id'] = str(book_data['_id'])
+    if 'comments' in book_data:
+        for i in book_data['comments']:
+            i['timestamp']= {"$gte": i['timestamp']}
     return book_data
 
 def delete_image(image_path):
@@ -99,6 +102,7 @@ def add_book():
         image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
         book["copies"] = []
+        book["comments"] = []
         book["imagePath"] = filename
         book["price"] = int(book["price"])
         book["discount"] = int(book["discount"])
@@ -185,6 +189,10 @@ def find_all_books():
     for i in list_books:
         i['_id'] = str(i['_id'])
         i['in_stock'] = len(i.get('copies', []))
+        if 'comments' in i:
+            for comment in i['comments']:
+                comment['timestamp'] = {"$gte": comment['timestamp']}
+    
     return jsonify(list_books), 200
 
 @app.route('/find-by-book-id/<string:id>')
@@ -208,10 +216,112 @@ def read_rfid_card():
         socketio.emit('checkout-user', user)
     socketio.emit('import', card)
     socketio.emit('sign-up', card)
-    print(card)
     return jsonify('Card ID received successfully'), 200
 
+#===============================================================
+@app.route('/checkout', methods=['POST'])
+def checkout():
+    data = request.get_json()
+    if 'member_id' in data['user']:
+        user_id = data['user']['member_id']
+    else:
+        user_id = None
+    items = data['items']
+    current_time = datetime.now()
+    new_items = [{'book': item['book']['copies']['copy_id'], 'quantity': item['quantity']} for item in items]
+    orders_collection.insert_one({'user': user_id, 'items': new_items, 'timestamp': current_time, 'total_cost': data['total_cost']})
+    return jsonify('Checkout Success!'), 201
+
+@app.route('/find-all-orders')
+def find_all_orders():
+    orders = list(orders_collection.find())
+    for order in orders:
+        order['timestamp'] = {"$gte": order['timestamp']}
+        order['_id'] = str(order['_id'])
+        order['items'] = [{'book': find_by_copy_id(item['book']), 'quantity': item['quantity']} for item in order['items']]
+        order['user'] = find_by_member_id(order['user'])
+    return jsonify({'orders': orders}), 200
+
 # ===============================================================
+@app.route('/add-comment/<string:book_id>', methods=['POST'])
+@jwt_required()
+def add_comment(book_id):
+    current_user = get_jwt_identity()
+    comment_data = request.get_json()
+    book = find_by_book_id(book_id)
+    print(current_user, comment_data['user'])
+
+    if not book:
+        return jsonify({"message": "Books do not exist!"}), 404
+    if current_user['username'] != comment_data['user']['username']:
+        return jsonify({"message": "Login error"}), 403
+
+    comment_id = str(uuid.uuid4())
+    new_comment = {
+        "comment_id": comment_id,
+        "user": comment_data['user']['username'],
+        "comment": comment_data['comment'],
+        "timestamp": datetime.now()
+    }
+    books_collection.update_one({"_id": ObjectId(book_id)}, {"$push": {"comments": new_comment}})
+    new_comment['timestamp'] = {"$gte": new_comment['timestamp']}
+    return jsonify({"message": "Your comment is uploaded.", "comment": new_comment}), 201
+
+@app.route('/delete-comment/<string:book_id>/<string:comment_id>', methods=['DELETE'])
+@jwt_required()
+def delete_comment(book_id, comment_id):
+    current_user = get_jwt_identity()
+    book = find_by_book_id(book_id)
+    if not book:
+        return jsonify({"message": "Books do not exist!"}), 404
+
+    for comment in book['comments']:
+        if comment['comment_id'] == comment_id:
+            if comment['user'] == current_user['username']:
+                books_collection.update_one({"_id": ObjectId(book_id)}, {"$pull": {"comments": {"comment_id": comment_id}}})
+                return jsonify({"message": "Comment has been deleted"}), 200
+            else:
+                return jsonify({"message": "You do not have the right to delete other people's comments"}), 403
+
+    return jsonify({"message": "Comments do not exist"}), 404
+
+# ===============================================================
+@app.route('/enable_single_mode')
+def enable_RFID_single():
+    import requests
+    requests.get(esp32_host + '/enable_single_mode')
+    return 'Enable RFID Single mode!', 200
+
+@app.route('/enable_continuous_mode')
+def enable_RFID_continous():
+    import requests
+    requests.get(esp32_host + '/enable_continuous_mode')
+    return 'Enable RFID Continuous mode!', 200
+
+@app.route('/disable_continuous_mode')
+def disable_RFID_continous():
+    import requests
+    requests.get(esp32_host + '/disable_continuous_mode')
+    return 'Turn off RFID Continuous mode', 200
+
+#===================================================================
+# Authentication
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.get_json()['username']
+    password = request.get_json()['password']
+    user = users_collection.find_one({"username": username, "password": password})
+    
+    if user:
+        user_info = {
+            'username': username,
+            'role': user['role']
+        }
+        access_token = create_access_token(identity=user_info)
+        return jsonify({"access_token": access_token}), 200
+    else:
+        return jsonify({'message': 'Invalid credentials'}), 401
+
 def find_by_member_id(member_id):
     user = users_collection.find_one({"member_id": member_id})
     if user:
@@ -269,68 +379,11 @@ def delete_customer(id):
     else:
         return jsonify({"message": "User not found"}), 404
 
-#===============================================================
-@app.route('/checkout', methods=['POST'])
-def checkout():
-    data = request.get_json()
-    if 'member_id' in data['user']:
-        user_id = data['user']['member_id']
-    else:
-        user_id = None
-    items = data['items']
-    current_time = datetime.now()
-    new_items = [{'book': item['book']['copies']['copy_id'], 'quantity': item['quantity']} for item in items]
-    orders_collection.insert_one({'user': user_id, 'items': new_items, 'timestamp': current_time, 'total_cost': data['total_cost']})
-    return jsonify('Checkout Success!'), 201
-
-@app.route('/find-all-orders')
-def find_all_orders():
-    orders = list(orders_collection.find())
-    for order in orders:
-        order['timestamp'] = {"$gte": order['timestamp']}
-        order['_id'] = str(order['_id'])
-        order['items'] = [{'book': find_by_copy_id(item['book']), 'quantity': item['quantity']} for item in order['items']]
-        order['user'] = find_by_member_id(order['user'])
-    return jsonify({'orders': orders}), 200
-
-# ===============================================================
-@app.route('/enable_single_mode')
-def enable_RFID_single():
-    import requests
-    requests.get(esp32_host + '/enable_single_mode')
-    return 'Enable RFID Single mode!', 200
-
-@app.route('/enable_continuous_mode')
-def enable_RFID_continous():
-    import requests
-    requests.get(esp32_host + '/enable_continuous_mode')
-    return 'Enable RFID Continuous mode!', 200
-
-@app.route('/disable_continuous_mode')
-def disable_RFID_continous():
-    import requests
-    requests.get(esp32_host + '/disable_continuous_mode')
-    return 'Turn off RFID Continuous mode', 200
-
-#===================================================================
-# Authentication
-@app.route('/login', methods=['POST'])
-def login():
-    username = request.get_json()['username']
-    password = request.get_json()['password']
-    user = users_collection.find_one({"username": username, "password": password})
-
-    if user:
-        access_token = create_access_token(identity=username)
-        return jsonify(access_token=access_token), 200
-    else:
-        return jsonify(message='Invalid credentials'), 401
-
 @app.route('/protected', methods=['GET'])
 @jwt_required()
 def protected():
     current_user = get_jwt_identity()
-    return jsonify(logged_in_as=current_user), 200
+    return jsonify(current_user), 200
 
 if __name__ == '__main__':
     socketio.run(app, host='0.0.0.0', debug=True)

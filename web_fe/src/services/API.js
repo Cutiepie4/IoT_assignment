@@ -6,12 +6,13 @@ export const api = axios.create({
 })
 
 export const createConfig = () => {
-    // const token = sessionStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
+
     return {
         headers: {
             "Content-Type": "application/json",
-            'Accept': 'application/json'
-            // "Authorization": `Bearer ${token}`
+            'Accept': 'application/json',
+            "Authorization": `Bearer ${token}`
         }
     }
 }
@@ -21,6 +22,22 @@ export const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString(undefined, options);
 };
+
+export function formatMongoDate(mongoDate) {
+    const dateStr = mongoDate["$gte"];
+    const date = new Date(dateStr);
+    const options = {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        timeZone: "GMT"
+    };
+
+    return date.toLocaleString(undefined, options);
+}
 
 export const find_all_books = async () => {
     const res = await api.get('/find-all-books')
@@ -98,14 +115,45 @@ export const find_all_user = async () => {
     return res.data;
 }
 
+export const checkout = async (order) => {
+    return await api.post('/checkout', order)
+        .then(res => { toast.success(res.data); return true })
+        .catch(error => { toast.error(error.response.data.message); return false });
+}
+
+export const addComment = async (bookId, commentData) => {
+    const data = await api.post(`/add-comment/${bookId}`, commentData, createConfig())
+        .then(res => { toast.success(res.data.message); return res.data.comment })
+        .catch(error => { toast.error(error.response.data.message); return null; });
+    return data;
+}
+
+export const deleteComment = async (bookId, commentId) => {
+    return await api.delete(`/delete-comment/${bookId}/${commentId}`, createConfig())
+        .then(res => { toast.success(res.data.message); return true; })
+        .catch(error => { toast.error(error.response.data.message); return false });
+}
+
 export const create_user = async (account) => {
     api.post('/create-user', account)
         .then(res => { toast.success(res.data.message); })
         .catch(error => { toast.error(error.response.data.message) });
 }
 
-export const checkout = async (order) => {
-    return await api.post('/checkout', order)
-        .then(res => { toast.success(res.data); return true })
-        .catch(error => { toast.error(error.response.data.message); return false });
+export const signIn = async (payload) => {
+    const data = await api.post('/login', payload)
+        .then(res => res.data)
+        .catch(error => { toast.error(error.response.data.message); return false; });
+    if (data) {
+        sessionStorage.setItem('token', data.access_token);
+        return true;
+    }
+    return false;
+}
+
+export const identifyUser = async () => {
+    const data = await api.get('/protected', createConfig())
+        .then(res => res.data)
+        .catch(error => { toast.error(error.response.data.message); return null });
+    return data;
 }
