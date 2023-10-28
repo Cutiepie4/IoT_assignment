@@ -8,7 +8,7 @@ function HomeBook(props) {
     return (
         listBooks.map(book => (
             <div key={book._id} className="book-card" >
-                <div className="content-wrapper">
+                <div className="content-wrapper result-item">
                     <img className="book-card-img" src={`/images/${book.imagePath}`} alt="book-cover" />
                     <NavLink to={`/book-detail/${book._id}`} style={{ textDecoration: 'none' }}>
                         <div className="card-content">

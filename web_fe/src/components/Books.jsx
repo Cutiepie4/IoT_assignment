@@ -79,28 +79,30 @@ function Books() {
 
                 <tbody>
                     {listBooks.map((item, index) => (
-                        <tr key={item._id} className={item.in_stock == 0 ? 'row-hover found' : 'row-hover'} style={{ backgroundColor: '#ff0000' }}>
-                            <td>{index + 1}</td>
-                            <td>{item.title}</td>
-                            <td>{item.author}</td>
-                            <td style={{
-                                maxWidth: '300px',
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                whiteSpace: 'nowrap'
-                            }}>{item.description}</td>
-                            <td>{item.genre}</td>
-                            <td>{item.page}</td>
-                            <td>{item.price.toLocaleString()}</td>
-                            <td>{item.discount}</td>
-                            <td>{item.in_stock}</td>
-                            <td>
-                                <button style={{ 'marginRight': '8px' }} className="btn btn-success" onClick={() => { openBookDetailModal(item._id); }}><i className="fa-solid fa-gear"></i></button>
-                                <button style={{ 'marginRight': '8px' }} className="btn btn-primary" onClick={() => { openImportModal(item._id); }}><i className="fa-solid fa-file-import"></i></button>
-                                <button style={{ 'marginRight': '8px' }} className="btn btn-secondary" onClick={() => { openCopiesModal(item._id); }}><i className="fa-solid fa-warehouse"></i></button>
-                                <button className="btn btn-danger" onClick={() => { handleDelete(item._id); setListBooks(listBooks.filter(itemFilter => itemFilter._id != item._id)) }}><i className="fa-solid fa-trash-can"></i></button>
-                            </td>
-                        </tr>
+                        <>
+                            <tr key={item._id} className={item.in_stock == 0 ? 'row-hover found' : 'row-hover'} style={{ backgroundColor: '#ff0000' }}>
+                                <td>{index + 1}</td>
+                                <td>{item.title}</td>
+                                <td>{item.author}</td>
+                                <td style={{
+                                    maxWidth: '300px',
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                    whiteSpace: 'nowrap'
+                                }}>{item.description}</td>
+                                <td>{item.genre}</td>
+                                <td>{item.page}</td>
+                                <td>{item.price.toLocaleString()}</td>
+                                <td>{item.discount}</td>
+                                <td>{item.in_stock}</td>
+                                <td>
+                                    <button style={{ 'marginRight': '8px' }} className="btn btn-success" onClick={() => { openBookDetailModal(item._id); }}><i className="fa-solid fa-gear"></i></button>
+                                    <button style={{ 'marginRight': '8px' }} className="btn btn-primary" onClick={() => { openImportModal(item._id); }}><i className="fa-solid fa-file-import"></i></button>
+                                    <button style={{ 'marginRight': '8px' }} className="btn btn-secondary" onClick={() => { openCopiesModal(item._id); }}><i className="fa-solid fa-warehouse"></i></button>
+                                    <button className="btn btn-danger" onClick={() => { handleDelete(item._id); setListBooks(listBooks.filter(itemFilter => itemFilter._id != item._id)) }}><i className="fa-solid fa-trash-can"></i></button>
+                                </td>
+                            </tr>
+                        </>
                     ))}
                 </tbody>
             </table>

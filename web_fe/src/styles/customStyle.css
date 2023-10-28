@@ -427,7 +427,6 @@ label {
 .popular-books {
     flex-grow: 1;
     padding: 0 30px 50px;
-    overflow-y: auto;
 }
 
 .genre {
@@ -670,10 +669,6 @@ label {
     top: 17px;
     border-radius: 50%;
     margin-left: auto;
-}
-
-.content-wrapper :hover {
-    background-color: var(--page-bg-color);
 }
 
 .like-profile {
@@ -938,7 +933,7 @@ div.dropdown {
 }
 
 .result-item:hover {
-    background-color: #ccc;
+    background-color: #f2f2f2;
     cursor: pointer;
     color: black;
 }

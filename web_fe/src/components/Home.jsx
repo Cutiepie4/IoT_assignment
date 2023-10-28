@@ -30,7 +30,7 @@ function Home() {
                     <div className="week year">
                         <div className="author-title fs-5 mt-3">Book Recommended</div>
                         {listBooks && listBooks.map(book => (
-                            <div className="year-book" key={book.id}>
+                            <div className="year-book result-item" key={book.id}>
                                 <img src={`./images/${book.imagePath}`} alt="book-cover" className="year-book-img" />
                                 <div className="year-book-content">
                                     <NavLink style={{ textDecoration: 'none', color: 'black' }} to={`/book-detail/${book._id}`}>
