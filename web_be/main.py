@@ -333,7 +333,14 @@ def delete_comment(book_id, comment_id):
                 return jsonify({"message": "You do not have the right to delete other people's comments"}), 403
 
     return jsonify({"message": "Comments do not exist"}), 404
-
+@app.route('/get-comments/<string:id>', methods=['GET'])
+def get_comments(id):
+    book_data = books_collection.find_one({'_id' : ObjectId(id)})
+    if book_data:
+        comments = book_data.get('comments', [])
+        return jsonify(comments), 200
+    else:
+        return jsonify({"message": "Book not found."}), 404
 # ===============================================================
 @app.route('/enable_single_mode')
 def enable_RFID_single():
