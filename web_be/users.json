@@ -49,4 +49,17 @@
   "role": "User",
   "date_created": "2023-10-24",
   "status": "active"
+},
+{
+  "_id": {
+    "$oid": "653d26c046aac95b2314ee22"
+  },
+  "name": "viet truong",
+  "username": "admin",
+  "phone_number": "0946745428",
+  "password": "123",
+  "member_id": "testid",
+  "role": "Admin",
+  "date_created": "2023-10-28",
+  "status": "active"
 }]
