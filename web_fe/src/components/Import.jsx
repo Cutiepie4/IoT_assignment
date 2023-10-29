@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { enableRFID, disableRFID, add_copy, enableRFIDContinuous, disableRFIDContinuous } from '../services/API';
+import { addCopy, enableRFIDContinuous, disableRFIDContinuous } from '../services/API';
 import { io } from 'socket.io-client';
-import { useParams } from 'react-router-dom';
 
 function Import(props) {
 
@@ -24,7 +23,7 @@ function Import(props) {
             const objectList = idArray.map((str) => {
                 return { card_id: str };
             });
-            add_copy({ 'book_id': bookId, 'copy_id': objectList });
+            addCopy({ 'book_id': bookId, 'copy_id': objectList });
             setListId(new Set());
         }
     }

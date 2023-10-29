@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { NavLink } from 'react-router-dom';
 import { io } from 'socket.io-client';
-import { create_user, enableRFIDSingle } from '../services/API';
+import { createUser, enableRFIDSingle } from '../services/API';
 
 function SignUp(props) {
 
@@ -30,7 +30,7 @@ function SignUp(props) {
 
     const handleRegister = (e) => {
         if (validate() && window.confirm('Are you sure to create this user ?')) {
-            create_user(account);
+            createUser(account);
         }
     }
 

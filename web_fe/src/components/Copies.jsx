@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { deleteCopy, find_copies } from '../services/API';
+import { deleteCopy, findCopies } from '../services/API';
 
 function Copies(props) {
 
@@ -13,7 +13,7 @@ function Copies(props) {
 
     useEffect(() => {
         const asyncFunction = async () => {
-            const data = await find_copies(bookId);
+            const data = await findCopies(bookId);
             setListCopies(data);
         }
         asyncFunction();
