@@ -70,11 +70,28 @@ def check_book_title_exists(book_title, current_id='default'):
     return book is not None
 
 def find_by_book_id(id):
-    book_data = books_collection.find_one({'_id' : ObjectId(id)})
+    book_data = books_collection.find_one({'_id': ObjectId(id)})
+    if not book_data:
+        return None
     book_data['_id'] = str(book_data['_id'])
-    if 'comments' in book_data:
-        for i in book_data['comments']:
-            i['timestamp']= {"$gte": i['timestamp']}
+    ratings = book_data.get('ratings', [])
+    comments = book_data.get('comments', [])
+    user_ratings = {rating['user']: rating['rating'] for rating in ratings}
+    num_ratings = len(ratings)
+    total_ratings = sum(rating['rating'] for rating in ratings) if num_ratings > 0 else 0
+
+    if num_ratings > 0:
+        book_data['overall_rating'] = total_ratings / num_ratings
+    else:
+        book_data['overall_rating'] = 0.0
+    book_data['num_ratings'] = num_ratings
+
+    for comment in comments:
+        if 'timestamp' in comment:
+            comment['timestamp'] = {"$gte": comment['timestamp']}
+        user_username = comment.get('user', None)
+        if user_username in user_ratings:
+            comment['rating'] = user_ratings[user_username]
     return book_data
 
 def delete_image(image_path):
@@ -186,12 +203,17 @@ def delete_by_book_id(id):
 @app.route('/find-all-books')
 def find_all_books():
     list_books = list(books_collection.find())
-    for i in list_books:
-        i['_id'] = str(i['_id'])
-        i['in_stock'] = len(i.get('copies', []))
-        if 'comments' in i:
-            for comment in i['comments']:
+    for book in list_books:
+        book['_id'] = str(book['_id'])
+        book['in_stock'] = len(book.get('copies', []))
+        if 'comments' in book:
+            for comment in book['comments']:
                 comment['timestamp'] = {"$gte": comment['timestamp']}
+                user_username = comment.get('user', None)
+                if user_username:
+                    ratings = [rating for rating in book.get('ratings', []) if rating['user'] == user_username]
+                    if ratings:
+                        comment['rating'] = ratings[0]['rating']
     
     return jsonify(list_books), 200
 
@@ -249,17 +271,12 @@ def add_comment(book_id):
     current_user = get_jwt_identity()
     comment_data = request.get_json()
     book = find_by_book_id(book_id)
-    print(current_user, comment_data['user'])
-
     if not book:
         return jsonify({"message": "Books do not exist!"}), 404
-    if current_user['username'] != comment_data['user']['username']:
-        return jsonify({"message": "Login error"}), 403
-
     comment_id = str(uuid.uuid4())
     new_comment = {
         "comment_id": comment_id,
-        "user": comment_data['user']['username'],
+        "user": current_user['username'],
         "comment": comment_data['comment'],
         "timestamp": datetime.now()
     }
@@ -290,40 +307,51 @@ def delete_comment(book_id, comment_id):
 @jwt_required()
 def rating(book_id):
     current_user = get_jwt_identity()
-    rating_data = request.get_json()
+    user_rating = request.get_json()['rating']
+    
+    if not user_rating or user_rating < 1 or user_rating > 5:
+        return jsonify({"message": "Invalid rating value. Rating must be between 1 and 5."}), 400
+
     book = find_by_book_id(book_id)
-    print(current_user, rating_data['user'])
-
     if not book:
-        return jsonify({"message": "Books do not exist!"}), 404
-    if current_user['username'] != rating_data['user']['username']:
-        return jsonify({"message": "Login error"}), 403
+        return jsonify({"message": "Book does not exist!"}), 404
 
-    user_username = current_user['username']
-    new_rating = rating_data['rating']
+    existing_rating = next((rating for rating in book.get('ratings', []) if rating['user'] == current_user['username']), None)
 
-    if 'ratings' in book:
-        for rating in book['ratings']:
-            if rating['user'] == user_username:
-                rating['rating'] = new_rating
-                rating['timestamp'] = datetime.now()
-                books_collection.update_one(
-                    {"_id": ObjectId(book_id)},
-                    {"$set": {"ratings": book['ratings']}}
-                )
-                rating['timestamp'] = {"$gte": rating['timestamp']}
-                return jsonify({"message": "Your rating has been updated.", "rating": rating}), 200
-            
-    rating_id = str(uuid.uuid4())
-    new_rating = {
-        "rating_id": rating_id,
-        "user": rating_data['user']['username'],
-        "rating": rating_data['rating'],
-        "timestamp": datetime.now()
-    }
-    books_collection.update_one({"_id": ObjectId(book_id)}, {"$push": {"ratings": new_rating}})
-    new_rating['timestamp'] = {"$gte": new_rating['timestamp']}
-    return jsonify({"message": "Your rating is uploaded.", "rating": new_rating}), 201
+    if existing_rating:
+        existing_rating['rating'] = user_rating
+        existing_rating['timestamp'] = datetime.now()
+        books_collection.update_one({"_id": ObjectId(book_id), "ratings.user": current_user['username']}, {"$set": {"ratings.$": existing_rating}})
+    else:
+        new_rating = {
+            "user": current_user['username'],
+            "rating": user_rating,
+            "timestamp": datetime.now()
+        }
+        books_collection.update_one({"_id": ObjectId(book_id)}, {"$push": {"ratings": new_rating}})
+
+    return jsonify({"message": "Your rating is submitted."}), 201
+
+from flask_jwt_extended import jwt_required, get_jwt_identity
+
+@app.route('/rating/<string:book_id>/user', methods=['GET'])
+@jwt_required()
+def get_user_rating(book_id):
+    current_user = get_jwt_identity()
+
+    if not current_user:
+        return jsonify({"message": "Invalid user"}), 401
+
+    book = find_by_book_id(book_id)
+    if not book:
+        return jsonify({"message": "Book does not exist!"}), 404
+
+    ratings = book.get('ratings', [])
+    user_rating = next((rating for rating in ratings if rating['user'] == current_user['username']), None)
+    if user_rating:
+        return jsonify({"user_rating": user_rating['rating']}), 200
+    else:
+        return jsonify({"message": "User has not rated this book yet."}), 404
 
 # ===============================================================
 @app.route('/enable_single_mode')
