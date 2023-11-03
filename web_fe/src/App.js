@@ -11,16 +11,13 @@ import BookDetail from './components/BookDetail';
 import UserList from './components/UserList';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
-import ListOrder from './components/ListOrder';
-import Bill from './components/Bill';
 
 import '@fortawesome/fontawesome-free/css/all.css';
 import './styles/customStyle.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/userList.css';
-import './styles/listorder.css';
-import './styles/bill.css'
+
 function App() {
   return (
     <>
@@ -28,8 +25,6 @@ function App() {
         <Route element={<Nav />} path='/'>
           <Route index element={<Home />} />
           <Route element={<BookDetail />} path={"/book-detail/:bookId"} />
-          <Route element={<ListOrder/> } path={"/list-order/"} />
-          <Route element={<Bill/> } path={"/bill/"} />
           <Route element={<Books />} path={"/books"} />
           <Route element={<Import />} path={"/import/:bookId"} />
           <Route element={<Copies />} path={"/copies/:bookId"} />
