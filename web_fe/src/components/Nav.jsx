@@ -85,6 +85,7 @@ function Nav() {
                             {role === 'Admin' && (<li className='border-bottom'><NavLink to='/books'>Book Storage</NavLink></li>)}
                             {role === 'Admin' && (<li className='border-bottom'><NavLink to='/orders'>Orders</NavLink></li>)}
                             {role === 'User' && (<li className='border-bottom'><NavLink to='/user-orders'>Your Orders</NavLink></li>)}
+                            {role === 'Admin' && (<li className='border-bottom'><NavLink to='/list-order'>List Order</NavLink></li>)}
                             {isLogIn && (<li className='border-bottom' onClick={() => { sessionStorage.clear(); }}><NavLink to={'/sign-in'}>Logout</NavLink></li>)}
                         </ul>
                     </div>
