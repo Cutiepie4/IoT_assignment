@@ -23,7 +23,10 @@ function UserList(props) {
                             <table className="table">
                                 <thead>
                                     <tr>
-                                        <th><span className='hover-red' onClick={() => setTab('User')}>User</span> <span onClick={() => setTab('Admin')} className='hover-red'>Admin</span></th>
+                                        <th>
+                                            <span className='hover-red me-2' onClick={() => setTab('User')} style={tab == 'User' ? { color: 'red' } : {}}>User</span>
+                                            <span className='hover-red' onClick={() => setTab('Admin')} style={tab == 'Admin' ? { color: 'red' } : {}}>Admin</span>
+                                        </th>
                                         <th><span>Created</span></th>
                                         <th className="text-center"><span>Status</span></th>
                                         <th><span>Phone</span></th>

@@ -22,6 +22,10 @@ const hasToken = () => {
     return !(token == null)
 }
 
+export const isLoggedIn = () => {
+    return hasToken() == true;
+}
+
 export const formatDate = (dateString) => {
     const options = { weekday: 'short', month: 'short', day: 'numeric' };
     const date = new Date(dateString);

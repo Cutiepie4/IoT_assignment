@@ -17,6 +17,7 @@ import './styles/customStyle.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/userList.css';
+import UserCart from './components/UserCart';
 
 function App() {
   return (
@@ -30,9 +31,11 @@ function App() {
           <Route element={<Copies />} path={"/copies/:bookId"} />
           <Route element={<Checkout />} path={"/checkout"} />
           <Route element={<UserList />} path={"/users"} />
+          <Route element={<UserCart />} path={"/user-cart"} />
         </Route>
         <Route element={<SignIn />} path={"/sign-in"} />
-        <Route element={<SignUp />} path={"/sign-up"} />
+        <Route element={<SignIn />} path={"/sign-in"} />
+        <Route element={<Checkout />} path={"/checkout"} />
       </Routes>
       <ToastContainer
         position="top-right"

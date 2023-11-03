@@ -3,8 +3,8 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { findAllBooks, identifyUser } from '../services/API';
 
 function Nav() {
-    const navigate = useNavigate();
-    const [count, setCount] = useState(0);
+
+    const [orderItems, setOrderItems] = useState([]);
     const [keyword, setKeyword] = useState('');
     const [filteredBook, setFilteredBook] = useState([]);
     const [isFocused, setIsFocused] = useState(false);
@@ -68,11 +68,11 @@ function Nav() {
                     </div>
                 </div>
                 <div className="profile">
-                    {count > 0 && <div className='notification-icon'>{count}</div>}
-                    <NavLink style={{ textDecoration: 'none', color: '#8b939c' }} to={'/checkout'}>
+                    {orderItems.length > 0 && <div className='notification-icon'>{orderItems.length}</div>}
+                    <NavLink style={{ textDecoration: 'none', color: '#8b939c' }} to={'/user-cart'}>
                         <div className="user-profile pe-3">
                             <i className="fa-solid fa-cart-shopping fa-lg pe-2"></i>
-                            Checkout
+                            Cart
                         </div>
                     </NavLink>
                     <div className="profile-menu">
@@ -84,6 +84,7 @@ function Nav() {
                             </li>) : (<li><NavLink to="/sign-in">Login</NavLink></li>)}
                             {role === 'Admin' && (<li className='border-bottom'><NavLink to='/books'>Book Storage</NavLink></li>)}
                             {role === 'Admin' && (<li className='border-bottom'><NavLink to='/orders'>Orders</NavLink></li>)}
+                            {role === 'Admin' && (<li className='border-bottom'><NavLink to='/checkout'>Checkout</NavLink></li>)}
                             {role === 'User' && (<li className='border-bottom'><NavLink to='/user-orders'>Your Orders</NavLink></li>)}
                             {isLogIn && (<li className='border-bottom' onClick={() => { sessionStorage.clear(); }}><NavLink to={'/sign-in'}>Logout</NavLink></li>)}
                         </ul>
@@ -91,7 +92,7 @@ function Nav() {
                 </div>
             </div >
 
-            <Outlet />
+            <Outlet context={[orderItems, setOrderItems]} />
         </>
     );
 }
