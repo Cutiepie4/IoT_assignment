@@ -1,6 +1,6 @@
 /*! CSS Used from: https://cdn0.fahasa.com/media/css_secure/180dfde691fce34b2e789c30f74feafe.css?q=10283 ; media=all */
 @media all {
-    a {
+    /* a {
         background: transparent;
     }
     a:active,
@@ -21,9 +21,9 @@
     input[type="checkbox"] {
         box-sizing: border-box;
         padding: 0;
-    }
+    } */
     @media print {
-        * {
+        /* * {
             color: #000 !important;
             text-shadow: none !important;
             background: transparent !important;
@@ -105,7 +105,7 @@
         outline: thin dotted;
         outline: 5px auto -webkit-focus-ring-color;
         outline-offset: -2px;
-    }
+    } */
     .fa {
         display: inline-block;
         font-family: FontAwesome;
@@ -118,7 +118,7 @@
     .fa-trash-o:before {
         content: "\f014";
     }
-    * {
+    /* * {
         margin: 0;
         padding: 0;
     }
@@ -194,7 +194,7 @@
     }
     img {
         max-width: 100%;
-    }
+    } */
     .fa {
         font-style: normal !important;
     }
@@ -215,7 +215,7 @@
         max-height: 6em;
         padding-top: 0px;
     }
-    h2 {
+    /* h2 {
         margin: 0;
         font-family: inherit;
     }
@@ -248,12 +248,12 @@
     }
     input[type="checkbox"]:focus {
         outline: none !important;
-    }
+    } */
     .price {
         font-size: 15px;
         font-family: "Poppins", sans-serif;
     }
-    a:hover {
+    /* a:hover {
         color: #c92127;
     }
     h2 {
@@ -261,7 +261,7 @@
     }
     a {
         color: #646464;
-    }
+    } */
     .product-name-full-text {
         width: 100%;
     }
@@ -279,14 +279,14 @@
     }
 }
 /*! CSS Used from: https://cdn0.fahasa.com/media/css_secure/5722a920567ae30e71034727845e9254.css?q=10283 ; media=print */
-@media print {
+/* @media print {
     * {
         background: none !important;
         text-align: left !important;
     }
     a {
         color: #2976c9 !important;
-    }
+    } */
 }
 /*! CSS Used from: Embedded */
 @media (min-width: 992px) {
