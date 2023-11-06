@@ -23,6 +23,10 @@ function Nav() {
                 setRole(userData.role);
                 setLogIn(true);
             }
+            else {
+                setRole('GUEST');
+                setLogIn(false);
+            }
         };
         asyncFunction();
     }, [])
@@ -69,12 +73,12 @@ function Nav() {
                 </div>
                 <div className="profile">
                     {orderItems.length > 0 && <div className='notification-icon'>{orderItems.length}</div>}
-                    <NavLink style={{ textDecoration: 'none', color: '#8b939c' }} to={'/user-cart'}>
+                    {role == 'Admin' && <NavLink style={{ textDecoration: 'none', color: '#8b939c' }} to={'/checkout'}>
                         <div className="user-profile pe-3">
                             <i className="fa-solid fa-cart-shopping fa-lg pe-2"></i>
                             Cart
                         </div>
-                    </NavLink>
+                    </NavLink>}
                     <div className="profile-menu">
                         <i className="fa-solid fa-user fa-lg p-2"></i>
                         {username ? username : 'Login'}

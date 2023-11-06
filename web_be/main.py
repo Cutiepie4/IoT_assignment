@@ -194,6 +194,7 @@ def delete_by_copy_id(id):
 
 
 @app.route('/delete-book/<string:id>', methods=['DELETE'])
+@jwt_required()
 def delete_by_book_id(id):
     book = find_by_book_id(id)
     delete_image(UPLOAD_FOLDER + book['imagePath'])
@@ -214,7 +215,13 @@ def find_all_books():
                     ratings = [rating for rating in book.get('ratings', []) if rating['user'] == user_username]
                     if ratings:
                         comment['rating'] = ratings[0]['rating']
-    
+        ratings = book.get('ratings', [])
+        num_ratings = len(ratings)
+        total_ratings = sum(rating['rating'] for rating in ratings) if num_ratings > 0 else 0
+        overall_rating = total_ratings / num_ratings if num_ratings > 0 else 0.0
+        
+        book['num_ratings'] = num_ratings
+        book['overall_rating'] = overall_rating
     return jsonify(list_books), 200
 
 @app.route('/find-by-book-id/<string:id>')
@@ -232,7 +239,10 @@ def read_rfid_card():
     card = request.get_json()
     book = find_by_copy_id(card['card_id'])
     if book != None:
-        socketio.emit('checkout', book)
+        new_book = dict()
+        new_book['book'] = book;
+        new_book['copy_id'] = card['card_id']
+        socketio.emit('checkout', new_book)
     user = find_by_member_id(card['card_id'])
     if user != None:
         socketio.emit('checkout-user', user)
@@ -241,6 +251,22 @@ def read_rfid_card():
     return jsonify('Card ID received successfully'), 200
 
 #===============================================================
+
+@app.route('/orders/<string:order_id>')
+def find_order_by_id(order_id):
+    order = orders_collection.find_one({'_id': ObjectId(order_id)})
+    if order:
+        order['_id'] = str(order['_id']);
+        order['user'] = find_by_member_id(order['user']);
+        for item in order['items']:
+            book = find_by_copy_id(item['book']);
+            if book:
+                item['book'] = book;
+        return jsonify(order), 200
+    else:
+        return jsonify({'message': 'Order not found'}), 404
+
+
 @app.route('/checkout', methods=['POST'])
 def checkout():
     data = request.get_json()
@@ -250,9 +276,34 @@ def checkout():
         user_id = None
     items = data['items']
     current_time = datetime.now()
-    new_items = [{'book': item['book']['copies']['copy_id'], 'quantity': item['quantity']} for item in items]
-    orders_collection.insert_one({'user': user_id, 'items': new_items, 'timestamp': current_time, 'total_cost': data['total_cost']})
+    new_items = [{'book_id': find_by_book_id(item['book']['_id']), 'copy_ids': item['copy_ids']} for item in items]
+    orders_collection.insert_one({'user': user_id, 'items': new_items, 'timestamp': current_time, 'original_cost': data['original_cost'], 'discount_cost': data['discount_cost']})
     return jsonify('Checkout Success!'), 201
+
+# @app.route('/checkout-online', methods=['POST'])
+# def checkout_online():
+#     data = request.get_json()
+#     if 'member_id' in data['user']:
+#         user_id = data['user']['member_id']
+#     else:
+#         user_id = None
+#     items = data['items']
+#     current_time = datetime.now()
+    
+#     new_items = []
+#     for item in items:
+#         book_id = item['book']['_id']
+#         quantity = item['quantity']
+        
+#         # Extract 'quantity' number of copy_ids from the book's 'copies'
+#         copy_ids = [copy['copy_id'] for copy in item['book']['copies'][:quantity]]
+        
+#         new_items.append({'book': book_id, 'quantity': quantity, 'copy_ids': copy_ids})
+    
+#     orders_collection.insert_one({'user': user_id, 'items': new_items, 'timestamp': current_time, 'total_cost': data['total_cost']})
+    
+#     return jsonify('Checkout Success!'), 201
+
 
 @app.route('/find-all-orders')
 def find_all_orders():
@@ -331,8 +382,6 @@ def rating(book_id):
         books_collection.update_one({"_id": ObjectId(book_id)}, {"$push": {"ratings": new_rating}})
 
     return jsonify({"message": "Your rating is submitted."}), 201
-
-from flask_jwt_extended import jwt_required, get_jwt_identity
 
 @app.route('/rating/<string:book_id>/user', methods=['GET'])
 @jwt_required()

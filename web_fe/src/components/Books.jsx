@@ -51,6 +51,7 @@ function Books() {
     const handleDelete = (bookId) => {
         if (window.confirm('Are you sure to delete ?')) {
             deleteBook(bookId);
+            setListBooks(listBooks.filter(itemFilter => itemFilter._id != bookId));
         }
     }
 
@@ -99,7 +100,7 @@ function Books() {
                                     <button style={{ 'marginRight': '8px' }} className="btn btn-success" onClick={() => { openBookDetailModal(item._id); }}><i className="fa-solid fa-gear"></i></button>
                                     <button style={{ 'marginRight': '8px' }} className="btn btn-primary" onClick={() => { openImportModal(item._id); }}><i className="fa-solid fa-file-import"></i></button>
                                     <button style={{ 'marginRight': '8px' }} className="btn btn-secondary" onClick={() => { openCopiesModal(item._id); }}><i className="fa-solid fa-warehouse"></i></button>
-                                    <button className="btn btn-danger" onClick={() => { handleDelete(item._id); setListBooks(listBooks.filter(itemFilter => itemFilter._id != item._id)) }}><i className="fa-solid fa-trash-can"></i></button>
+                                    <button className="btn btn-danger" onClick={() => { handleDelete(item._id); }}><i className="fa-solid fa-trash-can"></i></button>
                                 </td>
                             </tr>
                         </>

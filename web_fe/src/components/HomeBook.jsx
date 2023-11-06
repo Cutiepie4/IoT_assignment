@@ -33,13 +33,13 @@ function HomeBook(props) {
                             <div className="book-by">by {book.author}</div>
                             <div className="rate">
                                 <Rating
-                                    initialRating={book.rating}
+                                    initialRating={book.overall_rating}
                                     emptySymbol={<FaStar className="star-empty" />}
                                     fullSymbol={<FaStar className="star-full" />}
                                     halfSymbol={<FaStarHalfAlt className="star-half" />}
                                     readonly={true}
                                 />
-                                <span className="book-voters card-vote">{book.voters} voters</span>
+                                <span className="book-voters card-vote">{book.num_ratings} voters</span>
                             </div>
                             <div className="book-sum card-sum">{book.description}</div>
                         </div>

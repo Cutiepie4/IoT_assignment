@@ -125,6 +125,7 @@ export const findAllUsers = async () => {
 }
 
 export const checkout = async (order) => {
+    console.log(order)
     return await api.post('/checkout', order)
         .then(res => { toast.success(res.data); return true })
         .catch(error => { toast.error(error.response.data.message); return false });
@@ -156,6 +157,13 @@ export const getUserRating = async (bookId) => {
     const data = await api.get(`/rating/${bookId}/user`, createConfig())
         .then(res => res.data)
         .catch(error => { return 0; })
+    return data;
+}
+
+export const findOrderById = async (orderId) => {
+    const data = await api.get(`/orders/${orderId}`)
+        .then(res => res.data)
+        .catch(error => { toast.error(error.response.data.message) });
     return data;
 }
 

@@ -11,14 +11,17 @@ import BookDetail from './components/BookDetail';
 import UserList from './components/UserList';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import Orders from './components/Orders';
+import OrderDetail from './components/OrderDetail';
 
 import '@fortawesome/fontawesome-free/css/all.css';
 import './styles/customStyle.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/userList.css';
-import UserCart from './components/UserCart';
 
+import './styles/listorder.css';
+import './styles/bill.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <>
@@ -26,15 +29,16 @@ function App() {
         <Route element={<Nav />} path='/'>
           <Route index element={<Home />} />
           <Route element={<BookDetail />} path={"/book-detail/:bookId"} />
+          <Route element={<Orders />} path={"/orders/"} />
+          <Route element={<OrderDetail />} path={"/order-detail"} />
           <Route element={<Books />} path={"/books"} />
           <Route element={<Import />} path={"/import/:bookId"} />
           <Route element={<Copies />} path={"/copies/:bookId"} />
           <Route element={<Checkout />} path={"/checkout"} />
           <Route element={<UserList />} path={"/users"} />
-          <Route element={<UserCart />} path={"/user-cart"} />
         </Route>
         <Route element={<SignIn />} path={"/sign-in"} />
-        <Route element={<SignIn />} path={"/sign-in"} />
+        <Route element={<SignUp />} path={"/sign-up"} />
         <Route element={<Checkout />} path={"/checkout"} />
       </Routes>
       <ToastContainer
