@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { findAllUsers } from '../services/API';
+import { find_all_user } from '../services/API';
 
 function UserList(props) {
 
@@ -8,7 +8,7 @@ function UserList(props) {
 
     useEffect(() => {
         const asyncFunction = async () => {
-            const usersData = await findAllUsers();
+            const usersData = await find_all_user();
             setListUsers(usersData);
         }
         asyncFunction();

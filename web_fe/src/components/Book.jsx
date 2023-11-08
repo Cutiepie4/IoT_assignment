@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { addBook, findBook, updateBook } from '../services/API';
+import { useParams } from 'react-router-dom';
+import { add_book, find_book, update_book } from '../services/API';
 import { toast } from 'react-toastify';
 
 
@@ -25,7 +26,7 @@ function Book(props) {
 
     useEffect(() => {
         const asyncFunction = async () => {
-            const foundBook = await findBook(bookId);
+            const foundBook = await find_book(bookId);
             setBook(foundBook);
             const img = new Image();
             img.src = `/images/${foundBook.imagePath}`;
@@ -87,8 +88,8 @@ function Book(props) {
             formData.append('book', JSON.stringify(book));
             console.log(formData)
             if (bookId == 0)
-                addBook(formData);
-            else updateBook(formData);
+                add_book(formData);
+            else update_book(formData);
             clearWarning();
         }
     }

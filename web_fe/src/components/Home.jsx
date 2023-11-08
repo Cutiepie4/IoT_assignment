@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
-import { findAllBooks } from '../services/API';
+import { find_all_books } from '../services/API';
 import HomeBook from './HomeBook';
 
 function Home() {
@@ -17,7 +17,7 @@ function Home() {
 
     useEffect(() => {
         const asyncFunction = async () => {
-            const res = await findAllBooks();
+            const res = await find_all_books();
             setListBooks(prev => res);
         }
         asyncFunction();

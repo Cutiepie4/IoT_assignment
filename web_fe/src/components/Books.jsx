@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { deleteBook, disableRFIDContinuous, findAllBooks } from '../services/API';
+import { delete_book, disableRFIDContinuous, find_all_books } from '../services/API';
 import { Modal } from 'react-bootstrap';
 import Book from './Book';
 import Import from './Import';
@@ -42,7 +42,7 @@ function Books() {
 
     useEffect(() => {
         const asyncFunction = async () => {
-            const booksData = await findAllBooks();
+            const booksData = await find_all_books();
             setListBooks(booksData);
         };
         asyncFunction();
@@ -50,7 +50,7 @@ function Books() {
 
     const handleDelete = (bookId) => {
         if (window.confirm('Are you sure to delete ?')) {
-            deleteBook(bookId);
+            delete_book(bookId);
         }
     }
 

@@ -1,47 +1,61 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Rating from 'react-rating';
-import { toast } from 'react-toastify';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
-import { addComment, addRating, deleteComment, findBook, formatMongoDate, getUserRating } from '../services/API';
+import { toast } from 'react-toastify';
+import { addComment, deleteComment, find_book, formatMongoDate, identifyUser } from '../services/API';
 
 function BookDetail() {
-    const { bookId } = useParams();
+    const { id } = useParams();
     const [expanded, setExpanded] = useState(false);
     const [order, setOrder] = useState({ quantity: 1, book: {} });
     const [listComments, setListCommments] = useState([]);
     const [currentComment, setCurrentComment] = useState('');
-    const [vote, setVote] = useState(0);
+    const [vote, setVote] = useState(0)
+    const [user, setUser] = useState({});
 
     const toggleExpanded = () => {
         setExpanded(!expanded);
     }
 
+    const formatDate = (date) => {
+        const dateObj = new Date(date);
+        return dateObj.toLocaleDateString("en-US", {
+            month: "long",
+            day: "2-digit",
+            year: "numeric"
+        });
+    }
+
     useEffect(() => {
         const asyncFunction = async () => {
-            const bookData = await findBook(bookId);
+            const bookData = await find_book(id);
             setOrder({ ...order, book: bookData });
             setListCommments(bookData.comments)
-            const userRatingData = await getUserRating(bookId);
-            setVote(userRatingData.user_rating);
+            const userData = await identifyUser();
+            if (userData) {
+                setUser(userData);
+            }
+
         }
         asyncFunction();
-    }, [bookId])
+    }, [id])
 
     const handlePostComment = async () => {
-        if (vote === 0) {
-            toast.info('You must rating before comment.');
-            return;
-        }
-        const newComment = await addComment(bookId, { 'comment': currentComment });
-        setListCommments([...listComments, { ...newComment, 'rating': vote }]);
+        // if (vote === 0) {
+        //     toast.info('You must rating before comment.');
+        //     return;
+        // }
+        const newComment = await addComment(id, { user, 'comment': currentComment });
+        setListCommments([...listComments, newComment]);
         setCurrentComment('');
     }
 
     const handleDeleteComment = (commentId) => {
+        console.log(commentId)
         const asyncFunction = async () => {
-            let flag = await deleteComment(bookId, commentId);
+            let flag = await deleteComment(id, commentId);
             if (flag)
                 setListCommments(listComments.filter(comment => comment.comment_id != commentId));
         }
@@ -49,7 +63,7 @@ function BookDetail() {
     }
 
     const handleVoting = async () => {
-        await addRating(bookId, { 'rating': vote });
+        // await postRating({ username, bookId: order.book.id, vote });
     }
 
     return (
@@ -68,14 +82,14 @@ function BookDetail() {
                             <h3 className="fs-6 mb-3 fw-normal">by {order.book.author}</h3>
                             <Rating
                                 className='mb-4'
-                                initialRating={order.book.overall_rating}
+                                initialRating={order.book.rating}
                                 emptySymbol={<FaStar className="star-empty" />}
                                 fullSymbol={<FaStar className="star-full" />}
                                 halfSymbol={<FaStarHalfAlt className="star-half" />}
                                 readonly={true}
                             />
-                            <span className="book-voters card-vote">{order.book.num_ratings} voters</span>
-                            <p bookId='description' className={`lead fs-6 ${expanded ? 'expanded' : ''} mb-5`} onClick={toggleExpanded}>
+                            <span className="book-voters card-vote">{order.book.voters} voters</span>
+                            <p id='description' className={`lead fs-6 ${expanded ? 'expanded' : ''} mb-5`} onClick={toggleExpanded}>
                                 {order.book.description}
                             </p>
 
@@ -134,7 +148,7 @@ function BookDetail() {
                                     <h4 className="mb-0">Recent comments</h4>
                                     <p className="fw-light mb-4">Latest Comments section by users</p>
                                 </div>
-                                {listComments ? listComments.map(comment => comment && (
+                                {listComments.length > 0 ? listComments.map(comment => comment && (
                                     <div key={comment.comment_id}>
                                         <div className="card-body p-4" >
                                             <div className="d-flex flex-start">
@@ -153,7 +167,7 @@ function BookDetail() {
                                                     </div>
                                                     <Rating
                                                         className='mb-3'
-                                                        initialRating={comment.rating}
+                                                        initialRating={comment.vote}
                                                         emptySymbol={<FaStar className="star-empty" />}
                                                         fullSymbol={<FaStar className="star-full" />}
                                                         halfSymbol={<FaStarHalfAlt className="star-half" />}
@@ -196,7 +210,7 @@ function BookDetail() {
                                                 <h5>You can post your comment:</h5>
                                                 <div className="form-outline">
                                                     <label className="form-label mb-3" htmlFor="textAreaExample">What is your opinion?</label>
-                                                    <textarea className="form-control" bookId="textAreaExample" rows="4" value={currentComment} onChange={e => setCurrentComment(e.target.value)}></textarea>
+                                                    <textarea className="form-control" id="textAreaExample" rows="4" value={currentComment} onChange={e => setCurrentComment(e.target.value)}></textarea>
                                                 </div>
                                                 <div className="d-flex float-end mt-3">
                                                     <button type="button" className="btn btn-success" onClick={handlePostComment}>

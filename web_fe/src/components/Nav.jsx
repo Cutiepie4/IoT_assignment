@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { findAllBooks, identifyUser } from '../services/API';
+import { find_all_books, identifyUser } from '../services/API';
 
 function Nav() {
     const navigate = useNavigate();
@@ -15,7 +15,7 @@ function Nav() {
 
     useEffect(() => {
         const asyncFunction = async () => {
-            const booksData = await findAllBooks();
+            const booksData = await find_all_books();
             setListBooks(booksData);
             const userData = await identifyUser();
             if (userData) {

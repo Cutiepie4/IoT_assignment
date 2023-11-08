@@ -24,7 +24,7 @@ function App() {
       <Routes>
         <Route element={<Nav />} path='/'>
           <Route index element={<Home />} />
-          <Route element={<BookDetail />} path={"/book-detail/:bookId"} />
+          <Route element={<BookDetail />} path={"/book-detail/:id"} />
           <Route element={<Books />} path={"/books"} />
           <Route element={<Import />} path={"/import/:bookId"} />
           <Route element={<Copies />} path={"/copies/:bookId"} />
