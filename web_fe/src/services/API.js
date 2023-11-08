@@ -184,6 +184,11 @@ export const signIn = async (payload) => {
     return false;
 }
 
+export const signOut = () => {
+    sessionStorage.clear();
+    window.location.href = "/sign-in";
+}
+
 export const identifyUser = async () => {
     const data = await api.get('/protected', createConfig())
         .then(res => res.data)

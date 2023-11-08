@@ -1,19 +1,20 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useOutletContext, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Rating from 'react-rating';
 import { toast } from 'react-toastify';
+import ReactLoading from 'react-loading'
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { addComment, addRating, deleteComment, findBook, formatMongoDate, getUserRating, isLoggedIn } from '../services/API';
 
 function BookDetail() {
-    const [orderItems, setOrderItems] = useOutletContext();
     const { bookId } = useParams();
     const [expanded, setExpanded] = useState(false);
     const [orderItem, setOrderItem] = useState({ quantity: 1, book: {} });
     const [listComments, setListCommments] = useState([]);
     const [currentComment, setCurrentComment] = useState('');
     const [vote, setVote] = useState(0);
+    const [loading, setLoading] = useState(true);
 
     const toggleExpanded = () => {
         setExpanded(!expanded);
@@ -26,6 +27,7 @@ function BookDetail() {
             setListCommments(bookData.comments)
             const userRatingData = await getUserRating(bookId);
             setVote(userRatingData.user_rating);
+            setLoading(false);
         }
         asyncFunction();
     }, [bookId])
@@ -51,6 +53,12 @@ function BookDetail() {
 
     const handleVoting = async () => {
         await addRating(bookId, { 'rating': vote });
+    }
+
+    if (loading) {
+        return <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+            <ReactLoading type={'spokes'} color={'green'} />;
+        </div>
     }
 
     return (
@@ -109,19 +117,19 @@ function BookDetail() {
                                 <p>The discount applies to member-only.</p>
                             </div>}
 
-                            <div className="d-flex align-items-center mb-3 mt-3">
+                            {/* <div className="d-flex align-items-center mb-3 mt-3">
                                 <i className="fa-solid fa-minus me-2 order-quantity" onClick={() => { orderItem.quantity > 1 && setOrderItem({ ...orderItem, quantity: orderItem.quantity - 1 }) }}></i>
                                 <div className='btn btn-outline-dark me-2 flex-shrink-0' style={{ minWidth: '40px' }} >
                                     {orderItem.quantity}
                                 </div>
                                 <i className="fa-solid fa-plus hover-red" onClick={() => { setOrderItem({ ...orderItem, quantity: orderItem.quantity + 1 }) }}></i>
-                            </div>
-                            <div className='d-flex'>
-                                <button className="btn btn-outline-dark flex-shrink-0" type="button" onClick={() => { setOrderItems([...orderItems, orderItem]) }}>
+                            </div> */}
+                            {/* <div className='d-flex'>
+                                <button className="btn btn-outline-dark flex-shrink-0" type="button" onClick={() => { }}>
                                     <i className="bi-order-fill me-1"></i>
                                     Add to Cart
                                 </button>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

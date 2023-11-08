@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { Route, Routes } from 'react-router-dom';
 import Books from './components/Books';
@@ -13,33 +13,70 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import Orders from './components/Orders';
 import OrderDetail from './components/OrderDetail';
+import ReactLoading from 'react-loading';
 
 import '@fortawesome/fontawesome-free/css/all.css';
 import './styles/customStyle.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/userList.css';
 
-import './styles/listorder.css';
-import './styles/bill.css'
+// import './styles/listorder.css';
+// import './styles/bill.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AdminRoute from './AdminRoute';
+import UserRoute from './UserRoute';
+import { identifyUser } from './services/API';
 function App() {
+
+  const [loading, setLoading] = useState(true);
+  const [role, setRole] = useState('Guest');
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userData = await identifyUser();
+        setRole(userData.role);
+        setUsername(userData.username);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [])
+
+  if (loading) {
+    return <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+      <ReactLoading type={'spokes'} color={'green'} />;
+    </div>
+  }
+
   return (
     <>
-      <Routes>
-        <Route element={<Nav />} path='/'>
+      <Routes key={role}>
+        <Route element={<Nav role={role} username={username} />} path='/'>
           <Route index element={<Home />} />
           <Route element={<BookDetail />} path={"/book-detail/:bookId"} />
-          <Route element={<Orders />} path={"/orders/"} />
-          <Route element={<OrderDetail />} path={"/order-detail"} />
-          <Route element={<Books />} path={"/books"} />
-          <Route element={<Import />} path={"/import/:bookId"} />
-          <Route element={<Copies />} path={"/copies/:bookId"} />
-          <Route element={<Checkout />} path={"/checkout"} />
-          <Route element={<UserList />} path={"/users"} />
+          <Route element={<AdminRoute role={role} />} >
+            <Route element={<Checkout />} path={"/checkout"} />
+            <Route element={<Copies />} path={"/copies/:bookId"} />
+            <Route element={<Import />} path={"/import/:bookId"} />
+            <Route element={<Books />} path={"/books"} />
+            <Route element={<Orders />} path={"/orders/"} />
+            <Route element={<OrderDetail />} path={"/order-detail"} />
+            <Route element={<UserList />} path={"/users"} />
+            <Route element={<SignUp />} path={"/sign-up"} />
+          </Route>
+
+          <Route element={<UserRoute role={role} />} >
+
+          </Route>
         </Route>
+
         <Route element={<SignIn />} path={"/sign-in"} />
-        <Route element={<SignUp />} path={"/sign-up"} />
-        <Route element={<Checkout />} path={"/checkout"} />
       </Routes>
       <ToastContainer
         position="top-right"

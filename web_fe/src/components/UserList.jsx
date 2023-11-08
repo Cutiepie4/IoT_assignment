@@ -52,13 +52,7 @@ function UserList(props) {
                                             <td>
                                                 <a style={{ textDecoration: 'none', color: 'black' }} href="#">{item.phone_number}</a>
                                             </td>
-                                            <td style={{ width: '20%' }}>
-                                                <a href="#" className="table-link">
-                                                    <span className="fa-stack">
-                                                        <i className="fa fa-square fa-stack-2x"></i>
-                                                        <i className="fa fa-coins fa-stack-1x fa-inverse"></i>
-                                                    </span>
-                                                </a>
+                                            <td>
                                                 <a href="#" className="table-link">
                                                     <span className="fa-stack">
                                                         <i className="fa fa-square fa-stack-2x"></i>

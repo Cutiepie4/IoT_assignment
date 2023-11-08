@@ -1,35 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { findAllBooks, identifyUser } from '../services/API';
+import { findAllBooks, identifyUser, signOut } from '../services/API';
 
-function Nav() {
+function Nav(props) {
 
     const [orderItems, setOrderItems] = useState([]);
     const [keyword, setKeyword] = useState('');
     const [filteredBook, setFilteredBook] = useState([]);
     const [isFocused, setIsFocused] = useState(false);
     const [listBooks, setListBooks] = useState([]);
-    const [role, setRole] = useState('GUEST');
-    const [isLogIn, setLogIn] = useState(false);
-    const [username, setUsername] = useState('');
+    const { role, username } = props;
 
     useEffect(() => {
         const asyncFunction = async () => {
             const booksData = await findAllBooks();
             setListBooks(booksData);
-            const userData = await identifyUser();
-            if (userData) {
-                setUsername(userData.username);
-                setRole(userData.role);
-                setLogIn(true);
-            }
-            else {
-                setRole('GUEST');
-                setLogIn(false);
-            }
         };
         asyncFunction();
-    }, [])
+    }, []);
 
     useEffect(() => {
         if (keyword.trim.length == 0) {
@@ -81,22 +69,23 @@ function Nav() {
                     </NavLink>}
                     <div className="profile-menu">
                         <i className="fa-solid fa-user fa-lg p-2"></i>
-                        {username ? username : 'Login'}
+                        {role == 'Guest' ? 'Login' : username}
                         <ul className="dropdown">
-                            {isLogIn ? (<li className='border-bottom'>
-                                <NavLink to={'/users'}>Manage user</NavLink>
-                            </li>) : (<li><NavLink to="/sign-in">Login</NavLink></li>)}
+                            {role == 'Guest' && (<li><NavLink to="/sign-in">Login</NavLink></li>)}
+                            {role == 'Admin' && (<li className='border-bottom'>
+                                <NavLink to={'/users'}>User Management</NavLink>
+                            </li>)}
                             {role === 'Admin' && (<li className='border-bottom'><NavLink to='/books'>Book Storage</NavLink></li>)}
                             {role === 'Admin' && (<li className='border-bottom'><NavLink to='/orders'>Orders</NavLink></li>)}
                             {role === 'Admin' && (<li className='border-bottom'><NavLink to='/checkout'>Checkout</NavLink></li>)}
                             {role === 'User' && (<li className='border-bottom'><NavLink to='/user-orders'>Your Orders</NavLink></li>)}
-                            {isLogIn && (<li className='border-bottom' onClick={() => { sessionStorage.clear(); }}><NavLink to={'/sign-in'}>Logout</NavLink></li>)}
+                            {role != 'Guest' && (<li className='border-bottom' onClick={signOut}><NavLink to={'#'}>Logout</NavLink></li>)}
                         </ul>
                     </div>
                 </div>
             </div >
 
-            <Outlet context={[orderItems, setOrderItems]} />
+            <Outlet />
         </>
     );
 }

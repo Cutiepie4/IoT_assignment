@@ -11,8 +11,9 @@ function SignIn() {
     const handleLogin = () => {
         const asyncFunction = async () => {
             const flag = await signIn(account);
-            if (flag)
-                navigate('/');
+            if (flag) {
+                window.location.href = "/";
+            }
         }
         asyncFunction();
     }
