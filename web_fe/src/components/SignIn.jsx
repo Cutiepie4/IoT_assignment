@@ -1,26 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom'
 import { signIn } from '../services/API';
+import { toast } from 'react-toastify';
 
 function SignIn() {
 
-    const navigate = useNavigate();
     const [account, setAccount] = useState({});
     const [rememberMe, setRememberMe] = useState(false);
 
-    const handleLogin = () => {
-        const asyncFunction = async () => {
-            const flag = await signIn(account);
-            if (flag) {
+    const handleLogin = async () => {
+        try {
+            const success = await signIn(account);
+
+            if (success) {
                 window.location.href = "/";
             }
+        } catch (error) {
+            toast.error('Login error');
         }
-        asyncFunction();
     }
-
-    useEffect(() => {
-
-    }, []);
 
     return (
         <section className="vh-100" style={{ backgroundColor: "#eee" }}>
@@ -47,8 +44,8 @@ function SignIn() {
                                             </div>
                                             <div className="d-flex justify-content-between mb-5 align-items-center">
                                                 <div className='d-flex justify-content-between form-check'>
-                                                    <input className="form-check-input mx-2" type="checkbox" value="" id="form2Example3c" checked={rememberMe} onChange={e => setRememberMe(e.target.checked)} />
-                                                    <label className="form-check-label" htmlFor="form2Example3c">
+                                                    <input className="form-check-input mx-2" type="checkbox" checked={rememberMe} onChange={e => setRememberMe(e.target.checked)} />
+                                                    <label className="form-check-label">
                                                         Remember me
                                                     </label>
                                                 </div>

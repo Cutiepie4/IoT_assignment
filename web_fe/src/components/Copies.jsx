@@ -21,7 +21,7 @@ function Copies(props) {
 
     return (
         <div className='container form-control mt-3' style={{ maxWidth: '500px' }}>
-            <h5>List copies of <span style={{ color: 'red' }}>{bookId}</span></h5>
+            <h5>Book: <span style={{ color: 'red' }}>{bookId}</span></h5>
 
             <table className="table table-hover">
                 <thead>

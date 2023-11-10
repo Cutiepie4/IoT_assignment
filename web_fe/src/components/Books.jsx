@@ -108,16 +108,25 @@ function Books() {
                 </tbody>
             </table>
             <Modal show={showBookDetailModal} onHide={closeBookDetailModal} dialogClassName="modal-lg">
+                <Modal.Header>
+                    <h3>Book</h3>
+                </Modal.Header>
                 <Modal.Body>
                     <Book bookId={bookId} />
                 </Modal.Body>
             </Modal>
             <Modal show={showImportModal} onHide={closeImportModal}>
+                <Modal.Header>
+                    <h3>Import</h3>
+                </Modal.Header>
                 <Modal.Body>
                     <Import bookId={bookId} />
                 </Modal.Body>
             </Modal>
             <Modal show={showCopiesModal} onHide={closeCopiesModal}>
+                <Modal.Header>
+                    <h3>Copies Storage</h3>
+                </Modal.Header>
                 <Modal.Body>
                     <Copies bookId={bookId} />
                 </Modal.Body>

@@ -95,7 +95,6 @@ function Book(props) {
 
     return (
         <div className="container form-control" >
-            <h1>Book</h1>
             <div className="row">
                 <div className="col-lg-6">
                     <div className="row">

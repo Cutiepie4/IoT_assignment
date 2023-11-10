@@ -33,12 +33,8 @@ function BookDetail() {
     }, [bookId])
 
     const handlePostComment = async () => {
-        if (vote === 0) {
-            toast.info('You must rating before comment.');
-            return;
-        }
         const newComment = await addComment(bookId, { 'comment': currentComment });
-        setListCommments([...listComments, { ...newComment, 'rating': vote }]);
+        setListCommments((listComments || []).concat({ ...newComment, 'rating': vote }));
         setCurrentComment('');
     }
 
@@ -57,7 +53,7 @@ function BookDetail() {
 
     if (loading) {
         return <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-            <ReactLoading type={'spokes'} color={'green'} />;
+            <ReactLoading type={'spin'} color={'green'} />;
         </div>
     }
 

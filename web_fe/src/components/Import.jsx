@@ -10,11 +10,18 @@ function Import(props) {
     const [listId, setListId] = useState(new Set());
 
     const handleSwitch = () => {
-        if (enableState)
+        if (enableState) {
             disableRFIDContinuous();
-        else
-            enableRFIDContinuous();
-        setEnableState(!enableState);
+        }
+        else {
+            const asyncFunction = async () => {
+                const flag = await enableRFIDContinuous();
+                if (flag) {
+                    setEnableState(true);
+                }
+            }
+            asyncFunction();
+        }
     }
 
     const handleImport = () => {
