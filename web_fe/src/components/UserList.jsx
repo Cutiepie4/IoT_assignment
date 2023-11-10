@@ -72,14 +72,8 @@ function UserList(props) {
                                 </tbody>
                             </table>
                         </div>
-                        {/* <ul className="pagination pagination-sm pull-right">
-                            <li className="page-item active" aria-current="page">
-                                <span className="page-link">1</span>
-                            </li>
-                            <li className="page-item"><a className="page-link" href="#">2</a></li>
-                            <li className="page-item"><a className="page-link" href="#">3</a></li>
-                        </ul> */}
                     </div>
+                    <button className='btn btn-lg btn-success' onClick={() => { window.location.href = "/sign-up" }}>Create account</button>
                 </div>
             </div>
         </div>

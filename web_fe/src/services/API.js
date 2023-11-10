@@ -93,9 +93,9 @@ export const enableRFIDSingle = async () => {
 }
 
 export const enableRFIDContinuous = async () => {
-    await api.get('/enable_continuous_mode')
-        .then(res => { toast.success(res.data); })
-        .catch(error => { toast.error(error.response.data.message); });
+    return await api.get('/enable_continuous_mode')
+        .then(res => { toast.success(res.data); return true; })
+        .catch(error => { toast.error('Can not connect to RFID scanner.'); return false; });
 }
 
 export const disableRFIDContinuous = async () => {
@@ -160,10 +160,17 @@ export const getUserRating = async (bookId) => {
     return data;
 }
 
+export const findAllOrders = async () => {
+    const data = await api.get(`/find-all-orders`)
+        .then(res => res.data)
+        .catch(error => { toast.error(error.response.data.message); return [] });
+    return data;
+}
+
 export const findOrderById = async (orderId) => {
     const data = await api.get(`/orders/${orderId}`)
         .then(res => res.data)
-        .catch(error => { toast.error(error.response.data.message) });
+        .catch(error => { toast.error(error.response.data.message); return null; });
     return data;
 }
 

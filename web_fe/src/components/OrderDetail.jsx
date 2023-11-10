@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { findOrderById, formatDate, formatMongoDate } from '../services/API';
 import { useParams } from 'react-router-dom';
 
-function OrderDetail() {
-  const orderId = useParams();
+function OrderDetail(props) {
+  const { orderId } = props;
   const [order, setOrder] = useState({});
 
   useEffect(() => {
     const asyncFunction = async () => {
-      const orderData = findOrderById(orderId);
+      const orderData = await findOrderById(orderId);
       setOrder(orderData);
+      console.log(orderData)
     };
     asyncFunction();
   }, [])
@@ -18,9 +19,12 @@ function OrderDetail() {
     <>
       <div className="container-fluid invoice-container">
         <header>
-          <div className="row align-items-center">
-            <div >
-              <h4 className="text-7 mb-9">Detail</h4>
+          <div className="row">
+            <div className="col-sm-6">
+              <strong>Customer: </strong> <span style={{ color: 'red' }}>{order.user ? order.user.name : 'Guest'}</span>
+            </div>
+            <div className="col-sm-6 text-sm-end">
+              <strong>Order No:</strong> {order._id}
             </div>
           </div>
           <hr />
@@ -29,10 +33,10 @@ function OrderDetail() {
         <main>
           <div className="row">
             <div className="col-sm-6">
-              <strong>Order No:</strong> {order._id}
+              <strong>Member ID:</strong> {order.user ? order.user.member_id : 'Not a member'}
             </div>
             <div className="col-sm-6 text-sm-end">
-              <strong>Date:</strong> {formatDate(order.timestamp)}
+              <strong>Date:</strong> {order.timestamp}
             </div>
           </div>
           <hr />
@@ -55,48 +59,46 @@ function OrderDetail() {
                       <td className="col-1 text-center">
                         <strong>Quantity</strong>
                       </td>
+                      {order.user && <td className="col-1 text-center">
+                        <strong>Discount</strong>
+                      </td>}
                       <td className="col-2 text-end">
                         <strong>Price</strong>
                       </td>
                     </tr>
                   </thead>
                   <tbody>
-                    {order.items && order.items.map(item => (
+                    {order.orderItems && order.orderItems.map((item, index) => (
                       <tr>
-                        <td className="col-1">1</td>
-                        <td className="col-4 text-1">{item.title}</td>
-                        <td className="col-2 text-center">{item.price}</td>
-                        <td className="col-1 text-center">{item.quantity}</td>
-                        <td className="col-2 text-end">$500.00</td>
+                        <td>{index + 1}</td>
+                        <td className="col-4" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '150px' }}>
+                          {item.book.title}
+                        </td>
+                        <td className="col-1 text-center">{item.book.price.toLocaleString()} vnđ</td>
+                        <td className="col-1 text-center">{item.copy_ids.length}</td>
+                        {order.user && <td className="col-1 text-center">{item.book.discount}%</td>}
+                        <td className="col-1 text-end">{(item.book.price * item.copy_ids.length).toLocaleString()} vnđ</td>
                       </tr>
                     ))}
-                    {/* <tr>
-                      <td className="col-1">1</td>
-                      <td className="col-4 text-1">Creating a website design</td>
-                      <td className="col-2 text-center">$50.00</td>
-                      <td className="col-1 text-center">10</td>
-                      <td className="col-2 text-end">$500.00</td>
-                    </tr> */}
-
                   </tbody>
                   <tfoot className="card-footer">
                     <tr>
-                      <td colspan="4" className="text-end">
-                        <strong>Checkout:</strong>
+                      <td colspan={order.user ? '5' : '4'} className="text-end">
+                        <strong>Original Cost:</strong>
                       </td>
-                      <td className="text-end">$2150.00</td>
+                      <td className="text-end">{order.original_cost && order.original_cost.toLocaleString()} vnđ</td>
                     </tr>
                     <tr>
-                      <td colspan="4" className="text-end">
-                        <strong>Thuế GTGT:</strong>
+                      <td colspan={order.user ? '5' : '4'} className="text-end">
+                        <strong>Discount Cost: </strong>
                       </td>
-                      <td className="text-end">$215.00</td>
+                      <td className="text-end">{order.discount_cost && order.discount_cost.toLocaleString()} vnđ</td>
                     </tr>
                     <tr>
-                      <td colspan="4" className="text-end border-bottom-0">
-                        <strong>Total Price</strong>
+                      <td colspan={order.user ? '5' : '4'} className="text-end border-bottom-0">
+                        <h4>Total Cost: </h4>
                       </td>
-                      <td className="text-end border-bottom-0">$2365.00</td>
+                      <td className="text-end border-bottom-0"><h4 style={{ color: 'red' }}>{order.original_cost && order.discount_cost && (order.original_cost - order.discount_cost).toLocaleString()} vnđ</h4></td>
                     </tr>
                   </tfoot>
                 </table>

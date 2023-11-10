@@ -64,7 +64,7 @@ function Nav(props) {
                     {role == 'Admin' && <NavLink style={{ textDecoration: 'none', color: '#8b939c' }} to={'/checkout'}>
                         <div className="user-profile pe-3">
                             <i className="fa-solid fa-cart-shopping fa-lg pe-2"></i>
-                            Cart
+                            Checkout
                         </div>
                     </NavLink>}
                     <div className="profile-menu">

@@ -71,14 +71,18 @@ function Checkout() {
 
         if (ok) {
             const asyncFunction = async () => {
+                const orderItemsArray = orderItems.map(item => ({
+                    ...item,
+                    copy_ids: [...item.copy_ids],
+                }));
+
                 const flag = await checkout({
-                    user, orderItems, 'original_cost': originalPrice - discountPrice, 'discount_cost': discountPrice
+                    user, 'orderItems': orderItemsArray, 'original_cost': originalPrice - discountPrice, 'discount_cost': discountPrice
                 })
 
                 if (flag) {
                     setUser({});
                     setOrderItems([]);
-                    toast.success('Your order is placed.');
                 }
             }
             if (window.confirm('Are you sure to place this order ?')) {

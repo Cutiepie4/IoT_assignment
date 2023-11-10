@@ -19,13 +19,11 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import './styles/customStyle.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/userList.css';
-
-// import './styles/listorder.css';
-// import './styles/bill.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AdminRoute from './AdminRoute';
 import UserRoute from './UserRoute';
 import { identifyUser } from './services/API';
+
 function App() {
 
   const [loading, setLoading] = useState(true);
@@ -50,7 +48,7 @@ function App() {
 
   if (loading) {
     return <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-      <ReactLoading type={'spokes'} color={'green'} />;
+      <ReactLoading type={'spin'} color={'green'} />;
     </div>
   }
 
@@ -80,7 +78,7 @@ function App() {
       </Routes>
       <ToastContainer
         position="top-right"
-        autoClose={3000}
+        autoClose={1500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

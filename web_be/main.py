@@ -23,7 +23,7 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 UPLOAD_FOLDER = 'C://Users//trvie//Documents//Code//iot//web_fe//public//images//'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-esp32_host = 'http://192.168.0.100'
+esp32_host = 'http://192.168.0.102'
 
 def find_by_copy_id(id_copy):
     result = books_collection.aggregate([
@@ -258,8 +258,8 @@ def find_order_by_id(order_id):
     if order:
         order['_id'] = str(order['_id']);
         order['user'] = find_by_member_id(order['user']);
-        for item in order['items']:
-            book = find_by_copy_id(item['book']);
+        for item in order['orderItems']:
+            book = find_by_book_id(item['book']['_id']);
             if book:
                 item['book'] = book;
         return jsonify(order), 200
@@ -274,10 +274,10 @@ def checkout():
         user_id = data['user']['member_id']
     else:
         user_id = None
-    items = data['items']
+    items = data['orderItems']
     current_time = datetime.now()
-    new_items = [{'book_id': find_by_book_id(item['book']['_id']), 'copy_ids': item['copy_ids']} for item in items]
-    orders_collection.insert_one({'user': user_id, 'items': new_items, 'timestamp': current_time, 'original_cost': data['original_cost'], 'discount_cost': data['discount_cost']})
+    new_items = [{'book': find_by_book_id(item['book']['_id']), 'copy_ids': item['copy_ids']} for item in items]
+    orders_collection.insert_one({'user': user_id, 'orderItems': new_items, 'timestamp': current_time, 'original_cost': data['original_cost'], 'discount_cost': data['discount_cost']})
     return jsonify('Checkout Success!'), 201
 
 # @app.route('/checkout-online', methods=['POST'])
@@ -311,9 +311,28 @@ def find_all_orders():
     for order in orders:
         order['timestamp'] = {"$gte": order['timestamp']}
         order['_id'] = str(order['_id'])
-        order['items'] = [{'book': find_by_copy_id(item['book']), 'quantity': item['quantity']} for item in order['items']]
-        order['user'] = find_by_member_id(order['user'])
-    return jsonify({'orders': orders}), 200
+        updated_order_items = []
+
+        for item in order['orderItems']:
+            book_id = item['book']['_id']
+            book_details = find_by_book_id(book_id)
+            if 'copies' in book_details:
+                del book_details['copies']
+            if 'comments' in book_details:
+                del book_details['comments']
+            if 'ratings' in book_details:
+                del book_details['ratings']
+            quantity = len(item['copy_ids'])
+            updated_order_items.append({'book': book_details, 'quantity': quantity, 'copy_ids': item['copy_ids']})
+
+        order['orderItems'] = updated_order_items
+
+        if order['user']:
+            order['user'] = find_by_member_id(order['user'])
+
+    return jsonify(orders), 200
+
+
 
 # ===============================================================
 @app.route('/add-comment/<string:book_id>', methods=['POST'])
