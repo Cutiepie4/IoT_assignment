@@ -3,14 +3,14 @@ import { useEffect, useState } from 'react';
 import { NavLink, useOutletContext } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { io } from 'socket.io-client';
-import { checkout } from '../services/API';
+import { checkout, disableRFIDContinuous, enableRFIDContinuous } from '../services/API';
 import { enableRFIDSingle } from '../services/API';
 import { formatDate } from '../services/API';
 
 function Checkout() {
     const [payment, setPayment] = useState({ type: 'Credit card' });
-    // const [deliveryInfo, setDeliveryInfo] = useState({});
 
+    const [creditCardInfo, setCreditCardInfo] = useState({});
     const [orderItems, setOrderItems] = useState([]);
     const [user, setUser] = useState({});
     const [discountPrice, setDiscountPrice] = useState(0);
@@ -32,29 +32,38 @@ function Checkout() {
 
     useEffect(() => {
         const socket = io('http://localhost:5000');
+        enableRFIDContinuous();
 
         socket.on('checkout', (payload) => {
-            const bookIndex = orderItems.findIndex((orderItem) => orderItem.book._id === payload.book._id);
-
-            if (bookIndex !== -1) {
-                if (!orderItems[bookIndex].copy_ids instanceof Set) {
-                    orderItems[bookIndex].copy_ids = new Set();
-                }
-                orderItems[bookIndex].copy_ids.add(payload.copy_id);
-                orderItems[bookIndex].quantity = orderItems[bookIndex].copy_ids.size
-            } else {
-                orderItems.push({ book: payload.book, quantity: 1, copy_ids: new Set([payload.copy_id]) });
+            if (Object.keys(payload).length === 0 && payload.constructor === Object) {
+                toast.error('Cannot identify card.');
             }
-
-            setOrderItems([...orderItems]);
+            else {
+                const bookIndex = orderItems.findIndex((orderItem) => orderItem.book._id === payload.book._id);
+                if (bookIndex !== -1) {
+                    if (!orderItems[bookIndex].copy_ids instanceof Set) {
+                        orderItems[bookIndex].copy_ids = new Set();
+                    }
+                    orderItems[bookIndex].copy_ids.add(payload.copy_id);
+                    orderItems[bookIndex].quantity = orderItems[bookIndex].copy_ids.size
+                } else {
+                    orderItems.push({ book: payload.book, quantity: 1, copy_ids: new Set([payload.copy_id]) });
+                }
+                setOrderItems([...orderItems]);
+            }
         });
 
         socket.on('checkout-user', (user) => {
-            setUser(prev => user);
+            if (Object.keys(user).length === 0 && user.constructor === Object) {
+                toast.error('Cannot identify card.');
+            } else {
+                setUser(prev => user);
+            }
         });
 
         return () => {
             socket.disconnect();
+            disableRFIDContinuous();
         };
     }, []);
 
@@ -76,8 +85,16 @@ function Checkout() {
                     copy_ids: [...item.copy_ids],
                 }));
 
+                let payload = {};
+                if (payment.type == 'Credit card') {
+                    payload = { ...payload, payment: { ...payment, creditCardInfo } };
+                }
+                else {
+                    payload = { ...payload, payment };
+                }
+
                 const flag = await checkout({
-                    user, 'orderItems': orderItemsArray, 'original_cost': originalPrice - discountPrice, 'discount_cost': discountPrice
+                    ...payload, user, 'orderItems': orderItemsArray, 'original_cost': originalPrice - discountPrice, 'discount_cost': discountPrice
                 })
 
                 if (flag) {
@@ -190,7 +207,7 @@ function Checkout() {
                                         </div>
                                     ) : (<div className='d-flex flex-column justify-content-between custom-container' style={{ height: '290px' }}>
                                         <p className='text-muted' style={{ fontStyle: 'italic' }}>Scan member card for discount</p>
-                                        <button className='btn btn-outline-dark mb-2' onClick={enableRFIDSingle}>Scan</button>
+                                        {/* <button className='btn btn-outline-dark mb-2' onClick={enableRFIDSingle}>Scan</button> */}
                                     </div>
                                     )}
                                 </div>
@@ -256,14 +273,14 @@ function Checkout() {
                                             <div className="col-lg-6 col-xl-6">
                                                 <div className="form-outline mb-3 mb-xl-4">
                                                     <input type="text" className="form-control"
-                                                        placeholder="Name" />
+                                                        placeholder="Name" value={creditCardInfo.nameOnCard} onChange={e => setCreditCardInfo({ ...creditCardInfo, nameOnCard: e.target.value })} />
                                                     <label className="form-label">Name on card</label>
                                                 </div>
                                             </div>
 
                                             <div className="col-lg-6 col-xl-6">
                                                 <div className="form-outline mb-3 mb-xl-4">
-                                                    <input type="text" className="form-control" placeholder="MM/YY" />
+                                                    <input type="text" className="form-control" placeholder="MM/YY" value={creditCardInfo.expiration} onChange={e => setCreditCardInfo({ ...creditCardInfo, expiration: e.target.value })} />
                                                     <label className="form-label">Expiration</label>
                                                 </div>
                                             </div>
@@ -273,7 +290,7 @@ function Checkout() {
                                                 <div className="col-lg-6 col-xl-6">
                                                     <div className="form-outline mb-3 mb-xl-4">
                                                         <input type="text" className="form-control"
-                                                            placeholder="1111 2222 3333 4444" />
+                                                            placeholder="1111 2222 3333 4444" value={creditCardInfo.cardNumber} onChange={e => setCreditCardInfo({ ...creditCardInfo, cardNumber: e.target.value })} />
                                                         <label className="form-label" >Card Number</label>
                                                     </div>
                                                 </div>
@@ -281,7 +298,7 @@ function Checkout() {
                                                 <div className="col-lg-6 col-xl-6">
                                                     <div className="form-outline mb-3 mb-xl-4">
                                                         <input type="password" className="form-control"
-                                                            placeholder="&#9679;&#9679;&#9679;" />
+                                                            placeholder="&#9679;&#9679;&#9679;" value={creditCardInfo.cvv} onChange={e => setCreditCardInfo({ ...creditCardInfo, cvv: e.target.value })} />
                                                         <label className="form-label">Cvv</label>
                                                     </div>
                                                 </div>

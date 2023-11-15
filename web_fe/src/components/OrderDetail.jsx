@@ -21,7 +21,7 @@ function OrderDetail(props) {
         <header>
           <div className="row">
             <div className="col-sm-6">
-              <strong>Customer: </strong> <span style={{ color: 'red' }}>{order.user ? order.user.name : 'Guest'}</span>
+              <strong>Customer: </strong> <span style={{ color: 'red', fontSize: '1.5rem', fontWeight: '500' }}>{order.user ? order.user.name : 'Guest'}</span>
             </div>
             <div className="col-sm-6 text-sm-end">
               <strong>Order No:</strong> {order._id}
@@ -33,7 +33,7 @@ function OrderDetail(props) {
         <main>
           <div className="row">
             <div className="col-sm-6">
-              <strong>Member ID:</strong> {order.user ? order.user.member_id : 'Not a member'}
+              <strong>Member ID:</strong> {order.user?.member_id ? order.user.member_id : 'Not a member'}
             </div>
             <div className="col-sm-6 text-sm-end">
               <strong>Date:</strong> {order.timestamp}
@@ -49,6 +49,9 @@ function OrderDetail(props) {
                     <tr>
                       <td className="col-1">
                         <strong>#</strong>
+                      </td>
+                      <td className="col-1 text-center">
+                        <strong></strong>
                       </td>
                       <td className="col-4">
                         <strong>Name</strong>
@@ -71,6 +74,10 @@ function OrderDetail(props) {
                     {order.orderItems && order.orderItems.map((item, index) => (
                       <tr>
                         <td>{index + 1}</td>
+                        <td>
+                          <img src={`./images/${item.book.imagePath}`} className="img-fluid"
+                            style={{ maxWidth: '20px' }} alt="Book-cover" />
+                        </td>
                         <td className="col-4" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '150px' }}>
                           {item.book.title}
                         </td>
@@ -83,22 +90,22 @@ function OrderDetail(props) {
                   </tbody>
                   <tfoot className="card-footer">
                     <tr>
-                      <td colspan={order.user ? '5' : '4'} className="text-end">
-                        <strong>Original Cost:</strong>
+                      <td colspan={order.user ? '6' : '5'} className="text-end">
+                        <strong>Original Cost: </strong>
                       </td>
                       <td className="text-end">{order.original_cost && order.original_cost.toLocaleString()} vnđ</td>
                     </tr>
                     <tr>
-                      <td colspan={order.user ? '5' : '4'} className="text-end">
+                      <td colspan={order.user ? '6' : '5'} className="text-end">
                         <strong>Discount Cost: </strong>
                       </td>
                       <td className="text-end">{order.discount_cost && order.discount_cost.toLocaleString()} vnđ</td>
                     </tr>
                     <tr>
-                      <td colspan={order.user ? '5' : '4'} className="text-end border-bottom-0">
+                      <td colspan={order.user ? '6' : '5'} className="text-end border-bottom-0">
                         <h4>Total Cost: </h4>
                       </td>
-                      <td className="text-end border-bottom-0"><h4 style={{ color: 'red' }}>{order.original_cost && order.discount_cost && (order.original_cost - order.discount_cost).toLocaleString()} vnđ</h4></td>
+                      <td className="text-end border-bottom-0"><h4 style={{ color: 'red' }}>{(order.original_cost - order.discount_cost).toLocaleString()} vnđ</h4></td>
                     </tr>
                   </tfoot>
                 </table>

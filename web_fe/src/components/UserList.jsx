@@ -1,10 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import { findAllUsers } from '../services/API';
+import { deleteUser, findAllUsers } from '../services/API';
+import { Modal } from 'react-bootstrap';
+import MemberRegister from './MemberRegister';
 
 function UserList(props) {
 
     const [listUsers, setListUsers] = useState([]);
     const [tab, setTab] = useState('User');
+    const [userId, setUserId] = useState('');
+    const [showMemberRegistrationModal, setMemberRegistrationModal] = useState(false);
+
+    const openModal = (id) => {
+        setUserId(id);
+        setMemberRegistrationModal(true);
+    }
+
+    const closeModal = () => {
+        setMemberRegistrationModal(false);
+    }
+
+    const handleDelete = () => {
+        if (window.confirm('Are you sure to delete this user?')) {
+            const asyncFunction = async () => {
+                await deleteUser(userId);
+                setListUsers(listUsers.filter(item => item._id != userId));
+                console.log(userId)
+            }
+            asyncFunction();
+        }
+    }
 
     useEffect(() => {
         const asyncFunction = async () => {
@@ -35,11 +59,11 @@ function UserList(props) {
                                 </thead>
                                 <tbody>
                                     {listUsers.length > 0 && listUsers.filter(item => item.role == tab).map(item => (
-                                        <tr key={item._id}>
+                                        <tr key={item._id} onClick={() => setUserId(item._id)}>
                                             <td>
                                                 <img src="https://s3.ap-southeast-2.amazonaws.com/cdn.greekherald.com.au/wp-content/uploads/2020/07/05194617/default-avatar.png" alt="avatar" />
                                                 <a style={{ textDecoration: 'none', color: 'black' }} href="#" className="user-link">{item.name}</a>
-                                                <span className="user-subhead">{item.role}</span>
+                                                <span className="user-subhead">{item.username}</span>
                                             </td>
                                             <td>
                                                 {item.date_created}
@@ -53,18 +77,26 @@ function UserList(props) {
                                                 <a style={{ textDecoration: 'none', color: 'black' }} href="#">{item.phone_number}</a>
                                             </td>
                                             <td>
-                                                <a href="#" className="table-link">
-                                                    <span className="fa-stack">
-                                                        <i className="fa fa-square fa-stack-2x"></i>
-                                                        <i className="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                                    </span>
-                                                </a>
-                                                <a href="#" className="table-link danger">
-                                                    <span className="fa-stack">
-                                                        <i className="fa fa-square fa-stack-2x"></i>
-                                                        <i className="fa fa-trash-can fa-stack-1x fa-inverse"></i>
-                                                    </span>
-                                                </a>
+                                                <div className='d-flex'>
+                                                    <div className="table-link" style={{ cursor: 'pointer' }}>
+                                                        <span className="fa-stack">
+                                                            <i className="fa fa-square fa-stack-2x"></i>
+                                                            <i className="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                        </span>
+                                                    </div>
+                                                    <div className="table-link" onClick={() => { openModal(item._id); }} style={{ cursor: 'pointer' }}>
+                                                        <span className="fa-stack">
+                                                            <i className="fa fa-square fa-stack-2x"></i>
+                                                            <i className=" fa fa-solid fa-id-card-clip fa-stack-1x fa-inverse"></i>
+                                                        </span>
+                                                    </div>
+                                                    <div className="table-link danger" onClick={handleDelete} style={{ cursor: 'pointer' }}>
+                                                        <span className="fa-stack">
+                                                            <i className="fa fa-square fa-stack-2x"></i>
+                                                            <i className="fa fa-trash-can fa-stack-1x fa-inverse"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                     ))}
@@ -76,6 +108,14 @@ function UserList(props) {
                     <button className='btn btn-lg btn-success' onClick={() => { window.location.href = "/sign-up" }}>Create account</button>
                 </div>
             </div>
+            <Modal show={showMemberRegistrationModal} onHide={closeModal} dialogClassName='modal-xl'>
+                <Modal.Header>
+                    <h3>Member Register</h3>
+                </Modal.Header>
+                <Modal.Body>
+                    <MemberRegister userId={userId} />
+                </Modal.Body>
+            </Modal>
         </div>
     );
 }

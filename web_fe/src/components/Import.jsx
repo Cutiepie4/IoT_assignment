@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { addCopy, enableRFIDContinuous, disableRFIDContinuous } from '../services/API';
 import { io } from 'socket.io-client';
+import { toast } from 'react-toastify'
 
 function Import(props) {
 
@@ -51,7 +52,10 @@ function Import(props) {
         const socket = io('http://localhost:5000');
 
         socket.on('import', (copy) => {
-            setListId(prev => new Set([...prev, copy['card_id']]));
+            if (Object.keys(copy).length === 0 && copy.constructor === Object) {
+                toast.error('Cannot use this card.');
+            }
+            else setListId(prev => new Set([...prev, copy['card_id']]));
         });
 
         return () => {

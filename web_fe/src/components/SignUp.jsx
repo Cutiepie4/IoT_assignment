@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import { createUser, enableRFIDSingle } from '../services/API';
 
 function SignUp(props) {
-
+    const { role } = props;
+    const navigate = useNavigate();
     const [account, setAccount] = useState({ role: 'User' });
 
     const [alterPassword, setAlterPassword] = useState('');
@@ -30,7 +31,17 @@ function SignUp(props) {
 
     const handleRegister = (e) => {
         if (validate() && window.confirm('Are you sure to create this user ?')) {
-            createUser(account);
+            const asyncFunction = async () => {
+                const flag = await createUser(account);
+                if (flag) {
+                    if (role == 'Admin') {
+                        navigate('/users')
+                    }
+                    else
+                        navigate('/sign-in');
+                }
+            }
+            asyncFunction();
         }
     }
 
@@ -38,7 +49,11 @@ function SignUp(props) {
         const socket = io('http://localhost:5000');
 
         socket.on('sign-up', (card) => {
-            setAccount(prev => { return { ...prev, 'member_id': card['card_id'] } });
+            if (Object.keys(card).length === 0 && card.constructor === Object) {
+                toast.error('Cannot use this card.');
+            }
+            else
+                setAccount(prev => { return { ...prev, 'member_id': card['card_id'] } });
         });
 
         return () => {
@@ -57,13 +72,13 @@ function SignUp(props) {
                                     <div className="col-md-10 col-lg-6 col-xl-5">
                                         <p className="text-center h1 fw-bold mb-3 mt-3">Sign up</p>
                                         <div>
-                                            <div className="d-flex justify-content-between align-items-center mb-4">
+                                            {role == 'Admin' && <div className="d-flex justify-content-between align-items-center mb-4">
                                                 <i className="fas fa-tag fa-lg me-3 fa-fw"></i>
                                                 <div className="form-outline flex-fill mb-0 me-2">
                                                     <input type="text" className="form-control" placeholder='Member card' value={account.member_id} disabled />
                                                 </div>
                                                 <button className='btn btn-success' onClick={enableRFIDSingle}>Add</button>
-                                            </div>
+                                            </div>}
                                             <div className="d-flex flex-row align-items-center mb-4">
                                                 <i className="fas fa-id-badge fa-lg me-3 fa-fw"></i>
                                                 <div className="form-outline flex-fill mb-0">
@@ -105,7 +120,7 @@ function SignUp(props) {
                                                 </div>
                                             </div>
 
-                                            <div className="d-flex flex-row align-items-center mb-4">
+                                            {role == 'Admin' && <div className="d-flex flex-row align-items-center mb-4">
                                                 <i className="fas fa-user-gear fa-lg me-3 fa-fw"></i>
                                                 <select
                                                     className="border-1 form-select"
@@ -114,14 +129,11 @@ function SignUp(props) {
                                                     <option value="User" selected={account.role == 'User'}>User</option>
                                                     <option value="Admin" selected={account.role == 'Admin'}>Admin</option>
                                                 </select>
-                                            </div>
-
-
-
-
+                                            </div>}
 
                                             <div className="d-flex justify-content-center">
-                                                <button type="button" className="btn btn-success" onClick={handleRegister}>Sign Up</button>
+                                                <button type="button" className="btn btn-success me-2" onClick={handleRegister}>Sign Up</button>
+                                                <button className='btn btn-secondary' onClick={() => { navigate('/'); }}>To Home</button>
                                             </div>
                                         </div>
                                     </div>

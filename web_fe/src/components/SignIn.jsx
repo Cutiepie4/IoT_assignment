@@ -54,6 +54,7 @@ function SignIn() {
                                             <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                                 <button type="button" className="btn btn-primary" onClick={handleLogin}>Sign In</button>
                                             </div>
+                                            <div className='d-flex align-items-center justify-content-center'>Not a member?<a href="/sign-up" className='ms-2'>Sign up here.</a></div>
                                         </form>
                                     </div>
                                 </div>
