@@ -1,4 +1,3 @@
-from bson import BSON
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
@@ -7,7 +6,7 @@ from flask_socketio import SocketIO
 from flask_jwt_extended import jwt_required, JWTManager, get_jwt_identity, create_access_token
 from datetime import datetime
 from bson.json_util import dumps
-import uuid, json, os, jwt
+import uuid, json, os
 
 client = MongoClient('mongodb://localhost:27017')
 db = client['iot_db']
@@ -20,10 +19,10 @@ app.config['JWT_SECRET_KEY'] = 'nhom10'
 jwt = JWTManager(app)
 CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
-UPLOAD_FOLDER = 'C://Users//trvie//Documents//Code//iot//web_fe//public//images//'
+UPLOAD_FOLDER = 'C://Users//TQVIET//Documents//Code//IoT_assignment//web_fe//public//images//'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-esp32_host = 'http://192.168.0.102'
+esp32_host = 'http://192.168.0.104'
 
 def find_by_copy_id(id_copy):
     result = books_collection.aggregate([
@@ -59,6 +58,15 @@ def find_by_copy_id(id_copy):
         return book_data
     else:
         return None
+    
+def validateCard(cardId):
+    user = find_by_member_id(cardId)
+    if user:
+        return False
+    book = find_by_copy_id(cardId)
+    if book:
+        return False
+    return True
     
 def check_book_title_exists(book_title, current_id='default'):
     if current_id == 'default':
@@ -173,7 +181,7 @@ def add_copy():
                 matching_copy_ids.add(copy['copy_id'])
 
     if matching_copy_ids:
-        return jsonify({"message": f"The following books are already in the database, please check back: {matching_copy_ids}"}), 400
+        return jsonify({"message": f"The following card id are already in the database, please check back: {matching_copy_ids}"}), 400
     else:
         books_collection.update_one(
             {"_id": ObjectId(book_id)},
@@ -191,7 +199,6 @@ def delete_by_copy_id(id):
         return jsonify({"message": f"Deleted the copy successfully."}), 200
     except Exception as e:
         return jsonify({"message": "An error occurred while deleting the copies."}), 500
-
 
 @app.route('/delete-book/<string:id>', methods=['DELETE'])
 @jwt_required()
@@ -243,11 +250,19 @@ def read_rfid_card():
         new_book['book'] = book;
         new_book['copy_id'] = card['card_id']
         socketio.emit('checkout', new_book)
+    else:
+        socketio.emit('checkout', {})
+    
     user = find_by_member_id(card['card_id'])
     if user != None:
         socketio.emit('checkout-user', user)
-    socketio.emit('import', card)
-    socketio.emit('sign-up', card)
+    if validateCard(card['card_id']):
+        socketio.emit('sign-up', card)
+        socketio.emit('import', card)
+    else:
+        socketio.emit('sign-up', {})
+        socketio.emit('import', {})
+    
     return jsonify('Card ID received successfully'), 200
 
 #===============================================================
@@ -270,40 +285,38 @@ def find_order_by_id(order_id):
 @app.route('/checkout', methods=['POST'])
 def checkout():
     data = request.get_json()
+
     if 'member_id' in data['user']:
         user_id = data['user']['member_id']
     else:
         user_id = None
+
     items = data['orderItems']
     current_time = datetime.now()
-    new_items = [{'book': find_by_book_id(item['book']['_id']), 'copy_ids': item['copy_ids']} for item in items]
-    orders_collection.insert_one({'user': user_id, 'orderItems': new_items, 'timestamp': current_time, 'original_cost': data['original_cost'], 'discount_cost': data['discount_cost']})
+
+    new_items = []
+
+    for item in items:
+        book_id = item['book']['_id']
+        copy_ids = item['copy_ids']
+
+        books_collection.update_one(
+            {'_id': ObjectId(book_id)},
+            {'$pull': {'copies': {'copy_id': {'$in': copy_ids}}}}
+        )
+
+        book = find_by_book_id(book_id)
+        new_items.append({'book': book, 'copy_ids': copy_ids})
+
+    orders_collection.insert_one({
+        'user': user_id,
+        'orderItems': new_items,
+        'timestamp': current_time,
+        'original_cost': data['original_cost'],
+        'discount_cost': data['discount_cost']
+    })
+
     return jsonify('Checkout Success!'), 201
-
-# @app.route('/checkout-online', methods=['POST'])
-# def checkout_online():
-#     data = request.get_json()
-#     if 'member_id' in data['user']:
-#         user_id = data['user']['member_id']
-#     else:
-#         user_id = None
-#     items = data['items']
-#     current_time = datetime.now()
-    
-#     new_items = []
-#     for item in items:
-#         book_id = item['book']['_id']
-#         quantity = item['quantity']
-        
-#         # Extract 'quantity' number of copy_ids from the book's 'copies'
-#         copy_ids = [copy['copy_id'] for copy in item['book']['copies'][:quantity]]
-        
-#         new_items.append({'book': book_id, 'quantity': quantity, 'copy_ids': copy_ids})
-    
-#     orders_collection.insert_one({'user': user_id, 'items': new_items, 'timestamp': current_time, 'total_cost': data['total_cost']})
-    
-#     return jsonify('Checkout Success!'), 201
-
 
 @app.route('/find-all-orders')
 def find_all_orders():
@@ -476,38 +489,54 @@ def find_all_users():
 @app.route('/create-user', methods=['POST'])
 def create_user():
     data = request.get_json()
-    user = find_by_member_id(data['member_id'])
-    if user:
-        return jsonify({"message": "Member ID already exists, please use another RFID card!"}), 400
+    if 'member_id' in data and not validateCard(data['member_id']):
+        return jsonify({"message": "Cannot use this card."})
     
-    user = users_collection.find_one({'username': data['username']})
-    if user:
-        return jsonify({'message': 'Username existed!'}), 400
-
     customer_data = {
         "name": data['name'],
         "username": data['username'],
         "phone_number": data['phone_number'],
         "password": data['password'],
-        "member_id": data['member_id'],
         "role": data['role'],
         "date_created": str(datetime.now().date()),
         "status": "active"
     }
+    if 'member_id' in data:
+        customer_data['member_id'] = data['member_id']
+    else:
+        customer_data['member_id'] = None
 
     result = users_collection.insert_one(customer_data)
     return jsonify({"message": "User created successfully!", "customer_id": str(result.inserted_id)}), 201
 
-@app.route('/find-user/<string:member_id>')
-def find_user(member_id):
-    user = find_by_member_id(member_id)
+@app.route('/find-user/<string:user_id>')
+def find_user(user_id):
+    user = users_collection.find_one({"_id": ObjectId(user_id)})
     if user:
+        user['_id'] = str(user['_id'])
         return jsonify(user), 200
     else:
-        return jsonify({"message": "user not found"}), 404
+        return jsonify({"message": "User not found"}), 404
+    
+@app.route('/update-member-id', methods=['POST'])
+def update_member_id():
+    data = request.get_json()
+
+    user_id = data['userId']
+    new_member_id = data['memberId']
+
+    result = users_collection.update_one(
+        {'_id': ObjectId(user_id)},
+        {'$set': {'member_id': new_member_id}}
+    )
+
+    if result.modified_count > 0:
+        return jsonify({'message': 'Member ID updated successfully'}), 200
+    else:
+        return jsonify({'message': 'User not found or no changes made'}), 404
 
 @app.route('/delete-user/<string:id>', methods=['DELETE'])
-def delete_customer(id):
+def delete_user(id):
     result = users_collection.delete_one({"_id": ObjectId(id)})
 
     if result.deleted_count > 0:
