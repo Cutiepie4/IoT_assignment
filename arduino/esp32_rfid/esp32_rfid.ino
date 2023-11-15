@@ -7,12 +7,13 @@
 
 #define RST_PIN 22
 #define SS_PIN 21
+#define BUZZER_PIN 4
 
 MFRC522 mfrc522(SS_PIN, RST_PIN);
 
 const char *ssid = "wifi nha ai day 2,4Ghz";
 const char *password = "khongcomatkhaudau";
-String serverUrl = "http://192.168.0.100:5000";
+String serverUrl = "http://192.168.0.102:5000";
 String readCardApi = serverUrl + "/read-card";  // Replace with your server URL
 
 bool singleMode = false;
@@ -22,6 +23,8 @@ AsyncWebServer server(80);
 
 void setup() {
   Serial.begin(115200);
+  pinMode(BUZZER_PIN, OUTPUT);
+  digitalWrite(BUZZER_PIN, HIGH);
   SPI.begin();
   mfrc522.PCD_Init();
   WiFi.begin(ssid, password);
@@ -58,9 +61,11 @@ void setup() {
   });
 
   server.begin();
+  
 }
 
 void loop() {
+  digitalWrite(BUZZER_PIN, HIGH);
   if (WiFi.status() == WL_CONNECTED) {
     if (!mfrc522.PICC_IsNewCardPresent()) {
       return;
@@ -77,6 +82,12 @@ void loop() {
     }
 
     Serial.println(cardIdString);
+
+    if(singleMode || continuousMode) {
+      digitalWrite(BUZZER_PIN, LOW);
+      delay(200);
+      digitalWrite(BUZZER_PIN, HIGH);
+    }
 
     if (singleMode) {
       WiFiClient client;
@@ -97,7 +108,7 @@ void loop() {
       }
       http.end();
       singleMode = false;
-      
+
     } else if (continuousMode) {
       WiFiClient client;
       HTTPClient http;
@@ -118,8 +129,7 @@ void loop() {
       }
       http.end();
     }
-
-    delay(800);
+    delay(300);
   } else {
     Serial.println("Wifi disconnected...");
     delay(3000);

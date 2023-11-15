@@ -89,7 +89,7 @@ export const deleteBook = async (card_id) => {
 export const enableRFIDSingle = async () => {
     await api.get('/enable_single_mode')
         .then(res => { toast.success(res.data); })
-        .catch(error => { toast.error(error.response.data.message); });
+        .catch(error => { toast.error('Cannot enable RFID.') });
 }
 
 export const enableRFIDContinuous = async () => {
@@ -175,9 +175,9 @@ export const findOrderById = async (orderId) => {
 }
 
 export const createUser = async (account) => {
-    api.post('/create-user', account)
-        .then(res => { toast.success(res.data.message); })
-        .catch(error => { toast.error(error.response.data.message) });
+    return await api.post('/create-user', account)
+        .then(res => { toast.success(res.data.message); return true; })
+        .catch(error => { toast.error(error.response.data.message); return false; });
 }
 
 export const signIn = async (payload) => {
@@ -199,6 +199,24 @@ export const signOut = () => {
 export const identifyUser = async () => {
     const data = await api.get('/protected', createConfig())
         .then(res => res.data)
-        .catch(error => { toast.error(error.response.data.message); return null });
+        .catch(error => { toast.error(error.response.data.message); return false; });
     return data;
+}
+
+export const findUser = async (userId) => {
+    return await api.get(`/find-user/${userId}`)
+        .then(res => res.data)
+        .catch(error => { toast.error(error.response.data.message); return false; });
+}
+
+export const updateMemberId = async (payload) => {
+    await api.post('/update-member-id', payload)
+        .then(res => { toast.success(res.data.message); })
+        .catch(error => { toast.error(error.response.data.message); });
+}
+
+export const deleteUser = async (userId) => {
+    await api.delete(`/delete-user/${userId}`)
+        .then(res => { toast.success(res.data.message); })
+        .catch(error => { toast.error(error.response.data.message); });
 }

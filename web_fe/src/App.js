@@ -66,7 +66,6 @@ function App() {
             <Route element={<Orders />} path={"/orders/"} />
             <Route element={<OrderDetail />} path={"/order-detail"} />
             <Route element={<UserList />} path={"/users"} />
-            <Route element={<SignUp />} path={"/sign-up"} />
           </Route>
 
           <Route element={<UserRoute role={role} />} >
@@ -74,6 +73,7 @@ function App() {
           </Route>
         </Route>
 
+        <Route element={<SignUp role={role} />} path={"/sign-up"} />
         <Route element={<SignIn />} path={"/sign-in"} />
       </Routes>
       <ToastContainer

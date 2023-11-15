@@ -58,7 +58,7 @@
     color: #344644;
 }
 
-.user-list .table thead>tr>th>a span:after {
+.user-list .table thead>tr>th>div span:after {
     content: "\f0dc";
     font-family: FontAwesome;
     font-style: normal;
@@ -76,7 +76,8 @@
     content: "\f0de";
 }
 
-.user-list .table thead>tr>th>a:hover span {
+.user-list .table thead>tr>th>div:hover span {
+    cursor: pointer;
     text-decoration: none;
     color: #2bb6a3;
     border-color: #2bb6a3;
@@ -110,21 +111,21 @@
     line-height: 1.2;
 }
 
-.user-list .table a.table-link {
+.user-list .table div.table-link {
     margin: 0 5px;
     font-size: 1.125em;
 }
 
-.user-list .table a.table-link:hover {
+.user-list .table div.table-link:hover {
     text-decoration: none;
     color: #2aa493;
 }
 
-.user-list .table a.table-link.danger {
+.user-list .table div.table-link.danger {
     color: #fe635f;
 }
 
-.user-list .table a.table-link.danger:hover {
+.user-list .table div.table-link.danger:hover {
     color: #dd504c;
 }
 
