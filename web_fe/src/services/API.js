@@ -197,6 +197,9 @@ export const signOut = () => {
 }
 
 export const identifyUser = async () => {
+    if (!hasToken()) {
+        return false;
+    }
     const data = await api.get('/protected', createConfig())
         .then(res => res.data)
         .catch(error => { toast.error(error.response.data.message); return false; });

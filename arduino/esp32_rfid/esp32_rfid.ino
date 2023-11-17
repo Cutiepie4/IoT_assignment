@@ -9,6 +9,10 @@
 #define SS_PIN 21
 #define BUZZER_PIN 4
 
+#define redPin 25
+#define greenPin 26
+#define bluePin 27
+
 MFRC522 mfrc522(SS_PIN, RST_PIN);
 
 const char *ssid = "wifi nha ai day 2,4Ghz";
@@ -25,6 +29,11 @@ void setup() {
   Serial.begin(115200);
   pinMode(BUZZER_PIN, OUTPUT);
   digitalWrite(BUZZER_PIN, HIGH);
+
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
+
   SPI.begin();
   mfrc522.PCD_Init();
   WiFi.begin(ssid, password);
@@ -61,12 +70,28 @@ void setup() {
   });
 
   server.begin();
-  
 }
 
 void loop() {
+  // singleMode => blue, continuousMode => green
   digitalWrite(BUZZER_PIN, HIGH);
+
   if (WiFi.status() == WL_CONNECTED) {
+    if (singleMode) {
+      pinMode(redPin, HIGH);
+      pinMode(greenPin, HIGH);
+      pinMode(bluePin, HIGH);
+      setColor(0, 0, 128);
+    } else if (continuousMode) {
+      pinMode(redPin, HIGH);
+      pinMode(greenPin, HIGH);
+      pinMode(bluePin, HIGH);
+      setColor(0, 128, 0);
+    } else {
+      pinMode(redPin, LOW);
+      pinMode(greenPin, LOW);
+      pinMode(bluePin, LOW);
+    }
     if (!mfrc522.PICC_IsNewCardPresent()) {
       return;
     }
@@ -83,7 +108,7 @@ void loop() {
 
     Serial.println(cardIdString);
 
-    if(singleMode || continuousMode) {
+    if (singleMode || continuousMode) {
       digitalWrite(BUZZER_PIN, LOW);
       delay(200);
       digitalWrite(BUZZER_PIN, HIGH);
@@ -134,4 +159,10 @@ void loop() {
     Serial.println("Wifi disconnected...");
     delay(3000);
   }
+}
+
+void setColor(int redValue, int greenValue, int blueValue) {
+  analogWrite(redPin, 255 - redValue);
+  analogWrite(greenPin, 255 - greenValue);
+  analogWrite(bluePin, 255 - blueValue);
 }

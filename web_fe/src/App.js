@@ -35,8 +35,14 @@ function App() {
     const fetchData = async () => {
       try {
         const userData = await identifyUser();
-        setRole(userData.role);
-        setUsername(userData.username);
+        if (userData) {
+          setRole(userData.role);
+          setUsername(userData.username);
+        }
+        else {
+          setRole('Guest');
+          setUsername('');
+        }
       } catch (error) {
         console.error('Error fetching user data:', error);
       } finally {

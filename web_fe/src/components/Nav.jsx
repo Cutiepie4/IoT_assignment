@@ -17,6 +17,7 @@ function Nav(props) {
             setListBooks(booksData);
         };
         asyncFunction();
+        console.log(role)
     }, []);
 
     useEffect(() => {

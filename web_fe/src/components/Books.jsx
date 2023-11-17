@@ -66,11 +66,11 @@ function Books() {
                 <thead className="table-primary">
                     <tr>
                         <th>#</th>
+                        <th></th>
                         <th>Title</th>
                         <th>Author</th>
                         <th>Description</th>
                         <th>Genre</th>
-                        <th>Page</th>
                         <th>Price (vnd)</th>
                         <th>Discount (%)</th>
                         <th>In-Stock</th>
@@ -83,7 +83,16 @@ function Books() {
                         <>
                             <tr key={item._id} className={item.in_stock == 0 ? 'row-hover found' : 'row-hover'} style={{ backgroundColor: '#ff0000' }}>
                                 <td>{index + 1}</td>
-                                <td>{item.title}</td>
+                                <td>
+                                    <img src={`./images/${item.imagePath}`} className="img-fluid"
+                                        style={{ maxWidth: '20px' }} alt="Book-cover" />
+                                </td>
+                                <td style={{
+                                    maxWidth: '250px',
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                    whiteSpace: 'nowrap'
+                                }}>{item.title}</td>
                                 <td>{item.author}</td>
                                 <td style={{
                                     maxWidth: '300px',
@@ -92,7 +101,6 @@ function Books() {
                                     whiteSpace: 'nowrap'
                                 }}>{item.description}</td>
                                 <td>{item.genre}</td>
-                                <td>{item.page}</td>
                                 <td>{item.price.toLocaleString()}</td>
                                 <td>{item.discount}</td>
                                 <td>{item.in_stock}</td>
