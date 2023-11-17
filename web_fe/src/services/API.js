@@ -220,3 +220,9 @@ export const deleteUser = async (userId) => {
         .then(res => { toast.success(res.data.message); })
         .catch(error => { toast.error(error.response.data.message); });
 }
+
+export const updateUser = async (user) => {
+    await api.put(`/update-user`, user)
+        .then(res => { toast.success(res.data.message); })
+        .catch(error => { toast.error(error.response.data.message); });
+}

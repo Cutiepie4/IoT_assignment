@@ -19,7 +19,7 @@ app.config['JWT_SECRET_KEY'] = 'nhom10'
 jwt = JWTManager(app)
 CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
-UPLOAD_FOLDER = 'C://Users//TQVIET//Documents//Code//IoT_assignment//web_fe//public//images//'
+UPLOAD_FOLDER = 'C://Users//Viettq//Documents//Code//IoT_assignment//web_fe//public//images//'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 esp32_host = 'http://192.168.0.104'
@@ -119,8 +119,8 @@ def delete_image(image_path):
 @app.route('/add-book', methods=['POST'])
 def add_book():
     image = request.files.get('image')
-    book = json.loads(request.form.get('book'))    
-    if check_book_title_exists(book.title):
+    book = json.loads(request.form.get('book'))
+    if check_book_title_exists(book['title']):
         return jsonify({"message": "Book title already exists!"}), 400
     else:
         filename = str(uuid.uuid4()) + os.path.splitext(image.filename)[-1].lower()
@@ -543,6 +543,25 @@ def delete_user(id):
         return jsonify({"message": "User deleted successfully"}), 200
     else:
         return jsonify({"message": "User not found"}), 404
+
+@app.route('/update-user', methods=['PUT'])
+def update_user():
+    data = request.get_json()
+    user_id = data['_id']
+    data.pop('_id', None)
+
+    if not data:
+        return jsonify({'error': 'No data provided'}), 400
+
+    result = users_collection.update_one(
+        {'_id': ObjectId(user_id)},
+        {'$set': data}
+    )
+
+    if result.matched_count > 0 and result.modified_count > 0:
+        return jsonify({'message': 'User updated successfully'}), 200
+    else:
+        return jsonify({'error': 'User not found or no changes made'}), 404
 
 @app.route('/protected', methods=['GET'])
 @jwt_required()

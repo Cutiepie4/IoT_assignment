@@ -85,7 +85,6 @@ function Book(props) {
             const formData = new FormData();
             if (image !== null) formData.append('image', image);
             formData.append('book', JSON.stringify(book));
-            console.log(formData)
             if (bookId == 0)
                 addBook(formData);
             else updateBook(formData);

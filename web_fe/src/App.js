@@ -23,6 +23,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AdminRoute from './AdminRoute';
 import UserRoute from './UserRoute';
 import { identifyUser } from './services/API';
+import UserDetail from './components/UserDetail';
 
 function App() {
 
@@ -66,6 +67,7 @@ function App() {
             <Route element={<Orders />} path={"/orders/"} />
             <Route element={<OrderDetail />} path={"/order-detail"} />
             <Route element={<UserList />} path={"/users"} />
+            <Route element={<UserDetail />} path={"/user-detail"} />
           </Route>
 
           <Route element={<UserRoute role={role} />} >

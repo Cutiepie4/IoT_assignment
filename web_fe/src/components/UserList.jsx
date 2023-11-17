@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { deleteUser, findAllUsers } from '../services/API';
 import { Modal } from 'react-bootstrap';
 import MemberRegister from './MemberRegister';
+import UserDetail from './UserDetail';
 
 function UserList(props) {
 
@@ -9,14 +10,24 @@ function UserList(props) {
     const [tab, setTab] = useState('User');
     const [userId, setUserId] = useState('');
     const [showMemberRegistrationModal, setMemberRegistrationModal] = useState(false);
+    const [showUserUpdateModal, setUserUpdateModal] = useState(false);
 
-    const openModal = (id) => {
+    const openMemberRegisterModal = (id) => {
         setUserId(id);
         setMemberRegistrationModal(true);
     }
 
-    const closeModal = () => {
+    const closeMemberRegisterModal = () => {
         setMemberRegistrationModal(false);
+    }
+
+    const openUserUpdateModal = (id) => {
+        setUserId(id);
+        setUserUpdateModal(true);
+    }
+
+    const closeUserUpdateModal = () => {
+        setUserUpdateModal(false);
     }
 
     const handleDelete = () => {
@@ -78,13 +89,13 @@ function UserList(props) {
                                             </td>
                                             <td>
                                                 <div className='d-flex'>
-                                                    <div className="table-link" style={{ cursor: 'pointer' }}>
+                                                    <div className="table-link" style={{ cursor: 'pointer' }} onClick={() => { openUserUpdateModal(item._id) }}>
                                                         <span className="fa-stack">
                                                             <i className="fa fa-square fa-stack-2x"></i>
                                                             <i className="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                                         </span>
                                                     </div>
-                                                    <div className="table-link" onClick={() => { openModal(item._id); }} style={{ cursor: 'pointer' }}>
+                                                    <div className="table-link" onClick={() => { openMemberRegisterModal(item._id); }} style={{ cursor: 'pointer' }}>
                                                         <span className="fa-stack">
                                                             <i className="fa fa-square fa-stack-2x"></i>
                                                             <i className=" fa fa-solid fa-id-card-clip fa-stack-1x fa-inverse"></i>
@@ -108,12 +119,20 @@ function UserList(props) {
                     <button className='btn btn-lg btn-success' onClick={() => { window.location.href = "/sign-up" }}>Create account</button>
                 </div>
             </div>
-            <Modal show={showMemberRegistrationModal} onHide={closeModal} dialogClassName='modal-xl'>
+            <Modal show={showMemberRegistrationModal} onHide={closeMemberRegisterModal} dialogClassName='modal-xl'>
                 <Modal.Header>
                     <h3>Member Register</h3>
                 </Modal.Header>
                 <Modal.Body>
                     <MemberRegister userId={userId} />
+                </Modal.Body>
+            </Modal>
+            <Modal show={showUserUpdateModal} onHide={closeUserUpdateModal} dialogClassName='modal-xl'>
+                <Modal.Header>
+                    <h3>User Info</h3>
+                </Modal.Header>
+                <Modal.Body>
+                    <UserDetail userId={userId} />
                 </Modal.Body>
             </Modal>
         </div>
