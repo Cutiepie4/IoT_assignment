@@ -21,7 +21,7 @@ function OrderDetail(props) {
         <header>
           <div className="row">
             <div className="col-sm-6">
-              <strong>Customer: </strong> <span style={{ color: 'red', fontSize: '1.5rem', fontWeight: '500' }}>{order.user ? order.user.name : 'Guest'}</span>
+              <strong>Customer name: </strong> <span style={{ color: 'red', fontSize: '1.5rem', fontWeight: '500' }}>{order.user ? order.user.name : 'Guest'}</span>
             </div>
             <div className="col-sm-6 text-sm-end">
               <strong>Order No:</strong> {order._id}

@@ -81,7 +81,7 @@ function Books() {
                 <tbody>
                     {listBooks.map((item, index) => (
                         <>
-                            <tr key={item._id} className={item.in_stock == 0 ? 'row-hover found' : 'row-hover'} style={{ backgroundColor: '#ff0000' }}>
+                            <tr key={item._id} className={'row-hover ' + (item.in_stock == 0 ? 'row-danger ' : ' ') + (item.discount > 0 ? 'row-success ' : ' ')} style={{ backgroundColor: '#ff0000' }}>
                                 <td>{index + 1}</td>
                                 <td>
                                     <img src={`./images/${item.imagePath}`} className="img-fluid"

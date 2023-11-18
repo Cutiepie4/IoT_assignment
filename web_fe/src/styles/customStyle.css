@@ -354,10 +354,12 @@ label {
 .book-sum {
     margin-top: 20px;
     font-size: 14px;
-    overflow: hidden;
+    -webkit-line-clamp: 4;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
 }
 
 .book-see {
@@ -1017,8 +1019,14 @@ input::-webkit-inner-spin-button {
     animation: flicker 1s infinite;
 }
 
-table.table.table-striped tr.found td {
-    background-color: coral;
+table.table.table-striped tr.row-danger td {
+    background-color: #f2dede;
+    color: #b94442;
+}
+
+table.table.table-striped tr.row-success td {
+    background-color: #dff0d8;
+    color: #3c763d;
 }
 
 table.table.table-striped {

@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Modal } from 'react-bootstrap';
 import OrderDetail from './OrderDetail';
-import { findAllOrders, formatDate } from '../services/API';
+import { findAllOrders } from '../services/API';
 
 function Orders() {
     const [startDate, setStartDate] = useState(new Date());
@@ -119,7 +119,7 @@ function Orders() {
                     <div className='row mb-3' key={order._id} >
                         <div className='col col-lg-2 me-3 text-center' style={{ borderRight: '3px solid gray', color: 'red' }}>
                             <h5>{order.date}</h5>
-                            <p style={{ color: 'black' }}>Quantity: {order.totalBooksSold}</p>
+                            <p style={{ color: 'black' }}>Books: {order.totalBooksSold}</p>
                             <p style={{ color: 'black' }}>Day's Income: {order.totalMoneyReceived && order.totalMoneyReceived.toLocaleString()} vnd</p>
                         </div>
                         <div className='col col-lg-9'>

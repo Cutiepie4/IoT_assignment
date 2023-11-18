@@ -41,7 +41,7 @@ function HomeBook(props) {
                                 />
                                 <span className="book-voters card-vote">{book.num_ratings} voters</span>
                             </div>
-                            <div className="book-sum card-sum">{book.description}</div>
+                            <div id='description' className="book-sum card-sum">{book.description}</div>
                         </div>
                     </NavLink>
                 </div>

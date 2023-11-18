@@ -15,8 +15,8 @@ import Orders from './components/Orders';
 import OrderDetail from './components/OrderDetail';
 import ReactLoading from 'react-loading';
 
-import '@fortawesome/fontawesome-free/css/all.css';
 import './styles/customStyle.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/userList.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -24,6 +24,7 @@ import AdminRoute from './AdminRoute';
 import UserRoute from './UserRoute';
 import { identifyUser } from './services/API';
 import UserDetail from './components/UserDetail';
+import UserOrders from './components/UserOrders';
 
 function App() {
 
@@ -75,9 +76,8 @@ function App() {
             <Route element={<UserList />} path={"/users"} />
             <Route element={<UserDetail />} path={"/user-detail"} />
           </Route>
-
           <Route element={<UserRoute role={role} />} >
-
+            <Route element={<UserOrders />} path={"/user-orders"} />
           </Route>
         </Route>
 

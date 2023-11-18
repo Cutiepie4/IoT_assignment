@@ -229,3 +229,12 @@ export const updateUser = async (user) => {
         .then(res => { toast.success(res.data.message); })
         .catch(error => { toast.error(error.response.data.message); });
 }
+
+export const findOrdersByMemberId = async () => {
+    if (!hasToken()) {
+        toast.error('Error fetching data...');
+    }
+    return await api.get(`/orders/user`, createConfig())
+        .then(res => res.data)
+        .catch(error => { toast.error(error.response.data.message); });
+}

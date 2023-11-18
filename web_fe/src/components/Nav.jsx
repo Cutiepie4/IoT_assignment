@@ -79,7 +79,7 @@ function Nav(props) {
                             {role === 'Admin' && (<li className='border-bottom'><NavLink to='/books'>Book Storage</NavLink></li>)}
                             {role === 'Admin' && (<li className='border-bottom'><NavLink to='/orders'>Orders</NavLink></li>)}
                             {role === 'Admin' && (<li className='border-bottom'><NavLink to='/checkout'>Checkout</NavLink></li>)}
-                            {role === 'User' && (<li className='border-bottom'><NavLink to='/user-orders'>Your Orders</NavLink></li>)}
+                            {role === 'User' && (<li className='border-bottom'><NavLink to={`/user-orders`}>Purchase History</NavLink></li>)}
                             {role != 'Guest' && (<li className='border-bottom' onClick={signOut}><NavLink to={'#'}>Logout</NavLink></li>)}
                         </ul>
                     </div>

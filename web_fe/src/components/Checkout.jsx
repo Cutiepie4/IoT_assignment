@@ -137,7 +137,7 @@ function Checkout() {
                                             </div>
                                         </th>
                                         <td className="align-middle text-center" style={{ fontWeight: 500 }}>
-                                            <p className='mb-0'>{orderItem.book.discount}%</p>
+                                            <p className={Object.keys(user).length == 0 ? 'mb-0 text-decoration-line-through text-muted' : 'mb-0'}>{orderItem.book.discount}%</p>
                                         </td>
                                         <td className="align-middle text-center" style={{ fontWeight: 500 }}>
                                             <p className='mb-0'>{orderItem.quantity}</p>
@@ -149,8 +149,8 @@ function Checkout() {
                                         </td>
                                         <td className="align-middle">
                                             <div className="d-flex justify-content-center align-items-center" style={{ height: '100%' }}>
-                                                <div onClick={() => { }} className="text-center" style={{ width: '100%' }}>
-                                                    <i className="fa-regular fa-trash-can fa-lg trash-can-icon"></i>
+                                                <div onClick={() => { setOrderItems(orderItems.filter(item => item.book._id != orderItem.book._id)) }} className="text-center" style={{ width: '100%' }}>
+                                                    <i className="fa-regular fa-trash-can fa-lg trash-can-icon" ></i>
                                                 </div>
                                             </div>
                                         </td>
@@ -199,9 +199,9 @@ function Checkout() {
                                                             <p className="text-muted">{formatDate(user.date_created)}</p>
                                                         </div>
                                                     </div>
-                                                    <div className="d-flex justify-content-start">
-                                                        <button className='btn btn-outline-dark' onClick={enableRFIDSingle}>Scan</button>
-                                                    </div>
+                                                    {Object.keys(user).length > 0 && <div className="d-flex justify-content-start">
+                                                        <button className='btn btn-outline-dark' onClick={() => { setUser({}) }}>Remove</button>
+                                                    </div>}
                                                 </div>
                                             </div>
                                         </div>

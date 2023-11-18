@@ -80,11 +80,11 @@ function BookDetail() {
                                 readonly={true}
                             />
                             <span className="book-voters card-vote">{orderItem.book.num_ratings} voters</span>
-                            <p bookId='description' className={`lead fs-6 ${expanded ? 'expanded' : ''} mb-5`} onClick={toggleExpanded}>
+                            <div className={`lead fs-6 ${expanded ? 'expanded' : ''} mb-3`} onClick={toggleExpanded}>
                                 {orderItem.book.description}
-                            </p>
+                            </div>
 
-                            <div className="fs-4 mb-2">
+                            <div className="fs-4 mb-3">
                                 <span className={orderItem.book.discount > 0 && `text-decoration-line-through text-muted`} style={{ color: 'red' }}>{orderItem.book.price && orderItem.book.price.toLocaleString() + ' vnđ'} </span>
                             </div>
                             <div className='d-flex'>
@@ -113,19 +113,33 @@ function BookDetail() {
                                 <p>The discount applies to member-only.</p>
                             </div>}
 
-                            {/* <div className="d-flex align-items-center mb-3 mt-3">
-                                <i className="fa-solid fa-minus me-2 order-quantity" onClick={() => { orderItem.quantity > 1 && setOrderItem({ ...orderItem, quantity: orderItem.quantity - 1 }) }}></i>
-                                <div className='btn btn-outline-dark me-2 flex-shrink-0' style={{ minWidth: '40px' }} >
-                                    {orderItem.quantity}
-                                </div>
-                                <i className="fa-solid fa-plus hover-red" onClick={() => { setOrderItem({ ...orderItem, quantity: orderItem.quantity + 1 }) }}></i>
-                            </div> */}
-                            {/* <div className='d-flex'>
-                                <button className="btn btn-outline-dark flex-shrink-0" type="button" onClick={() => { }}>
-                                    <i className="bi-order-fill me-1"></i>
-                                    Add to Cart
-                                </button>
-                            </div> */}
+                            {orderItem.book.copies.length == 0 ? <div className='mt-3' style={{ fontSize: '2rem', alignItems: 'center' }}>
+                                <img
+                                    src="/sold-out-icon.png"
+                                    alt="sold-out-icon"
+                                    style={{
+                                        maxWidth: '100%',
+                                        height: '3em',
+                                        verticalAlign: 'middle',
+                                        marginLeft: '3px',
+                                        marginRight: '10px'
+                                    }}
+                                />
+                            </div> : <div className='d-flex align-items-center'>
+                                <img
+                                    src="/best-price.png"
+                                    alt="best-price-icon"
+                                    style={{
+                                        maxWidth: '100%',
+                                        height: '3em',
+                                        verticalAlign: 'middle',
+                                        marginLeft: '3px',
+                                        marginRight: '10px'
+                                    }}
+                                />
+                                <p style={{ color: 'red' }}>Available when purchasing at store.</p>
+                            </div>}
+
                         </div>
                     </div>
                 </div>

@@ -251,11 +251,13 @@ def read_rfid_card():
         new_book['copy_id'] = card['card_id']
         socketio.emit('checkout', new_book)
     else:
-        socketio.emit('checkout', {})
+        user = find_by_member_id(card['card_id'])
+        if user != None:
+            socketio.emit('checkout-user', user)
+        else: 
+            socketio.emit('checkout', {})
     
-    user = find_by_member_id(card['card_id'])
-    if user != None:
-        socketio.emit('checkout-user', user)
+    
     if validateCard(card['card_id']):
         socketio.emit('sign-up', card)
         socketio.emit('import', card)
@@ -280,7 +282,20 @@ def find_order_by_id(order_id):
         return jsonify(order), 200
     else:
         return jsonify({'message': 'Order not found'}), 404
-
+    
+@app.route('/orders/user')
+@jwt_required()
+def find_orders_by_member_id():
+    data = get_jwt_identity()
+    if not data:
+        return jsonify({'message': 'Cannot retrieve data.'}), 404
+    user = users_collection.find_one({'username': data['username']})
+    orders_cursor = orders_collection.find({'user': user['member_id']})
+    orders_list = []
+    for order in orders_cursor:
+        order['_id'] = str(order['_id'])
+        orders_list.append(order)
+    return jsonify(orders_list), 200
 
 @app.route('/checkout', methods=['POST'])
 def checkout():
