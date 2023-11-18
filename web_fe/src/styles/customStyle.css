@@ -1019,12 +1019,12 @@ input::-webkit-inner-spin-button {
     animation: flicker 1s infinite;
 }
 
-table.table.table-striped tr.row-danger td {
+table.table tr.row-danger td {
     background-color: #f2dede;
     color: #b94442;
 }
 
-table.table.table-striped tr.row-success td {
+table.table tr.row-success td {
     background-color: #dff0d8;
     color: #3c763d;
 }
