@@ -273,7 +273,8 @@ def find_order_by_id(order_id):
     order = orders_collection.find_one({'_id': ObjectId(order_id)})
     if order:
         order['_id'] = str(order['_id']);
-        order['user'] = find_by_member_id(order['user']);
+        if order['user'] != None:
+            order['user'] = find_by_member_id(order['user']);
         for item in order['orderItems']:
             book = find_by_book_id(item['book']['_id']);
             if book:
@@ -320,6 +321,12 @@ def checkout():
         )
 
         book = find_by_book_id(book_id)
+        if 'copies' in book:
+                del book['copies']
+        if 'comments' in book:
+            del book['comments']
+        if 'ratings' in book:
+            del book['ratings']
         new_items.append({'book': book, 'copy_ids': copy_ids})
 
     orders_collection.insert_one({
@@ -341,16 +348,9 @@ def find_all_orders():
         updated_order_items = []
 
         for item in order['orderItems']:
-            book_id = item['book']['_id']
-            book_details = find_by_book_id(book_id)
-            if 'copies' in book_details:
-                del book_details['copies']
-            if 'comments' in book_details:
-                del book_details['comments']
-            if 'ratings' in book_details:
-                del book_details['ratings']
+            book = item['book']
             quantity = len(item['copy_ids'])
-            updated_order_items.append({'book': book_details, 'quantity': quantity, 'copy_ids': item['copy_ids']})
+            updated_order_items.append({'book': book, 'quantity': quantity, 'copy_ids': item['copy_ids']})
 
         order['orderItems'] = updated_order_items
 

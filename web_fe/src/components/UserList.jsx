@@ -30,12 +30,11 @@ function UserList(props) {
         setUserUpdateModal(false);
     }
 
-    const handleDelete = () => {
+    const handleDelete = (id) => {
         if (window.confirm('Are you sure to delete this user?')) {
             const asyncFunction = async () => {
-                await deleteUser(userId);
-                setListUsers(listUsers.filter(item => item._id != userId));
-                console.log(userId)
+                await deleteUser(id);
+                setListUsers(listUsers.filter(item => item._id != id));
             }
             asyncFunction();
         }
@@ -101,7 +100,7 @@ function UserList(props) {
                                                             <i className=" fa fa-solid fa-id-card-clip fa-stack-1x fa-inverse"></i>
                                                         </span>
                                                     </div>
-                                                    <div className="table-link danger" onClick={handleDelete} style={{ cursor: 'pointer' }}>
+                                                    <div className="table-link danger" onClick={() => { handleDelete(item._id) }} style={{ cursor: 'pointer' }}>
                                                         <span className="fa-stack">
                                                             <i className="fa fa-square fa-stack-2x"></i>
                                                             <i className="fa fa-trash-can fa-stack-1x fa-inverse"></i>
