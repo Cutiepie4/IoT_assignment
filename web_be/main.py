@@ -19,7 +19,7 @@ app.config['JWT_SECRET_KEY'] = 'nhom10'
 jwt = JWTManager(app)
 CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
-UPLOAD_FOLDER = 'C://Users//Viettq//Documents//Code//IoT_assignment//web_fe//public//images//'
+UPLOAD_FOLDER = 'C://Users//DELL//Desktop//IoT_assignment//web_fe//public//images//'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 esp32_host = 'http://192.168.0.104'
@@ -201,7 +201,6 @@ def delete_by_copy_id(id):
         return jsonify({"message": "An error occurred while deleting the copies."}), 500
 
 @app.route('/delete-book/<string:id>', methods=['DELETE'])
-@jwt_required()
 def delete_by_book_id(id):
     book = find_by_book_id(id)
     delete_image(UPLOAD_FOLDER + book['imagePath'])
