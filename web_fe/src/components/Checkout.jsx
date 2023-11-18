@@ -289,7 +289,7 @@ function Checkout() {
                                             <div className="row">
                                                 <div className="col-lg-6 col-xl-6">
                                                     <div className="form-outline mb-3 mb-xl-4">
-                                                        <input type="text" className="form-control"
+                                                        <input type="number" className="form-control"
                                                             placeholder="1111 2222 3333 4444" value={creditCardInfo.cardNumber} onChange={e => setCreditCardInfo({ ...creditCardInfo, cardNumber: e.target.value })} />
                                                         <label className="form-label" >Card Number</label>
                                                     </div>
