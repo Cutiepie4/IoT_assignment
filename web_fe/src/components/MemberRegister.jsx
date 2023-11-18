@@ -46,7 +46,7 @@ function MemberRegister(props) {
                         <i className="fas fa-tag fa-lg me-3 fa-fw"></i>
                         <input type='text' className='form-control me-2' placeholder='Member card'
                             onChange={(e) => setMemberId(e.target.value)} value={memberId} />
-                        <button className='btn btn-info' onClick={enableRFIDSingle}>RFID</button>
+                        <button className='btn btn-outline-info' onClick={enableRFIDSingle}>RFID</button>
                     </div>
                     <div className="d-flex justify-content-center">
                         <button type="button" className="btn btn-primary" onClick={handleUpdate}>Save</button>

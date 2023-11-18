@@ -62,7 +62,7 @@ function Books() {
                 <button className="btn btn-primary" style={{ marginRight: '5px' }} onClick={() => { openBookDetailModal('0') }}>Add New Book</button>
             </div>
             <br />
-            <table className="table table-hover table-responsive table-striped">
+            <table className="table table-hover table-responsive">
                 <thead className="table-primary">
                     <tr>
                         <th>#</th>
@@ -81,7 +81,7 @@ function Books() {
                 <tbody>
                     {listBooks.map((item, index) => (
                         <>
-                            <tr key={item._id} className={'row-hover ' + (item.in_stock == 0 ? 'row-danger ' : ' ') + (item.discount > 0 ? 'row-success ' : ' ')} style={{ backgroundColor: '#ff0000' }}>
+                            <tr key={item._id} className={'row-hover ' + (item.discount > 0 ? 'row-success ' : ' ') + (item.in_stock == 0 ? 'row-danger ' : ' ')} style={{ backgroundColor: '#ff0000' }}>
                                 <td>{index + 1}</td>
                                 <td>
                                     <img src={`./images/${item.imagePath}`} className="img-fluid"

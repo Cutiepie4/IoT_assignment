@@ -68,7 +68,7 @@ function Import(props) {
             <div className='d-flex justify-content-between align-items-center mb-3'>
                 <input type='text' className='form-control me-2' placeholder='Enter the copy id here...'
                     onChange={(e) => setId(e.target.value)} value={id} />
-                <button className='btn btn-success'
+                <button className='btn btn-outline-info'
                     onClick={() => {
                         addValue(id);
                         setId('');
@@ -84,8 +84,8 @@ function Import(props) {
                 ))}
             </ul>
             <div className='d-flex justify-content-between'>
-                <button className='btn btn-success' disabled={listId.size === 0} onClick={handleImport}>Import</button>
-                <button className='btn btn-primary' onClick={handleSwitch}>{enableState ? 'Stop' : 'Read RFID'}</button>
+                <button className='btn btn-outline-success' disabled={listId.size === 0} onClick={handleImport}>Import</button>
+                <button className='btn btn-outline-primary' onClick={handleSwitch}>{enableState ? 'Stop' : 'Read RFID'}</button>
             </div>
         </div>
     );

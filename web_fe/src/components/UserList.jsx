@@ -50,7 +50,7 @@ function UserList(props) {
 
     return (
         <div className="container user-list">
-            <div className="row">
+            <div className="row mb-5">
                 <div className="col-lg-12">
                     <div className="main-box clearfix">
                         <div className="table-responsive">
