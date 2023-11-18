@@ -62,4 +62,459 @@
   "role": "Admin",
   "date_created": "2023-10-28",
   "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6558fbebee563acadf34974a"
+  },
+  "name": "Nguyễn Minh An",
+  "username": "AnNM",
+  "phone_number": "0388987654",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558fc22ee563acadf34974b"
+  },
+  "name": "Trương Thành Công",
+  "username": "CôngTT",
+  "phone_number": "0369568952",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558fc47ee563acadf34974c"
+  },
+  "name": "Trần Gia Hoà",
+  "username": "HoaTG",
+  "phone_number": "0256987321",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558fc97ee563acadf34974d"
+  },
+  "name": "Đỗ Trung Dũng",
+  "username": "DungDT",
+  "phone_number": "0256954159",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558fcc8ee563acadf34974e"
+  },
+  "name": "Nguyễn Gia Hân",
+  "username": "HanNG",
+  "phone_number": "0265945783",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558fd0cee563acadf34974f"
+  },
+  "name": "Đinh Khánh Ngọc",
+  "username": "NgocDK",
+  "phone_number": "0659245123",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558fd39ee563acadf349750"
+  },
+  "name": "Nguyễn Linh Chi",
+  "username": "ChiNL",
+  "phone_number": "0256987123",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558fd5cee563acadf349751"
+  },
+  "name": "Trần Anh Thư",
+  "username": "ThuTA",
+  "phone_number": "0569846357",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558fd7dee563acadf349752"
+  },
+  "name": "Trần Đoan Trang",
+  "username": "TrangTD",
+  "phone_number": "0256987456",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558fd9eee563acadf349753"
+  },
+  "name": "Nguyễn Hải Yến",
+  "username": "YenNH",
+  "phone_number": "0123987654",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558fdc0ee563acadf349754"
+  },
+  "name": "Nguyễn Quỳnh Anh",
+  "username": "AnhNQ",
+  "phone_number": "0156987256",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558fde0ee563acadf349755"
+  },
+  "name": "Đinh Trâm Anh",
+  "username": "AnhDT",
+  "phone_number": "0569865489",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558fe01ee563acadf349756"
+  },
+  "name": "Nguyễn Minh Châu",
+  "username": "ChauNM",
+  "phone_number": "0569987156",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558fe20ee563acadf349757"
+  },
+  "name": "Võ Quế Chi",
+  "username": "ChiVQ",
+  "phone_number": "569987451",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558fe4fee563acadf349758"
+  },
+  "name": "Nguyễn Thái Dương",
+  "username": "DuongNT",
+  "phone_number": "0569987156",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558fe71ee563acadf349759"
+  },
+  "name": "Trần Tài Đức",
+  "username": "DucTT",
+  "phone_number": "459963257",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558fe8dee563acadf34975a"
+  },
+  "name": "Nguyễn Mạnh Hùng",
+  "username": "HungNM",
+  "phone_number": "0256987124",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558feb6ee563acadf34975b"
+  },
+  "name": "Nguyễn Bảo Khánh",
+  "username": "KhanhNB",
+  "phone_number": "156987364",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558fed4ee563acadf34975c"
+  },
+  "name": "Trần Đăng Khoa",
+  "username": "KhoaTD",
+  "phone_number": "569987264",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558ff00ee563acadf34975d"
+  },
+  "name": "Đinh Tuấn Kiệt",
+  "username": "KietDT",
+  "phone_number": "05698326489",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558ff19ee563acadf34975e"
+  },
+  "name": "Nguyễn Quang Anh",
+  "username": "AnhNQ",
+  "phone_number": "256948366",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558ff3eee563acadf34975f"
+  },
+  "name": "Trương Hoàng Long",
+  "username": "LongTH",
+  "phone_number": "0569987632",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558ff60ee563acadf349760"
+  },
+  "name": "Đỗ Thanh Phong",
+  "username": "PhongDT",
+  "phone_number": "0249987362",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558ffa2ee563acadf349761"
+  },
+  "name": "Đỗ Thanh Hoài",
+  "username": "HoaiDT",
+  "phone_number": "598368123",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558ffbbee563acadf349762"
+  },
+  "name": "Trần Kim Anh",
+  "username": "AnhTK",
+  "phone_number": "569987364",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6558ffe1ee563acadf349763"
+  },
+  "name": "Lê Thị Hoài Thương",
+  "username": "ThuongLTH",
+  "phone_number": "0456936589",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "65590012ee563acadf349764"
+  },
+  "name": "Trương Thanh Huyền",
+  "username": "HuyenTT",
+  "phone_number": "569942367",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6559002cee563acadf349765"
+  },
+  "name": "Nguyễn Khả Thơ",
+  "username": "ThoNK",
+  "phone_number": "0569369243",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "65590044ee563acadf349766"
+  },
+  "name": "Nguyễn Hoàng Danh",
+  "username": "DanhNH",
+  "phone_number": "0569948367",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "65590066ee563acadf349767"
+  },
+  "name": "Lê Đại Thanh",
+  "username": "ThanhLD",
+  "phone_number": "569873696",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "655900a0ee563acadf349768"
+  },
+  "name": "Nguyễn Hạ Long",
+  "username": "LongNH",
+  "phone_number": "0598756324",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "655900c4ee563acadf349769"
+  },
+  "name": "Đỗ Thành Toàn",
+  "username": "ToanDT",
+  "phone_number": "598786323",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "655900eeee563acadf34976a"
+  },
+  "name": "Trương Quốc Việt",
+  "username": "admin1",
+  "phone_number": "0388999123",
+  "password": "123",
+  "role": "Admin",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "6559010cee563acadf34976b"
+  },
+  "name": "Nguyễn Thành Long",
+  "username": "admin2",
+  "phone_number": "0352013796",
+  "password": "123",
+  "role": "Admin",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
+},
+{
+  "_id": {
+    "$oid": "65590131ee563acadf34976c"
+  },
+  "name": "Nguyễn Việt Lương",
+  "username": "admin3",
+  "phone_number": "0569987423",
+  "password": "123",
+  "role": "Admin",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": null
 }]
