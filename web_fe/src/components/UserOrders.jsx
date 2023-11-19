@@ -13,8 +13,10 @@ function UserOrders() {
         const asyncFunction = async () => {
             const ordersData = await findOrdersByMemberId();
             setOrders(ordersData);
+            console.log(ordersData)
         }
         asyncFunction();
+
     }, [])
 
     const openDetailModal = (orderId) => {
@@ -30,10 +32,11 @@ function UserOrders() {
         <div className='container col-lg-8 py-3'>
             <div>
                 <h3>Purchase History</h3>
+                <hr />
             </div>
 
             <div>
-                {orders && orders.map(order => (
+                {orders && orders.length > 0 ? orders.map(order => (
                     <div className='row mb-3' key={'asdfa'} >
                         <div className='card d-flex position-relative mb-3' style={{ minHeight: '130px', backgroundColor: '#faf9ba' }}>
                             <div className='position-absolute start-0 top-0 m-3'>
@@ -52,7 +55,7 @@ function UserOrders() {
                             </div>
                         </div>
                     </div>
-                ))}
+                )) : <div><h5>You haven't purchased anything yet.</h5></div>}
             </div>
             <Modal show={showDetailModal} onHide={closeDetailModal} dialogClassName="modal-xl">
                 <Modal.Header>

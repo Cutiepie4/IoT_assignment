@@ -238,3 +238,15 @@ export const findOrdersByMemberId = async () => {
         .then(res => res.data)
         .catch(error => { toast.error(error.response.data.message); });
 }
+
+export const findRecommendedBooks = async (username) => {
+    return await api.get(`/book-recommendation/${username}`)
+        .then(res => res.data)
+        .catch(error => { toast.error('There is some problems with book recommendation.'); return []; })
+}
+
+export const findBestSellers = async () => {
+    return await api.get('/book-recommendation/top-5-best-sellers')
+        .then(res => res.data)
+        .catch(error => { })
+}

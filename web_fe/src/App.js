@@ -64,8 +64,8 @@ function App() {
     <>
       <Routes key={role}>
         <Route element={<Nav role={role} username={username} />} path='/'>
-          <Route index element={<Home />} />
-          <Route element={<BookDetail />} path={"/book-detail/:bookId"} />
+          <Route index element={<Home username={username} />} />
+          <Route element={<BookDetail username={username} />} path={"/book-detail/:bookId"} />
           <Route element={<AdminRoute role={role} />} >
             <Route element={<Checkout />} path={"/checkout"} />
             <Route element={<Copies />} path={"/copies/:bookId"} />

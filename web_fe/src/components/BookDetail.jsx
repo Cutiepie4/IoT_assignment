@@ -5,9 +5,11 @@ import Rating from 'react-rating';
 import { toast } from 'react-toastify';
 import ReactLoading from 'react-loading'
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
-import { addComment, addRating, deleteComment, findBook, formatMongoDate, getUserRating, isLoggedIn } from '../services/API';
+import { addComment, addRating, deleteComment, findBook, findRecommendedBooks, formatMongoDate, getUserRating, isLoggedIn } from '../services/API';
 
-function BookDetail() {
+function BookDetail(props) {
+
+    const { username } = props;
     const { bookId } = useParams();
     const [expanded, setExpanded] = useState(false);
     const [orderItem, setOrderItem] = useState({ quantity: 1, book: {} });
@@ -15,6 +17,7 @@ function BookDetail() {
     const [currentComment, setCurrentComment] = useState('');
     const [vote, setVote] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [listRecommendedBooks, setListRecommendedBooks] = useState([]);
 
     const toggleExpanded = () => {
         setExpanded(!expanded);
@@ -28,9 +31,17 @@ function BookDetail() {
             const userRatingData = await getUserRating(bookId);
             setVote(userRatingData.user_rating);
             setLoading(false);
+            if (isLoggedIn()) {
+                const recommmendedBooks = await findRecommendedBooks(username);
+                setListRecommendedBooks(prev => recommmendedBooks);
+            }
         }
         asyncFunction();
     }, [bookId])
+
+    const isRecommendedBook = () => {
+        return listRecommendedBooks.some(item => item._id == bookId) > 0;
+    }
 
     const handlePostComment = async () => {
         const newComment = await addComment(bookId, { 'comment': currentComment });
@@ -64,6 +75,14 @@ function BookDetail() {
                     <div className="row gx-4 gx-lg-5 align-items-center">
                         <div className="col-md-4 align-self-start" >
                             <img className="card-img-top mb-5 mb-md-0" src={orderItem.book.imagePath && `/images/${orderItem.book.imagePath}`} alt="book-cover" />
+                            {isRecommendedBook() && <div>
+                                <div className='d-flex align-items-center'>
+                                    <img className='card-img-top mb-5 mb-md-0 py-3 me-3' style={{ maxWidth: '50px' }} src='/recommend.png' alt='recommended-for-you-icon' />
+                                    <h5 style={{ marginBottom: '0px' }}>Recommended for you</h5>
+
+                                </div>
+                                <p style={{ fontStyle: 'italic' }} className='text-muted'>Suggestions based on your purchase history.</p>
+                            </div>}
                         </div>
                         <div className="col-md-8">
                             <div className="display-6 mb-3 fw-bolder" style={{ margin: '0 0' }}>
@@ -80,7 +99,7 @@ function BookDetail() {
                                 readonly={true}
                             />
                             <span className="book-voters card-vote">{orderItem.book.num_ratings} voters</span>
-                            <div className={`lead fs-6 ${expanded ? 'expanded' : ''} mb-3`} onClick={toggleExpanded}>
+                            <div id='description' className={`lead fs-6 ${expanded ? 'expanded' : ''} mb-3`} onClick={toggleExpanded}>
                                 {orderItem.book.description}
                             </div>
 
