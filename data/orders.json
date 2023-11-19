@@ -1,75 +1,5 @@
 [{
   "_id": {
-    "$oid": "65590f103d5b379e10dfdc9f"
-  },
-  "user": "cedef11d",
-  "orderItems": [
-    {
-      "book": {
-        "_id": "6557c565796c8337b74c5245",
-        "discount": 0,
-        "date": "2023-11-18",
-        "genre": "Action",
-        "title": "Art Monsters: Unruly Bodies in Feminist Art",
-        "author": "Lauren Elkin ",
-        "description": "Destined to become a new classic . . . Elkin shatters the truisms that have evolved around feminist thought.",
-        "page": "368",
-        "price": 200000,
-        "copies": [
-          {
-            "copy_id": "632c32ad",
-            "date_imported": {
-              "$date": "2023-11-19T02:18:47.653Z"
-            }
-          }
-        ],
-        "comments": [],
-        "imagePath": "1b0c450b-961e-4d17-a125-b24bb5371a56.jpg",
-        "overall_rating": 0,
-        "num_ratings": 0
-      },
-      "copy_ids": [
-        "4264e655",
-        "934855ad"
-      ]
-    },
-    {
-      "book": {
-        "_id": "6557c612796c8337b74c5246",
-        "discount": 0,
-        "date": "2023-11-18",
-        "genre": "Action",
-        "title": "Universal Harvester",
-        "author": "John Darnielle ",
-        "description": "Life in a small town takes a dark turn when mysterious footage begins appearing on VHS cassettes at the local Video Hut. So begins Universal Harvester, the haunting and masterfully unsettling new novel from John Darnielle, author of the New York Times Bestseller and National Book Award Nominee Wolf in White Van.",
-        "page": "123",
-        "price": 250000,
-        "copies": [
-          {
-            "copy_id": "80bbd914",
-            "date_imported": {
-              "$date": "2023-11-19T02:19:30.556Z"
-            }
-          }
-        ],
-        "comments": [],
-        "imagePath": "6ee983ce-3818-489e-9d45-1970d0c6eee6.jpg",
-        "overall_rating": 0,
-        "num_ratings": 0
-      },
-      "copy_ids": [
-        "b3cd2ead"
-      ]
-    }
-  ],
-  "timestamp": {
-    "$date": "2023-11-19T02:22:56.732Z"
-  },
-  "original_cost": 650000,
-  "discount_cost": 0
-},
-{
-  "_id": {
     "$oid": "65590f6b3d5b379e10dfdca0"
   },
   "user": null,
@@ -270,7 +200,7 @@
   "_id": {
     "$oid": "6559537280db4561f4760f4e"
   },
-  "user": "HoaTG",
+  "user": "hoatg",
   "orderItems": [
     {
       "book": {
@@ -322,7 +252,7 @@
   "_id": {
     "$oid": "655953d980db4561f4760f4f"
   },
-  "user": "HoaTG",
+  "user": "hoatg",
   "orderItems": [
     {
       "book": {
@@ -991,7 +921,7 @@
   "_id": {
     "$oid": "6559561080db4561f4760f58"
   },
-  "user": "ThuTA",
+  "user": "thuta",
   "orderItems": [
     {
       "book": {

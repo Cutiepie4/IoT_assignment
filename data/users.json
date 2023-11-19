@@ -42,7 +42,7 @@
     "$oid": "6558fc22ee563acadf34974b"
   },
   "name": "Trương Thành Công",
-  "username": "CôngTT",
+  "username": "CongTT",
   "phone_number": "0369568952",
   "password": "123",
   "role": "User",
@@ -55,13 +55,13 @@
     "$oid": "6558fc47ee563acadf34974c"
   },
   "name": "Trần Gia Hoà",
-  "username": "HoaTG",
+  "username": "hoatg",
   "phone_number": "0256987321",
   "password": "123",
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": "HoaTG"
+  "member_id": "hoatg"
 },
 {
   "_id": {
@@ -478,4 +478,17 @@
   "date_created": "2023-11-19",
   "status": "active",
   "member_id": null
+},
+{
+  "_id": {
+    "$oid": "655a11dd68f35693c3e91d0e"
+  },
+  "name": "asdfa",
+  "username": "qwerty",
+  "phone_number": "010120",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": "qwer"
 }]
