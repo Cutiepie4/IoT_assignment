@@ -59,7 +59,7 @@ function UserOrders() {
             </div>
             <Modal show={showDetailModal} onHide={closeDetailModal} dialogClassName="modal-xl">
                 <Modal.Header>
-                    <h3>Order Detail</h3>
+                    <h3>Invoice</h3>
                 </Modal.Header>
                 <Modal.Body>
                     <OrderDetail orderId={orderId} />

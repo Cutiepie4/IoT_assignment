@@ -68,8 +68,8 @@ function Home(props) {
                             </div>
                         ))}
                         {isLoggedIn() && (<>
-                            <div className="author-title fs-5 mt-3">Recommend for you</div>
-                            {listRecommendedBooks && listRecommendedBooks.map(book => (
+                            <div className="author-title fs-5 mt-3">Recommended for you</div>
+                            {listRecommendedBooks && listRecommendedBooks.length > 0 ? listRecommendedBooks.map(book => (
                                 <div className="year-book result-item" key={book.id}>
                                     <img src={`./images/${book.imagePath}`} alt="book-cover" className="year-book-img" />
                                     <div className="year-book-content">
@@ -98,7 +98,9 @@ function Home(props) {
                                         <div className="year-book-author">by {book.author}</div>
                                     </div>
                                 </div>
-                            ))}
+                            )) : (<div>
+                                <p className='text-muted' style={{ fontStyle: 'italic' }}>Purchase some books and your recommended books will be here. </p>
+                            </div>)}
                         </>)}
                     </div>
                     <div className="overlay"></div>

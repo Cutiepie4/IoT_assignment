@@ -63,11 +63,12 @@ def recommend(data, target_user):
 
     similar_users = user_similarity_df[target_user].sort_values(ascending=False)
 
+    if df.loc[:, target_user].sum() == 0:
+        return np.array([])
+
     recommended_users = similar_users.drop(target_user).index
 
     recommended_books = df[recommended_users].sum(axis=1)
-
-    recommended_books = recommended_books[recommended_books > 0]
 
     top_recommended_books = recommended_books.sort_values(ascending=False)
     recommended_book_ids = np.array(top_recommended_books.index)

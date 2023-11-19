@@ -292,7 +292,6 @@ def find_orders_by_member_id():
     if not data:
         return jsonify({'message': 'Cannot retrieve data.'}), 404
     user = users_collection.find_one({'username': Regex(f"^{data['username'].lower()}$", 'i')})
-    print(user)
     orders_cursor = orders_collection.find({'user': Regex(f"^{user['member_id'].lower()}$", 'i')})
     orders_list = []
     for order in orders_cursor:
@@ -582,15 +581,14 @@ def update_user():
 
 @app.route('/book-recommendation/<string:username>')
 def recommend_book(username):
-    if username == 'admin':
-        result = top_5_best_sellers(orders_collection)
-        result = [find_by_book_id(item['_id']) for item in result]
-        return jsonify(result), 200
-    data = extract_data(users_collection, books_collection, orders_collection)
-    top_5_recommended = recommend(data, username.lower())
-    top_5_recommended = [find_by_book_id(item) for item in top_5_recommended]
-    print(top_5_recommended)
-    return jsonify(top_5_recommended), 200
+    try:
+        data = extract_data(users_collection, books_collection, orders_collection)
+        top_5_recommended = recommend(data, username.lower())
+        print(top_5_recommended)
+        top_5_recommended = [find_by_book_id(item) for item in top_5_recommended]
+        return jsonify(top_5_recommended), 200
+    except:
+        return jsonify([]), 200
 
 @app.route('/book-recommendation/top-5-best-sellers')
 def find_top_5_best_sellers():
