@@ -17,7 +17,6 @@ function Nav(props) {
             setListBooks(booksData);
         };
         asyncFunction();
-        console.log(role)
     }, []);
 
     useEffect(() => {
@@ -31,7 +30,7 @@ function Nav(props) {
 
     return (
         <>
-            <div className="header">
+            <div className="header mb-3">
                 <div className="browse">
                     <NavLink style={{ textDecoration: 'none', color: '#8b939c' }} to={'/'}><div className="header-title">book<span>store</span></div></NavLink>
                     <div className="search-bar">

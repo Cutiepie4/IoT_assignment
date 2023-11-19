@@ -1,3 +1,5 @@
+from enum import member
+from bson import Regex
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
@@ -5,8 +7,8 @@ from bson.objectid import ObjectId
 from flask_socketio import SocketIO
 from flask_jwt_extended import jwt_required, JWTManager, get_jwt_identity, create_access_token
 from datetime import datetime
-from bson.json_util import dumps
 import uuid, json, os
+from model import extract_data, top_5_best_sellers, recommend
 
 client = MongoClient('mongodb://localhost:27017')
 db = client['iot_db']
@@ -289,8 +291,8 @@ def find_orders_by_member_id():
     data = get_jwt_identity()
     if not data:
         return jsonify({'message': 'Cannot retrieve data.'}), 404
-    user = users_collection.find_one({'username': data['username']})
-    orders_cursor = orders_collection.find({'user': user['member_id']})
+    user = users_collection.find_one({'username': Regex(f"^{data['username'].lower()}$", 'i')})
+    orders_cursor = orders_collection.find({'user': Regex(f"^{user['member_id'].lower()}$", 'i')})
     orders_list = []
     for order in orders_cursor:
         order['_id'] = str(order['_id'])
@@ -471,9 +473,9 @@ def disable_RFID_continous():
 # Authentication
 @app.route('/login', methods=['POST'])
 def login():
-    username = request.get_json()['username']
+    username = request.get_json()['username'].lower()
     password = request.get_json()['password']
-    user = users_collection.find_one({"username": username, "password": password})
+    user = users_collection.find_one({"username": Regex(f'^{username}$', 'i'), "password": password})
     
     if user:
         user_info = {
@@ -508,9 +510,9 @@ def create_user():
     
     customer_data = {
         "name": data['name'],
-        "username": data['username'],
+        "username": data['username'].lower(),
         "phone_number": data['phone_number'],
-        "password": data['password'],
+        "password": data['password'].lower(),
         "role": data['role'],
         "date_created": str(datetime.now().date()),
         "status": "active"
@@ -576,6 +578,23 @@ def update_user():
         return jsonify({'message': 'User updated successfully'}), 200
     else:
         return jsonify({'error': 'User not found or no changes made'}), 404
+
+@app.route('/book-recommendation/<string:username>')
+def recommend_book(username):
+    try:
+        data = extract_data(users_collection, books_collection, orders_collection)
+        top_5_recommended = recommend(data, username.lower())
+        print(top_5_recommended)
+        top_5_recommended = [find_by_book_id(item) for item in top_5_recommended]
+        return jsonify(top_5_recommended), 200
+    except:
+        return jsonify([]), 200
+
+@app.route('/book-recommendation/top-5-best-sellers')
+def find_top_5_best_sellers():
+    result = top_5_best_sellers(orders_collection)
+    result = [find_by_book_id(item['_id']) for item in result]
+    return jsonify(result), 200
 
 @app.route('/protected', methods=['GET'])
 @jwt_required()

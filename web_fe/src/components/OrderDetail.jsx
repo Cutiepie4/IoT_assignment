@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { findOrderById, formatDate, formatMongoDate } from '../services/API';
-import { useParams } from 'react-router-dom';
+import { findOrderById } from '../services/API';
 
 function OrderDetail(props) {
   const { orderId } = props;

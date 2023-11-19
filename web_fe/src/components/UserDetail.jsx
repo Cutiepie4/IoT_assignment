@@ -43,7 +43,7 @@ function UserDetail(props) {
                     <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-id-badge fa-lg me-3 fa-fw" />
                         <div className="form-outline flex-fill mb-0">
-                            <input disabled type="text" className="form-control" placeholder='Username' value={account.username} onChange={e => setAccount({ ...account, username: e.target.value })} />
+                            <input type="text" className="form-control" placeholder='Username' value={account.username} onChange={e => setAccount({ ...account, username: e.target.value })} />
                         </div>
                     </div>
                     <div className="d-flex flex-row align-items-center mb-4">

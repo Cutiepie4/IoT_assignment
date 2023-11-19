@@ -115,6 +115,7 @@ function Books() {
                     ))}
                 </tbody>
             </table>
+
             <Modal show={showBookDetailModal} onHide={closeBookDetailModal} dialogClassName="modal-lg">
                 <Modal.Header>
                     <h3>Book</h3>

@@ -1,18 +1,5 @@
 [{
   "_id": {
-    "$oid": "652e71121afb39e24d6cd109"
-  },
-  "name": "asdfasd",
-  "username": "asdfasd",
-  "phone_number": "12341",
-  "password": "123",
-  "member_id": "aaa12",
-  "role": "User",
-  "date_created": "2023-10-17",
-  "status": "active"
-},
-{
-  "_id": {
     "$oid": "652e743c1afb39e24d6cd10a"
   },
   "name": "ádfasdfa",
@@ -22,32 +9,6 @@
   "member_id": "aaa123",
   "role": "Admin",
   "date_created": "2023-10-17",
-  "status": "active"
-},
-{
-  "_id": {
-    "$oid": "6530080e67eec7e43f36a0c7"
-  },
-  "name": "asdfasdf",
-  "username": "asdfasdf",
-  "phone_number": "1324123",
-  "password": "123",
-  "member_id": "askdfjaksd",
-  "role": "User",
-  "date_created": "2023-10-18",
-  "status": "active"
-},
-{
-  "_id": {
-    "$oid": "6537a120f01e42cd6cc7ddab"
-  },
-  "name": "asdf",
-  "username": "asdfasd",
-  "phone_number": "08768678768",
-  "password": "23",
-  "member_id": "aaa1qwert2",
-  "role": "User",
-  "date_created": "2023-10-24",
   "status": "active"
 },
 {
@@ -74,33 +35,33 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "be5a561d"
 },
 {
   "_id": {
     "$oid": "6558fc22ee563acadf34974b"
   },
   "name": "Trương Thành Công",
-  "username": "CôngTT",
+  "username": "CongTT",
   "phone_number": "0369568952",
   "password": "123",
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "cedef11d"
 },
 {
   "_id": {
     "$oid": "6558fc47ee563acadf34974c"
   },
   "name": "Trần Gia Hoà",
-  "username": "HoaTG",
+  "username": "hoatg",
   "phone_number": "0256987321",
   "password": "123",
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "hoatg"
 },
 {
   "_id": {
@@ -113,7 +74,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "DungDT"
 },
 {
   "_id": {
@@ -126,7 +87,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "HanNG"
 },
 {
   "_id": {
@@ -139,7 +100,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "NgocDK"
 },
 {
   "_id": {
@@ -152,7 +113,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "ChiNL"
 },
 {
   "_id": {
@@ -165,7 +126,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "ThuTA"
 },
 {
   "_id": {
@@ -178,7 +139,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "TrangTD"
 },
 {
   "_id": {
@@ -191,7 +152,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "YenNH"
 },
 {
   "_id": {
@@ -204,7 +165,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "AnhNQ"
 },
 {
   "_id": {
@@ -217,7 +178,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "AnhDT"
 },
 {
   "_id": {
@@ -230,7 +191,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "ChauNM"
 },
 {
   "_id": {
@@ -243,7 +204,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "ChiVQ"
 },
 {
   "_id": {
@@ -256,7 +217,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "DuongNT"
 },
 {
   "_id": {
@@ -269,7 +230,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "DucTT"
 },
 {
   "_id": {
@@ -282,7 +243,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "HungNM"
 },
 {
   "_id": {
@@ -295,7 +256,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "KhanhNB"
 },
 {
   "_id": {
@@ -308,7 +269,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "KhoaTD"
 },
 {
   "_id": {
@@ -321,7 +282,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "KietDT"
 },
 {
   "_id": {
@@ -334,7 +295,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "AnhNQ"
 },
 {
   "_id": {
@@ -347,7 +308,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "LongTH"
 },
 {
   "_id": {
@@ -360,7 +321,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "PhongDT"
 },
 {
   "_id": {
@@ -373,7 +334,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "HoaiDT"
 },
 {
   "_id": {
@@ -386,7 +347,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "AnhTK"
 },
 {
   "_id": {
@@ -399,7 +360,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "ThuongLTH"
 },
 {
   "_id": {
@@ -412,7 +373,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "HuyenTT"
 },
 {
   "_id": {
@@ -425,7 +386,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "ThoNK"
 },
 {
   "_id": {
@@ -438,7 +399,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "DanhNH"
 },
 {
   "_id": {
@@ -451,7 +412,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "ThanhLD"
 },
 {
   "_id": {
@@ -464,7 +425,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "LongNH"
 },
 {
   "_id": {
@@ -477,7 +438,7 @@
   "role": "User",
   "date_created": "2023-11-19",
   "status": "active",
-  "member_id": null
+  "member_id": "ToanDT"
 },
 {
   "_id": {
@@ -517,4 +478,17 @@
   "date_created": "2023-11-19",
   "status": "active",
   "member_id": null
+},
+{
+  "_id": {
+    "$oid": "655a11dd68f35693c3e91d0e"
+  },
+  "name": "asdfa",
+  "username": "qwerty",
+  "phone_number": "010120",
+  "password": "123",
+  "role": "User",
+  "date_created": "2023-11-19",
+  "status": "active",
+  "member_id": "qwer"
 }]
