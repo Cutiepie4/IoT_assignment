@@ -1,18 +1,5 @@
 [{
   "_id": {
-    "$oid": "652e743c1afb39e24d6cd10a"
-  },
-  "name": "ádfasdfa",
-  "username": "ádfasd",
-  "phone_number": "12341",
-  "password": "123",
-  "member_id": "aaa123",
-  "role": "Admin",
-  "date_created": "2023-10-17",
-  "status": "active"
-},
-{
-  "_id": {
     "$oid": "653d26c046aac95b2314ee22"
   },
   "name": "viet truong",
@@ -29,7 +16,7 @@
     "$oid": "6558fbebee563acadf34974a"
   },
   "name": "Nguyễn Minh An",
-  "username": "AnNM",
+  "username": "annm",
   "phone_number": "0388987654",
   "password": "123",
   "role": "User",
@@ -42,7 +29,7 @@
     "$oid": "6558fc22ee563acadf34974b"
   },
   "name": "Trương Thành Công",
-  "username": "CôngTT",
+  "username": "congtt",
   "phone_number": "0369568952",
   "password": "123",
   "role": "User",
@@ -55,7 +42,7 @@
     "$oid": "6558fc47ee563acadf34974c"
   },
   "name": "Trần Gia Hoà",
-  "username": "HoaTG",
+  "username": "hoatg",
   "phone_number": "0256987321",
   "password": "123",
   "role": "User",
@@ -68,7 +55,7 @@
     "$oid": "6558fc97ee563acadf34974d"
   },
   "name": "Đỗ Trung Dũng",
-  "username": "DungDT",
+  "username": "dungdt",
   "phone_number": "0256954159",
   "password": "123",
   "role": "User",
@@ -81,7 +68,7 @@
     "$oid": "6558fcc8ee563acadf34974e"
   },
   "name": "Nguyễn Gia Hân",
-  "username": "HanNG",
+  "username": "hanng",
   "phone_number": "0265945783",
   "password": "123",
   "role": "User",
@@ -94,7 +81,7 @@
     "$oid": "6558fd0cee563acadf34974f"
   },
   "name": "Đinh Khánh Ngọc",
-  "username": "NgocDK",
+  "username": "ngocdk",
   "phone_number": "0659245123",
   "password": "123",
   "role": "User",
@@ -107,7 +94,7 @@
     "$oid": "6558fd39ee563acadf349750"
   },
   "name": "Nguyễn Linh Chi",
-  "username": "ChiNL",
+  "username": "chinl",
   "phone_number": "0256987123",
   "password": "123",
   "role": "User",
@@ -120,7 +107,7 @@
     "$oid": "6558fd5cee563acadf349751"
   },
   "name": "Trần Anh Thư",
-  "username": "ThuTA",
+  "username": "thuta",
   "phone_number": "0569846357",
   "password": "123",
   "role": "User",
@@ -133,7 +120,7 @@
     "$oid": "6558fd7dee563acadf349752"
   },
   "name": "Trần Đoan Trang",
-  "username": "TrangTD",
+  "username": "trangtd",
   "phone_number": "0256987456",
   "password": "123",
   "role": "User",
@@ -146,7 +133,7 @@
     "$oid": "6558fd9eee563acadf349753"
   },
   "name": "Nguyễn Hải Yến",
-  "username": "YenNH",
+  "username": "yennh",
   "phone_number": "0123987654",
   "password": "123",
   "role": "User",
@@ -159,7 +146,7 @@
     "$oid": "6558fdc0ee563acadf349754"
   },
   "name": "Nguyễn Quỳnh Anh",
-  "username": "AnhNQ",
+  "username": "anhnq",
   "phone_number": "0156987256",
   "password": "123",
   "role": "User",
@@ -172,7 +159,7 @@
     "$oid": "6558fde0ee563acadf349755"
   },
   "name": "Đinh Trâm Anh",
-  "username": "AnhDT",
+  "username": "anhdt",
   "phone_number": "0569865489",
   "password": "123",
   "role": "User",
@@ -185,7 +172,7 @@
     "$oid": "6558fe01ee563acadf349756"
   },
   "name": "Nguyễn Minh Châu",
-  "username": "ChauNM",
+  "username": "chaunm",
   "phone_number": "0569987156",
   "password": "123",
   "role": "User",
@@ -198,7 +185,7 @@
     "$oid": "6558fe20ee563acadf349757"
   },
   "name": "Võ Quế Chi",
-  "username": "ChiVQ",
+  "username": "chivq",
   "phone_number": "569987451",
   "password": "123",
   "role": "User",
@@ -211,7 +198,7 @@
     "$oid": "6558fe4fee563acadf349758"
   },
   "name": "Nguyễn Thái Dương",
-  "username": "DuongNT",
+  "username": "duongnt",
   "phone_number": "0569987156",
   "password": "123",
   "role": "User",
@@ -224,7 +211,7 @@
     "$oid": "6558fe71ee563acadf349759"
   },
   "name": "Trần Tài Đức",
-  "username": "DucTT",
+  "username": "ductt",
   "phone_number": "459963257",
   "password": "123",
   "role": "User",
@@ -237,7 +224,7 @@
     "$oid": "6558fe8dee563acadf34975a"
   },
   "name": "Nguyễn Mạnh Hùng",
-  "username": "HungNM",
+  "username": "hungnm",
   "phone_number": "0256987124",
   "password": "123",
   "role": "User",
@@ -250,7 +237,7 @@
     "$oid": "6558feb6ee563acadf34975b"
   },
   "name": "Nguyễn Bảo Khánh",
-  "username": "KhanhNB",
+  "username": "khanhnb",
   "phone_number": "156987364",
   "password": "123",
   "role": "User",
@@ -263,7 +250,7 @@
     "$oid": "6558fed4ee563acadf34975c"
   },
   "name": "Trần Đăng Khoa",
-  "username": "KhoaTD",
+  "username": "khoatd",
   "phone_number": "569987264",
   "password": "123",
   "role": "User",
@@ -276,7 +263,7 @@
     "$oid": "6558ff00ee563acadf34975d"
   },
   "name": "Đinh Tuấn Kiệt",
-  "username": "KietDT",
+  "username": "kietdt",
   "phone_number": "05698326489",
   "password": "123",
   "role": "User",
@@ -289,7 +276,7 @@
     "$oid": "6558ff19ee563acadf34975e"
   },
   "name": "Nguyễn Quang Anh",
-  "username": "AnhNQ",
+  "username": "anhnq",
   "phone_number": "256948366",
   "password": "123",
   "role": "User",
@@ -302,7 +289,7 @@
     "$oid": "6558ff3eee563acadf34975f"
   },
   "name": "Trương Hoàng Long",
-  "username": "LongTH",
+  "username": "longth",
   "phone_number": "0569987632",
   "password": "123",
   "role": "User",
@@ -315,7 +302,7 @@
     "$oid": "6558ff60ee563acadf349760"
   },
   "name": "Đỗ Thanh Phong",
-  "username": "PhongDT",
+  "username": "phongdt",
   "phone_number": "0249987362",
   "password": "123",
   "role": "User",
@@ -328,7 +315,7 @@
     "$oid": "6558ffa2ee563acadf349761"
   },
   "name": "Đỗ Thanh Hoài",
-  "username": "HoaiDT",
+  "username": "hoaidt",
   "phone_number": "598368123",
   "password": "123",
   "role": "User",
@@ -341,7 +328,7 @@
     "$oid": "6558ffbbee563acadf349762"
   },
   "name": "Trần Kim Anh",
-  "username": "AnhTK",
+  "username": "anhtk",
   "phone_number": "569987364",
   "password": "123",
   "role": "User",
@@ -354,7 +341,7 @@
     "$oid": "6558ffe1ee563acadf349763"
   },
   "name": "Lê Thị Hoài Thương",
-  "username": "ThuongLTH",
+  "username": "thuonglth",
   "phone_number": "0456936589",
   "password": "123",
   "role": "User",
@@ -367,7 +354,7 @@
     "$oid": "65590012ee563acadf349764"
   },
   "name": "Trương Thanh Huyền",
-  "username": "HuyenTT",
+  "username": "huyentt",
   "phone_number": "569942367",
   "password": "123",
   "role": "User",
@@ -380,7 +367,7 @@
     "$oid": "6559002cee563acadf349765"
   },
   "name": "Nguyễn Khả Thơ",
-  "username": "ThoNK",
+  "username": "thonk",
   "phone_number": "0569369243",
   "password": "123",
   "role": "User",
@@ -393,7 +380,7 @@
     "$oid": "65590044ee563acadf349766"
   },
   "name": "Nguyễn Hoàng Danh",
-  "username": "DanhNH",
+  "username": "danhnh",
   "phone_number": "0569948367",
   "password": "123",
   "role": "User",
@@ -406,7 +393,7 @@
     "$oid": "65590066ee563acadf349767"
   },
   "name": "Lê Đại Thanh",
-  "username": "ThanhLD",
+  "username": "thanhld",
   "phone_number": "569873696",
   "password": "123",
   "role": "User",
@@ -419,7 +406,7 @@
     "$oid": "655900a0ee563acadf349768"
   },
   "name": "Nguyễn Hạ Long",
-  "username": "LongNH",
+  "username": "longnh",
   "phone_number": "0598756324",
   "password": "123",
   "role": "User",
@@ -432,7 +419,7 @@
     "$oid": "655900c4ee563acadf349769"
   },
   "name": "Đỗ Thành Toàn",
-  "username": "ToanDT",
+  "username": "toandt",
   "phone_number": "598786323",
   "password": "123",
   "role": "User",

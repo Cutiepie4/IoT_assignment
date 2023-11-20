@@ -30,8 +30,71 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "1b0c450b-961e-4d17-a125-b24bb5371a56.jpg"
+  "comments": [
+    {
+      "comment_id": "576c9fd9-6dc8-4d97-95e5-18e1b0f56186",
+      "user": "admin",
+      "comment": "sach hay",
+      "timestamp": {
+        "$date": "2023-11-20T02:04:13.626Z"
+      }
+    },
+    {
+      "comment_id": "4568d4f4-b221-4832-89ae-9df32120d943",
+      "user": "annm",
+      "comment": "Sách hay đọc rất ý nghĩa nha cả nhà ơi !",
+      "timestamp": {
+        "$date": "2023-11-20T03:19:47.974Z"
+      }
+    },
+    {
+      "comment_id": "5bba0bb3-4852-4ff0-aa27-5ff20f4bb0d4",
+      "user": "congtt",
+      "comment": "Tuyệt vời nha cả nhà",
+      "timestamp": {
+        "$date": "2023-11-20T15:40:32.275Z"
+      }
+    },
+    {
+      "comment_id": "72892fc9-896f-45bc-95c9-775de1448197",
+      "user": "hanng",
+      "comment": "hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:39:55.841Z"
+      }
+    }
+  ],
+  "imagePath": "1b0c450b-961e-4d17-a125-b24bb5371a56.jpg",
+  "ratings": [
+    {
+      "user": "admin",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T02:04:11.871Z"
+      }
+    },
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:19:29.582Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:40:20.590Z"
+      }
+    },
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:39:49.962Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -59,8 +122,56 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "6ee983ce-3818-489e-9d45-1970d0c6eee6.jpg"
+  "comments": [
+    {
+      "comment_id": "2e585c04-e661-47cf-b806-d653f8c56f7b",
+      "user": "annm",
+      "comment": "Đọc rất chi là cuốn, cả nhà nên mua nhé ",
+      "timestamp": {
+        "$date": "2023-11-20T03:20:43.129Z"
+      }
+    },
+    {
+      "comment_id": "4b9e73a7-29b4-406f-a23d-d39b177a0ef2",
+      "user": "congtt",
+      "comment": "Sách hay",
+      "timestamp": {
+        "$date": "2023-11-20T15:40:51.899Z"
+      }
+    },
+    {
+      "comment_id": "42b27e0c-4965-477c-989c-114ba4e59520",
+      "user": "hanng",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T17:40:18.250Z"
+      }
+    }
+  ],
+  "imagePath": "6ee983ce-3818-489e-9d45-1970d0c6eee6.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:20:15.684Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:40:45.616Z"
+      }
+    },
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:40:08.611Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -82,8 +193,56 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "45be5536-8b7c-4ffd-9b3a-8a39493a91d5.jpg"
+  "comments": [
+    {
+      "comment_id": "ab159e23-2a6e-4516-8f90-fd73c0a6d0b6",
+      "user": "annm",
+      "comment": "Rất ý nghĩa, đọc rất hay ",
+      "timestamp": {
+        "$date": "2023-11-20T03:21:17.501Z"
+      }
+    },
+    {
+      "comment_id": "d6c97a63-7238-412e-a3e7-5671134efd96",
+      "user": "congtt",
+      "comment": "Tuyệt vời nha cả nhà",
+      "timestamp": {
+        "$date": "2023-11-20T15:41:09.795Z"
+      }
+    },
+    {
+      "comment_id": "6c95d17a-2fc4-44c3-a28b-020214e9d2d1",
+      "user": "hanng",
+      "comment": "Hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:40:34.818Z"
+      }
+    }
+  ],
+  "imagePath": "45be5536-8b7c-4ffd-9b3a-8a39493a91d5.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:24:49.770Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:41:00.966Z"
+      }
+    },
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:40:27.082Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -117,10 +276,43 @@
       }
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "20c02bff-062e-41a9-876a-0f11e1314d3d",
+      "user": "annm",
+      "comment": "Hay, đọc rất chi là tuyệt vời nha cả nhà",
+      "timestamp": {
+        "$date": "2023-11-20T03:23:41.239Z"
+      }
+    },
+    {
+      "comment_id": "85299883-ee7f-48f7-a3c4-2a5a3d9d15d3",
+      "user": "congtt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:41:26.196Z"
+      }
+    }
+  ],
   "imagePath": "2ecabd1e-3fd1-491f-aa6e-42eb9e918b63.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:29:31.087Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:41:19.703Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -142,8 +334,41 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "801fc20d-88eb-4368-8fc2-74dd5bbda75c.jpg"
+  "comments": [
+    {
+      "comment_id": "b2c89650-86ac-438a-b708-8db189dc4a71",
+      "user": "annm",
+      "comment": "Cuốn sách đọc hay, ý nghĩa nha cả nhà ơi",
+      "timestamp": {
+        "$date": "2023-11-20T03:24:11.569Z"
+      }
+    },
+    {
+      "comment_id": "0519a31e-1c5c-4464-9658-bc691621a10f",
+      "user": "congtt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:41:44.780Z"
+      }
+    }
+  ],
+  "imagePath": "801fc20d-88eb-4368-8fc2-74dd5bbda75c.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:29:51.473Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:41:35.260Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -158,8 +383,56 @@
   "page": "322",
   "price": 250000,
   "copies": [],
-  "comments": [],
-  "imagePath": "5d364175-207e-432c-851b-33e5e9248a39.jpg"
+  "comments": [
+    {
+      "comment_id": "33ee9f2b-af71-4963-af8a-6f5fc73c287e",
+      "user": "annm",
+      "comment": "Sách hay nha cả nhà ơi",
+      "timestamp": {
+        "$date": "2023-11-20T03:30:30.640Z"
+      }
+    },
+    {
+      "comment_id": "e491f84f-3432-4643-9d67-03e0a0e6d959",
+      "user": "congtt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:43:03.674Z"
+      }
+    },
+    {
+      "comment_id": "e98629bd-56f9-49b3-8712-1a7e672df2ab",
+      "user": "hanng",
+      "comment": "hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:40:48.733Z"
+      }
+    }
+  ],
+  "imagePath": "5d364175-207e-432c-851b-33e5e9248a39.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:30:29.052Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:42:58.519Z"
+      }
+    },
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:40:45.466Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -174,8 +447,41 @@
   "page": "244",
   "price": 350000,
   "copies": [],
-  "comments": [],
-  "imagePath": "b54e3e7d-953d-42bb-ab8d-3c96a28bbeff.jpg"
+  "comments": [
+    {
+      "comment_id": "bf7672be-8672-468c-8b81-61a9a65c9dbc",
+      "user": "annm",
+      "comment": "Sách hay cả nhà ơi",
+      "timestamp": {
+        "$date": "2023-11-20T03:30:56.885Z"
+      }
+    },
+    {
+      "comment_id": "5d0adec4-fd8b-4de9-991b-74a57511234b",
+      "user": "congtt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:43:18.020Z"
+      }
+    }
+  ],
+  "imagePath": "b54e3e7d-953d-42bb-ab8d-3c96a28bbeff.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:30:59.865Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:43:13.306Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -190,8 +496,41 @@
   "page": "254",
   "price": 400000,
   "copies": [],
-  "comments": [],
-  "imagePath": "b1860a4f-4c82-4496-9528-3095c5353864.jpg"
+  "comments": [
+    {
+      "comment_id": "34c01cca-1759-418f-967f-96c797608f4f",
+      "user": "annm",
+      "comment": "Đọc rất chi là cuốn nha",
+      "timestamp": {
+        "$date": "2023-11-20T03:31:19.213Z"
+      }
+    },
+    {
+      "comment_id": "1821959e-f0ff-4f7d-971c-ef4e93f3d56f",
+      "user": "congtt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:43:32.924Z"
+      }
+    }
+  ],
+  "imagePath": "b1860a4f-4c82-4496-9528-3095c5353864.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:31:22.760Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:43:28.283Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -206,10 +545,66 @@
   "page": "176",
   "price": 450000,
   "copies": [],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "88bed510-b14e-425a-9887-d32285fbec75",
+      "user": "annm",
+      "comment": "Sách hay nha cả nhà",
+      "timestamp": {
+        "$date": "2023-11-20T03:31:42.317Z"
+      }
+    },
+    {
+      "comment_id": "09b7f3f3-3db8-4f22-9614-7330e1e3f827",
+      "user": "annm",
+      "comment": "sach hay nha",
+      "timestamp": {
+        "$date": "2023-11-20T03:32:02.820Z"
+      }
+    },
+    {
+      "comment_id": "3c74e196-3d70-4584-a6b7-09650c233d5a",
+      "user": "congtt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:44:01.104Z"
+      }
+    },
+    {
+      "comment_id": "4bcc404c-5e13-4698-8709-a5f9d7bda3b7",
+      "user": "hanng",
+      "comment": "Hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:41:03.429Z"
+      }
+    }
+  ],
   "imagePath": "382524c3-a42b-427d-91fd-c994599a3a30.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:32:06.685Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:43:44.337Z"
+      }
+    },
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:41:00.163Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -224,8 +619,41 @@
   "page": "168",
   "price": 50000,
   "copies": [],
-  "comments": [],
-  "imagePath": "1b6c28ac-4f9e-43c0-855b-e8df3322a1b7.jpg"
+  "comments": [
+    {
+      "comment_id": "53e59cd6-b743-4fbc-aff6-f312e75c9a72",
+      "user": "annm",
+      "comment": "Sách ý nghĩa",
+      "timestamp": {
+        "$date": "2023-11-20T03:32:23.643Z"
+      }
+    },
+    {
+      "comment_id": "d2c394ee-9abe-4b96-897f-6e908f24ba87",
+      "user": "congtt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:44:19.582Z"
+      }
+    }
+  ],
+  "imagePath": "1b6c28ac-4f9e-43c0-855b-e8df3322a1b7.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:32:33.190Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:44:14.150Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -247,8 +675,41 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "2b7347df-402e-4807-befb-2ae0e7255366.jpg"
+  "comments": [
+    {
+      "comment_id": "c0b9ce83-df09-4ed4-9510-3b4818a90d2d",
+      "user": "annm",
+      "comment": "Sách đọc hay",
+      "timestamp": {
+        "$date": "2023-11-20T03:32:56.084Z"
+      }
+    },
+    {
+      "comment_id": "84ad2ab9-c73e-4615-b25a-4c0892061ccf",
+      "user": "congtt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:44:35.474Z"
+      }
+    }
+  ],
+  "imagePath": "2b7347df-402e-4807-befb-2ae0e7255366.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:32:47.033Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:44:30.772Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -263,10 +724,58 @@
   "page": "256",
   "price": 400000,
   "copies": [],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "6341c947-8ee5-422c-a19c-4763ccc83c21",
+      "user": "annm",
+      "comment": "Sách ý nghĩa đọc hay",
+      "timestamp": {
+        "$date": "2023-11-20T03:33:20.218Z"
+      }
+    },
+    {
+      "comment_id": "4435de95-316d-4275-a06a-5fb5396e864c",
+      "user": "congtt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:44:51.550Z"
+      }
+    },
+    {
+      "comment_id": "8faf2390-1cf9-4097-a19d-aa98daacbae8",
+      "user": "hanng",
+      "comment": "Hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:41:15.669Z"
+      }
+    }
+  ],
   "imagePath": "e5cb2df3-fd3b-4f5b-96a3-55683aba8b85.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:33:30.316Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:44:45.599Z"
+      }
+    },
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:41:11.502Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -281,10 +790,43 @@
   "page": "575",
   "price": 450000,
   "copies": [],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "9fcf4c4e-57f9-4cc2-b74f-0458043ed47f",
+      "user": "annm",
+      "comment": "Sách hay",
+      "timestamp": {
+        "$date": "2023-11-20T03:36:48.956Z"
+      }
+    },
+    {
+      "comment_id": "142b70d7-9ff8-4057-8f33-b92b8d91b0df",
+      "user": "congtt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:45:17.925Z"
+      }
+    }
+  ],
   "imagePath": "f7c58f57-9efd-4adc-8d00-d34557192f8f.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:36:59.077Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:45:13.446Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -312,8 +854,41 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "a9664aee-effe-4a7d-a9c7-24ebaf5add7b.jpg"
+  "comments": [
+    {
+      "comment_id": "791bf24c-b8cd-435f-9757-4fef836819b6",
+      "user": "annm",
+      "comment": "Sách hay nha ý nghĩa",
+      "timestamp": {
+        "$date": "2023-11-20T03:37:23.088Z"
+      }
+    },
+    {
+      "comment_id": "ebe065b9-b677-498e-ae95-e2b9e2a7dbf9",
+      "user": "congtt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:45:34.559Z"
+      }
+    }
+  ],
+  "imagePath": "a9664aee-effe-4a7d-a9c7-24ebaf5add7b.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:37:14.543Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:45:28.817Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -328,10 +903,43 @@
   "page": "224",
   "price": 300000,
   "copies": [],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "8887e070-d7f7-4101-91aa-26aca82e4726",
+      "user": "annm",
+      "comment": "Sách hay ý nghĩa",
+      "timestamp": {
+        "$date": "2023-11-20T03:37:56.923Z"
+      }
+    },
+    {
+      "comment_id": "2ec44b38-61f2-4709-9d98-2693703ba184",
+      "user": "congtt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:45:51.492Z"
+      }
+    }
+  ],
   "imagePath": "b6d0c4d5-9f6b-4bbe-875c-184adef1897f.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:37:38.902Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:45:46.831Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -346,8 +954,41 @@
   "page": "184",
   "price": 200000,
   "copies": [],
-  "comments": [],
-  "imagePath": "a703ceea-80be-4fd6-a113-242f82ab7d00.jpg"
+  "comments": [
+    {
+      "comment_id": "f01b60a6-6beb-4d45-8776-b58748dd21c3",
+      "user": "annm",
+      "comment": "Sách đọc ý nghĩa",
+      "timestamp": {
+        "$date": "2023-11-20T03:38:17.248Z"
+      }
+    },
+    {
+      "comment_id": "ba1d6235-554c-49dc-9d85-7a35e4222b43",
+      "user": "congtt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:46:12.708Z"
+      }
+    }
+  ],
+  "imagePath": "a703ceea-80be-4fd6-a113-242f82ab7d00.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:38:09.148Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:46:08.142Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -362,8 +1003,56 @@
   "page": "304",
   "price": 350000,
   "copies": [],
-  "comments": [],
-  "imagePath": "2d77db62-2cfc-4d0e-a018-b4da1403ce1d.jpg"
+  "comments": [
+    {
+      "comment_id": "12e040aa-c8b7-4915-915d-a0dc1805a135",
+      "user": "annm",
+      "comment": "Sách đọc cuốn nha cả nhà",
+      "timestamp": {
+        "$date": "2023-11-20T03:38:37.292Z"
+      }
+    },
+    {
+      "comment_id": "1ce69743-1c96-4cfe-b58f-1426d3366513",
+      "user": "congtt",
+      "comment": "Tuyệt vời nha",
+      "timestamp": {
+        "$date": "2023-11-20T15:46:30.776Z"
+      }
+    },
+    {
+      "comment_id": "5f448142-b39c-415b-8619-34c497e3f679",
+      "user": "hanng",
+      "comment": "hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:41:52.164Z"
+      }
+    }
+  ],
+  "imagePath": "2d77db62-2cfc-4d0e-a018-b4da1403ce1d.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:38:29.146Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:46:24.262Z"
+      }
+    },
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:41:48.009Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -378,8 +1067,41 @@
   "page": "639",
   "price": 200000,
   "copies": [],
-  "comments": [],
-  "imagePath": "b50af972-59f4-4643-94c8-d4b0b24088a5.jpg"
+  "comments": [
+    {
+      "comment_id": "9e08b54b-6239-42a4-b93c-df0d786d66fa",
+      "user": "annm",
+      "comment": "Tuyệt vời nha",
+      "timestamp": {
+        "$date": "2023-11-20T03:39:20.414Z"
+      }
+    },
+    {
+      "comment_id": "6e2ee24d-c9cd-4848-8ccf-52236d594530",
+      "user": "congtt",
+      "comment": "Sách hay nha cả nhà",
+      "timestamp": {
+        "$date": "2023-11-20T15:46:51.468Z"
+      }
+    }
+  ],
+  "imagePath": "b50af972-59f4-4643-94c8-d4b0b24088a5.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:39:01.761Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:46:45.164Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -399,10 +1121,43 @@
       "date_imported": "Sun, 19 Nov 2023 06:04:27 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "86dcb2fc-83fe-4bf0-8661-27d681a63dc8",
+      "user": "annm",
+      "comment": "Tuyệt vời nha cả nhà",
+      "timestamp": {
+        "$date": "2023-11-20T03:39:40.262Z"
+      }
+    },
+    {
+      "comment_id": "2def4ff4-16b4-45c3-a7c9-546c977ae0bd",
+      "user": "congtt",
+      "comment": "Sách hay ý nghĩa",
+      "timestamp": {
+        "$date": "2023-11-20T15:47:22.026Z"
+      }
+    }
+  ],
   "imagePath": "0e6988e6-77eb-45a7-ab7b-681c0bc9df70.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:39:33.764Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:47:15.516Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -422,10 +1177,43 @@
       "date_imported": "Sun, 19 Nov 2023 06:04:45 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "44be1d96-23a2-4017-b8cb-c654068f2359",
+      "user": "annm",
+      "comment": "Tuyệt vời nha, rất hay",
+      "timestamp": {
+        "$date": "2023-11-20T03:40:01.322Z"
+      }
+    },
+    {
+      "comment_id": "464888f8-3581-4223-8c73-e701c12c0473",
+      "user": "congtt",
+      "comment": "Sách hay ý nghĩa",
+      "timestamp": {
+        "$date": "2023-11-20T15:47:50.950Z"
+      }
+    }
+  ],
   "imagePath": "a2523ac1-74bd-4778-bd46-da65ff304edc.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:39:50.449Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:47:42.755Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -447,8 +1235,41 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "a2d6a554-fd13-4b03-a977-409251054af5.jpg"
+  "comments": [
+    {
+      "comment_id": "5ce2b2f8-0592-4a2e-ba2f-244d7e163673",
+      "user": "annm",
+      "comment": "Sách hay ý nghĩa nha cả nhà",
+      "timestamp": {
+        "$date": "2023-11-20T03:40:21.448Z"
+      }
+    },
+    {
+      "comment_id": "6c05b9b3-e522-40d0-bc00-7a803e7ad27a",
+      "user": "congtt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:48:07.314Z"
+      }
+    }
+  ],
+  "imagePath": "a2d6a554-fd13-4b03-a977-409251054af5.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:40:12.290Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:48:02.489Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -463,8 +1284,41 @@
   "page": "256",
   "price": 50000,
   "copies": [],
-  "comments": [],
-  "imagePath": "d52eec8b-16bc-44b2-812e-0e49dcc9d1d9.jpg"
+  "comments": [
+    {
+      "comment_id": "2a5be72b-c6fe-4889-a00e-c979add84006",
+      "user": "annm",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T03:40:37.214Z"
+      }
+    },
+    {
+      "comment_id": "a14cca26-a472-40a7-afbc-52b4cd150488",
+      "user": "congtt",
+      "comment": "Sách hay nha cả nhà ơi",
+      "timestamp": {
+        "$date": "2023-11-20T15:48:27.292Z"
+      }
+    }
+  ],
+  "imagePath": "d52eec8b-16bc-44b2-812e-0e49dcc9d1d9.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:40:32.648Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:48:19.123Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -484,10 +1338,43 @@
       "date_imported": "Sun, 19 Nov 2023 06:05:52 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "3c875b10-0f3f-4fab-bf53-a937f176300b",
+      "user": "annm",
+      "comment": "Sách đọc ý nghĩa",
+      "timestamp": {
+        "$date": "2023-11-20T03:40:53.677Z"
+      }
+    },
+    {
+      "comment_id": "1d4fa57c-12e3-4b85-bee9-08216367c180",
+      "user": "congtt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:48:45.514Z"
+      }
+    }
+  ],
   "imagePath": "078422ea-bc41-4d92-8dd5-58be697cd88a.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:40:48.024Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:48:39.613Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -515,8 +1402,41 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "e2f2bf87-3688-443f-9ced-8abc4d7bcaf4.jpg"
+  "comments": [
+    {
+      "comment_id": "ab5cc40a-5076-4b4e-93d1-a4f9386a5440",
+      "user": "annm",
+      "comment": "Tuyệt vời nha cả nhà",
+      "timestamp": {
+        "$date": "2023-11-20T03:42:19.327Z"
+      }
+    },
+    {
+      "comment_id": "b240add8-3f81-4979-8ec6-f333f00108ca",
+      "user": "congtt",
+      "comment": "Tuyệt vời, sách ý nghĩa đọc thấm",
+      "timestamp": {
+        "$date": "2023-11-20T15:49:17.085Z"
+      }
+    }
+  ],
+  "imagePath": "e2f2bf87-3688-443f-9ced-8abc4d7bcaf4.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:42:08.773Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:49:02.283Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -544,8 +1464,41 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "9869025c-179c-4f9c-840c-ecf175e6cdd4.jpg"
+  "comments": [
+    {
+      "comment_id": "7524c415-0dd6-43d8-881a-9f9b7ff8c348",
+      "user": "annm",
+      "comment": "Sách hay ý nghĩa ",
+      "timestamp": {
+        "$date": "2023-11-20T03:42:42.477Z"
+      }
+    },
+    {
+      "comment_id": "fefa0ebc-d32f-4a38-b099-4fe00b0ebaa6",
+      "user": "congtt",
+      "comment": "Sách hay cả nhà ơi",
+      "timestamp": {
+        "$date": "2023-11-20T15:49:37.853Z"
+      }
+    }
+  ],
+  "imagePath": "9869025c-179c-4f9c-840c-ecf175e6cdd4.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:42:31.336Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:49:30.108Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -569,10 +1522,43 @@
       "date_imported": "Sun, 19 Nov 2023 06:06:59 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "5f858601-64f2-46ee-beee-8198925e2f6d",
+      "user": "annm",
+      "comment": "Tuyệt vời nha cả nhà ơi",
+      "timestamp": {
+        "$date": "2023-11-20T03:43:07.260Z"
+      }
+    },
+    {
+      "comment_id": "10e4dc05-b25f-4bba-bbe0-274e5b8197c2",
+      "user": "congtt",
+      "comment": "Sách hay",
+      "timestamp": {
+        "$date": "2023-11-20T15:49:55.325Z"
+      }
+    }
+  ],
   "imagePath": "1cf0b0e5-c551-4868-880e-c6a3d42b9f83.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:42:55.438Z"
+      }
+    },
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:49:49.841Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -594,8 +1580,34 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "65c6e6a6-aefb-451b-8173-d82c51ecda81.jpg"
+  "comments": [
+    {
+      "comment_id": "55a135f1-c22e-4f4a-a637-cf6da733d3cc",
+      "user": "annm",
+      "comment": "Tuyệt vời nha ",
+      "timestamp": {
+        "$date": "2023-11-20T03:43:25.810Z"
+      }
+    },
+    {
+      "comment_id": "5fb60789-4a0e-4cce-936c-754a327fd764",
+      "user": "congtt",
+      "comment": "Ý nghĩa, hay",
+      "timestamp": {
+        "$date": "2023-11-20T15:50:17.497Z"
+      }
+    }
+  ],
+  "imagePath": "65c6e6a6-aefb-451b-8173-d82c51ecda81.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:43:18.629Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -617,8 +1629,41 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "6fd56175-a05c-4a2b-aa66-48381a10dc80.jpg"
+  "comments": [
+    {
+      "comment_id": "9d3c196d-7d64-4009-9a07-753695f7f7e2",
+      "user": "annm",
+      "comment": "Sách hay nha cả nhà",
+      "timestamp": {
+        "$date": "2023-11-20T03:43:49.923Z"
+      }
+    },
+    {
+      "comment_id": "0495948b-7b02-49e9-8939-f67089cb6557",
+      "user": "hanng",
+      "comment": "hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:42:19.834Z"
+      }
+    }
+  ],
+  "imagePath": "6fd56175-a05c-4a2b-aa66-48381a10dc80.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:43:41.753Z"
+      }
+    },
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:42:16.755Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -640,10 +1685,28 @@
       }
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "ec645968-78c4-4d62-9730-e26b72573a23",
+      "user": "annm",
+      "comment": "Sách hay",
+      "timestamp": {
+        "$date": "2023-11-20T03:44:12.330Z"
+      }
+    }
+  ],
   "imagePath": "998ea5ca-cac0-40c0-b3e8-556f9c80c094.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:44:24.469Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -658,8 +1721,26 @@
   "page": "352",
   "price": 450000,
   "copies": [],
-  "comments": [],
-  "imagePath": "1946718d-96f6-4426-a799-019722ab5c5f.jpg"
+  "comments": [
+    {
+      "comment_id": "ce665b5c-7a70-411a-ad5d-b120c68ffb09",
+      "user": "annm",
+      "comment": "Sách hay nha ",
+      "timestamp": {
+        "$date": "2023-11-20T03:44:42.270Z"
+      }
+    }
+  ],
+  "imagePath": "1946718d-96f6-4426-a799-019722ab5c5f.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:44:37.024Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -679,10 +1760,43 @@
       "date_imported": "Sun, 19 Nov 2023 06:08:39 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "f24289a6-964e-4abe-a12d-5df43a5520c0",
+      "user": "annm",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T03:45:09.474Z"
+      }
+    },
+    {
+      "comment_id": "5dfb9779-8180-4479-848a-026375bafe6e",
+      "user": "hanng",
+      "comment": "hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:42:07.653Z"
+      }
+    }
+  ],
   "imagePath": "109c5ad9-d46b-4096-8af7-4a51eb9344be.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:45:02.906Z"
+      }
+    },
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:42:04.551Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -710,10 +1824,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:08:58 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "32d27ea3-6f34-4949-b81f-739579e49a7e",
+      "user": "annm",
+      "comment": "Tuyệt vời nha",
+      "timestamp": {
+        "$date": "2023-11-20T03:45:27.944Z"
+      }
+    }
+  ],
   "imagePath": "ca438727-42c1-4d8f-b0fc-aed0e2df9548.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:45:21.944Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -737,10 +1869,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:09:18 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "f52029dd-8402-41f4-aaa4-0f474f5ba660",
+      "user": "annm",
+      "comment": "Hay",
+      "timestamp": {
+        "$date": "2023-11-20T03:45:48.677Z"
+      }
+    }
+  ],
   "imagePath": "1337b019-21d3-472b-9524-bc60644b7f68.webp",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:45:43.926Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -768,10 +1918,43 @@
       "date_imported": "Sun, 19 Nov 2023 06:09:35 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "1794681d-9bfa-482b-99f2-7f96c02dbe7e",
+      "user": "annm",
+      "comment": "Hay",
+      "timestamp": {
+        "$date": "2023-11-20T03:46:05.969Z"
+      }
+    },
+    {
+      "comment_id": "c2513b4f-6bb4-4beb-97e6-f34290b7ca42",
+      "user": "hanng",
+      "comment": "hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:42:31.652Z"
+      }
+    }
+  ],
   "imagePath": "245f0bea-e26b-4266-a9fa-88822632e6d9.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:46:00.069Z"
+      }
+    },
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:42:29.221Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -793,8 +1976,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "8e9f1691-d03d-4106-a6c0-53959bbd886a.jpg"
+  "comments": [
+    {
+      "comment_id": "bad16708-6c26-4720-8ef1-2d865145cef5",
+      "user": "annm",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T03:46:29.155Z"
+      }
+    }
+  ],
+  "imagePath": "8e9f1691-d03d-4106-a6c0-53959bbd886a.jpg",
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:46:22.622Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -814,10 +2015,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:10:15 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "1411165d-805a-46e3-b1c7-3b4d24971c75",
+      "user": "annm",
+      "comment": "hay",
+      "timestamp": {
+        "$date": "2023-11-20T03:46:44.386Z"
+      }
+    }
+  ],
   "imagePath": "b1dd9ab8-c013-49c0-a9f3-670b92cba811.webp",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "annm",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T03:46:41.327Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -851,8 +2070,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "9d2ce2b1-31f8-4f0e-90e8-556e171c52e9.jpg"
+  "comments": [
+    {
+      "comment_id": "73cba024-5974-4de1-b9e7-fd4598f838c5",
+      "user": "hoatg",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:57:11.238Z"
+      }
+    }
+  ],
+  "imagePath": "9d2ce2b1-31f8-4f0e-90e8-556e171c52e9.jpg",
+  "ratings": [
+    {
+      "user": "hoatg",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:57:05.623Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -880,10 +2117,28 @@
       }
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "a9b60fa1-6405-4d76-a8f7-93649fbb3165",
+      "user": "hoatg",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:57:27.156Z"
+      }
+    }
+  ],
   "imagePath": "16ae941c-740a-403b-8258-62b46ce6c72b.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "hoatg",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:57:22.640Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -905,8 +2160,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "f71b936d-26df-474e-a774-4c6de3291458.jpg"
+  "comments": [
+    {
+      "comment_id": "589fd4ba-7128-4a5a-aae3-1bb1310589a1",
+      "user": "hoatg",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:57:43.273Z"
+      }
+    }
+  ],
+  "imagePath": "f71b936d-26df-474e-a774-4c6de3291458.jpg",
+  "ratings": [
+    {
+      "user": "hoatg",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:57:38.389Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -921,8 +2194,26 @@
   "page": "416",
   "price": 500000,
   "copies": [],
-  "comments": [],
-  "imagePath": "2d2b91f8-8906-4ae5-a9bc-5370476b57b7.jpg"
+  "comments": [
+    {
+      "comment_id": "b3e337e4-5a6f-4127-832a-0fe29d3821b0",
+      "user": "hoatg",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:58:01.665Z"
+      }
+    }
+  ],
+  "imagePath": "2d2b91f8-8906-4ae5-a9bc-5370476b57b7.jpg",
+  "ratings": [
+    {
+      "user": "hoatg",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:57:54.843Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -937,10 +2228,28 @@
   "page": "320",
   "price": 250000,
   "copies": [],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "be32f7ae-d852-46bd-ae72-de721a2d1b0d",
+      "user": "hoatg",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:58:25.739Z"
+      }
+    }
+  ],
   "imagePath": "eb1cd8fe-0697-4be6-a534-de04e3062286.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "hoatg",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:58:20.696Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -968,8 +2277,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "ae619d8b-9122-4c4a-b7ab-0e114bef9da8.jpg"
+  "comments": [
+    {
+      "comment_id": "9b13d7ff-4acc-4267-87f5-9c253a85172e",
+      "user": "hoatg",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T16:03:35.723Z"
+      }
+    }
+  ],
+  "imagePath": "ae619d8b-9122-4c4a-b7ab-0e114bef9da8.jpg",
+  "ratings": [
+    {
+      "user": "hoatg",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:03:31.022Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -989,10 +2316,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:14:20 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "04d6e30a-a2c9-4d0c-9fdf-1daaaf51b8ed",
+      "user": "hoatg",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T16:03:57.413Z"
+      }
+    }
+  ],
   "imagePath": "3702f3be-5174-4017-b0d2-044d6fa5e9eb.webp",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "hoatg",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:03:52.255Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1014,8 +2359,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "a9d444a5-d60c-4887-883e-ba75fbe6702e.jpg"
+  "comments": [
+    {
+      "comment_id": "aff40d4c-bccc-47ff-83af-acfbc14e6357",
+      "user": "hoatg",
+      "comment": "Tuyệt vời\n",
+      "timestamp": {
+        "$date": "2023-11-20T16:04:15.349Z"
+      }
+    }
+  ],
+  "imagePath": "a9d444a5-d60c-4887-883e-ba75fbe6702e.jpg",
+  "ratings": [
+    {
+      "user": "hoatg",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:04:10.805Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1030,10 +2393,28 @@
   "page": "448",
   "price": 150000,
   "copies": [],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "042a4dfa-4b7a-48ba-9f89-de5401139a25",
+      "user": "hoatg",
+      "comment": "Tuyệt vời nha",
+      "timestamp": {
+        "$date": "2023-11-20T16:05:32.532Z"
+      }
+    }
+  ],
   "imagePath": "f9d3b5c2-3d4c-43cb-8ba2-3bb2403a2d75.webp",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "hoatg",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:05:24.451Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1053,10 +2434,36 @@
       "date_imported": "Sun, 19 Nov 2023 06:15:11 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "c4c891ca-bdb7-4739-8fc4-5769361bea25",
+      "user": "hoatg",
+      "comment": "Tuyệt vời nha",
+      "timestamp": {
+        "$date": "2023-11-20T16:05:55.905Z"
+      }
+    },
+    {
+      "comment_id": "89351453-96e9-4196-8b53-835662244bd4",
+      "user": "hanng",
+      "comment": "hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:42:43.337Z"
+      }
+    }
+  ],
   "imagePath": "b3e9a914-98e9-450f-ac37-1e5c24da0fdc.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "hoatg",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:05:50.375Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1084,8 +2491,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "ab32bf52-19d3-4899-bf0f-076bf40dc44e.jpg"
+  "comments": [
+    {
+      "comment_id": "e6429d54-7fa6-40f5-a341-ec18029751ee",
+      "user": "hoatg",
+      "comment": "Tuyệt vời nha cả nhà",
+      "timestamp": {
+        "$date": "2023-11-20T16:06:29.697Z"
+      }
+    }
+  ],
+  "imagePath": "ab32bf52-19d3-4899-bf0f-076bf40dc44e.jpg",
+  "ratings": [
+    {
+      "user": "hoatg",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:06:20.524Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1100,10 +2525,28 @@
   "page": "303",
   "price": 300000,
   "copies": [],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "a9743c67-8b28-46e9-9a2d-7b04b1641adb",
+      "user": "hoatg",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T16:07:49.562Z"
+      }
+    }
+  ],
   "imagePath": "a954fd52-bbc6-4047-990f-cb290520aaf6.webp",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "hoatg",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:07:44.814Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1125,10 +2568,28 @@
       }
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "92740753-0b94-44ae-80e9-d07a34bc5852",
+      "user": "dungdt",
+      "comment": "Sách hay",
+      "timestamp": {
+        "$date": "2023-11-20T16:11:55.772Z"
+      }
+    }
+  ],
   "imagePath": "f45bf7b2-586c-4b46-8443-e687638a3a5e.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:11:50.321Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1152,10 +2613,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:16:27 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "e36f5ede-a187-4f0d-8d0e-c4a6037a6f5f",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T16:12:18.224Z"
+      }
+    }
+  ],
   "imagePath": "78dc4ef8-2415-4075-ae8e-9eb30fd88cb3.webp",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:12:09.635Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1170,8 +2649,26 @@
   "page": "272",
   "price": 500000,
   "copies": [],
-  "comments": [],
-  "imagePath": "ecd17d27-71d1-46f2-97f9-6f6d227ffdea.jpg"
+  "comments": [
+    {
+      "comment_id": "7bf78d29-c028-4240-803c-c3409a476323",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T16:12:39.900Z"
+      }
+    }
+  ],
+  "imagePath": "ecd17d27-71d1-46f2-97f9-6f6d227ffdea.jpg",
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:12:33.866Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1193,8 +2690,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "f7357ad9-a312-4e5b-b2ed-2a9ccfc8773d.jpg"
+  "comments": [
+    {
+      "comment_id": "0670df08-9704-4316-a367-78bc605bde09",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T16:13:01.589Z"
+      }
+    }
+  ],
+  "imagePath": "f7357ad9-a312-4e5b-b2ed-2a9ccfc8773d.jpg",
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:12:54.643Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1218,10 +2733,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:20:34 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "643109cd-e0eb-45a3-a336-7ca8a19d5b17",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T16:13:19.829Z"
+      }
+    }
+  ],
   "imagePath": "aa932e07-b418-4042-8ac4-58ec786faeab.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:13:15.422Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1236,8 +2769,26 @@
   "page": "384",
   "price": 50000,
   "copies": [],
-  "comments": [],
-  "imagePath": "38a422dc-b938-4fac-9c58-9537b15bfbe0.webp"
+  "comments": [
+    {
+      "comment_id": "3e2922a4-70f8-4d58-a21d-3dad5715c55b",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T16:14:12.892Z"
+      }
+    }
+  ],
+  "imagePath": "38a422dc-b938-4fac-9c58-9537b15bfbe0.webp",
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:14:08.274Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1265,8 +2816,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "4288218e-669d-43cb-b2ed-c78ff3bdadef.jpg"
+  "comments": [
+    {
+      "comment_id": "9489098f-4051-4dd7-904b-7a03fccb03aa",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T16:14:30.650Z"
+      }
+    }
+  ],
+  "imagePath": "4288218e-669d-43cb-b2ed-c78ff3bdadef.jpg",
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:14:26.254Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1288,8 +2857,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "165cf248-0b8a-455b-b3ce-f5e8669a771b.jpg"
+  "comments": [
+    {
+      "comment_id": "0c2357d3-e264-4c6d-a0ed-ad5f3145ff96",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T16:14:48.559Z"
+      }
+    }
+  ],
+  "imagePath": "165cf248-0b8a-455b-b3ce-f5e8669a771b.jpg",
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:14:43.002Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1317,10 +2904,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:21:45 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "71eef079-df4c-467d-a0d8-13bdf9c4140e",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T16:15:08.075Z"
+      }
+    }
+  ],
   "imagePath": "177e9895-b786-4355-aa6c-495a24df7992.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:15:02.875Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1342,8 +2947,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "85df1c77-1780-4783-8ec2-45a2659381eb.jpg"
+  "comments": [
+    {
+      "comment_id": "0f7046e7-93dd-4d75-9a8c-7e510eefa194",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T16:15:27.299Z"
+      }
+    }
+  ],
+  "imagePath": "85df1c77-1780-4783-8ec2-45a2659381eb.jpg",
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:15:22.109Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1371,8 +2994,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "b6672ccd-404f-448f-aa68-098c0cb08fd7.jpg"
+  "comments": [
+    {
+      "comment_id": "c1307b89-40db-408c-9890-e2cea448b243",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T16:59:56.077Z"
+      }
+    }
+  ],
+  "imagePath": "b6672ccd-404f-448f-aa68-098c0cb08fd7.jpg",
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:59:51.747Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1394,8 +3035,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "d01a7698-817e-4644-a1bf-05ff8ccb3e76.jpg"
+  "comments": [
+    {
+      "comment_id": "62fe3d96-af77-456f-86cd-2b3e5916c6ab",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T17:00:21.910Z"
+      }
+    }
+  ],
+  "imagePath": "d01a7698-817e-4644-a1bf-05ff8ccb3e76.jpg",
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:00:12.540Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1415,10 +3074,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:23:08 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "c0ac2e02-8f27-4ae8-b714-cbb2cd108869",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T17:02:08.500Z"
+      }
+    }
+  ],
   "imagePath": "34578b06-f4cf-40df-81ff-2631a169eb07.webp",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:02:04.155Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1446,8 +3123,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "e512e32d-6855-45cf-ade8-74a852108b06.jpg"
+  "comments": [
+    {
+      "comment_id": "9a0bd14f-17ca-4d40-91cc-070060c7207f",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T17:02:26.005Z"
+      }
+    }
+  ],
+  "imagePath": "e512e32d-6855-45cf-ade8-74a852108b06.jpg",
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:02:21.444Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1475,8 +3170,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "a3ff0f10-e96b-40a5-8665-7422b1d784ab.jpg"
+  "comments": [
+    {
+      "comment_id": "ad49ba2a-94f3-4324-bd4d-1dde801c87ea",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T17:02:45.268Z"
+      }
+    }
+  ],
+  "imagePath": "a3ff0f10-e96b-40a5-8665-7422b1d784ab.jpg",
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:02:40.162Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1504,8 +3217,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "4f8a5778-2074-4f81-a9d9-047e20c5e87a.jpg"
+  "comments": [
+    {
+      "comment_id": "80864dee-e646-45fb-9187-e0c312b2814b",
+      "user": "hanng",
+      "comment": "hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:42:57.624Z"
+      }
+    }
+  ],
+  "imagePath": "4f8a5778-2074-4f81-a9d9-047e20c5e87a.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:43:12.045Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1520,8 +3251,26 @@
   "page": "416",
   "price": 550000,
   "copies": [],
-  "comments": [],
-  "imagePath": "9c60b1c9-774e-43f9-a2ec-f60d18544469.webp"
+  "comments": [
+    {
+      "comment_id": "f498cf51-4304-4116-853d-141844897e25",
+      "user": "hanng",
+      "comment": "hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:43:35.787Z"
+      }
+    }
+  ],
+  "imagePath": "9c60b1c9-774e-43f9-a2ec-f60d18544469.webp",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:43:32.574Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1566,8 +3315,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "3073a3bf-1cf9-44e8-b458-9b768b36e59d.webp"
+  "comments": [
+    {
+      "comment_id": "2dcaca26-18fb-4ea1-9454-d44b3bb9624b",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T17:01:51.560Z"
+      }
+    }
+  ],
+  "imagePath": "3073a3bf-1cf9-44e8-b458-9b768b36e59d.webp",
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:01:46.074Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1582,8 +3349,26 @@
   "page": "128",
   "price": 50000,
   "copies": [],
-  "comments": [],
-  "imagePath": "0dadba13-7b3b-4dee-8be9-82413f9e7847.jpg"
+  "comments": [
+    {
+      "comment_id": "e08eef46-7b92-4d6c-9f7a-9a6555a849d2",
+      "user": "hanng",
+      "comment": "hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:43:51.660Z"
+      }
+    }
+  ],
+  "imagePath": "0dadba13-7b3b-4dee-8be9-82413f9e7847.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:43:48.638Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1607,10 +3392,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:25:24 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "81649c3b-7fff-45da-97d0-61d41038fc88",
+      "user": "hanng",
+      "comment": "tạm hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:44:33.581Z"
+      }
+    }
+  ],
   "imagePath": "44538337-6bcc-424a-9ebd-e78fae4549f5.webp",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 4,
+      "timestamp": {
+        "$date": "2023-11-20T17:44:51.617Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1698,10 +3501,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:26:11 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "d7f3931a-c998-42a2-9ca8-fcc681eedec5",
+      "user": "hanng",
+      "comment": "khá hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:45:11.298Z"
+      }
+    }
+  ],
   "imagePath": "3d4f7719-daed-43df-a8ac-df9440ca902c.webp",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 3,
+      "timestamp": {
+        "$date": "2023-11-20T17:45:06.460Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1729,8 +3550,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "0a5844a6-f27b-46b3-bb1b-1bff5b015288.jpg"
+  "comments": [
+    {
+      "comment_id": "5a46d916-5d87-4960-9f22-0605501b2e63",
+      "user": "hanng",
+      "comment": "tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T17:47:42.962Z"
+      }
+    }
+  ],
+  "imagePath": "0a5844a6-f27b-46b3-bb1b-1bff5b015288.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:47:38.712Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1781,8 +3620,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "ab638aa3-21a6-4660-ba2c-8c1049b1b4c2.jpg"
+  "comments": [
+    {
+      "comment_id": "54cb0b55-d666-41e5-ada3-244ba307ab22",
+      "user": "hanng",
+      "comment": "khá hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:45:56.942Z"
+      }
+    }
+  ],
+  "imagePath": "ab638aa3-21a6-4660-ba2c-8c1049b1b4c2.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:46:08.656Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1870,8 +3727,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "ba2c7d17-5905-4b01-a65d-23e85dcd91d7.jpg"
+  "comments": [
+    {
+      "comment_id": "29cf93cc-9e6e-4ee0-a179-4f7ea53f94dc",
+      "user": "hanng",
+      "comment": "hay nha ",
+      "timestamp": {
+        "$date": "2023-11-20T17:47:59.951Z"
+      }
+    }
+  ],
+  "imagePath": "ba2c7d17-5905-4b01-a65d-23e85dcd91d7.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:48:12.366Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1906,7 +3781,16 @@
     }
   ],
   "comments": [],
-  "imagePath": "a15a8c80-f4a0-4a49-9a1d-c679ed770165.jpg"
+  "imagePath": "a15a8c80-f4a0-4a49-9a1d-c679ed770165.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 2,
+      "timestamp": {
+        "$date": "2023-11-20T17:45:33.794Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -1992,8 +3876,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "1781e575-a2a7-4111-af14-c3dc28c4cb2c.jpg"
+  "comments": [
+    {
+      "comment_id": "3c011b2b-61f2-41ef-8a26-06cbc4dccca4",
+      "user": "hanng",
+      "comment": "tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T17:46:50.989Z"
+      }
+    }
+  ],
+  "imagePath": "1781e575-a2a7-4111-af14-c3dc28c4cb2c.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 4,
+      "timestamp": {
+        "$date": "2023-11-20T17:46:46.226Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -2021,10 +3923,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:29:22 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "71cb47b7-1fe6-475f-802a-3b92d9e54cf4",
+      "user": "hanng",
+      "comment": "hay nha cả nhà",
+      "timestamp": {
+        "$date": "2023-11-20T17:47:09.504Z"
+      }
+    }
+  ],
   "imagePath": "23f04341-5fb1-4f87-8940-f2a96847a930.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 4,
+      "timestamp": {
+        "$date": "2023-11-20T17:47:03.497Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -2124,8 +4044,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "9ac066f2-e817-439d-b996-bce7c6130fb1.jpg"
+  "comments": [
+    {
+      "comment_id": "817aa747-7dd8-4719-b96b-e7685fa32d1b",
+      "user": "hanng",
+      "comment": "hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:47:25.274Z"
+      }
+    }
+  ],
+  "imagePath": "9ac066f2-e817-439d-b996-bce7c6130fb1.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:47:22.793Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -2159,8 +4097,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "d7417ad9-c1f8-4982-beec-d66c4fa45615.jpg"
+  "comments": [
+    {
+      "comment_id": "00b09093-5028-4bae-bc79-62903198e339",
+      "user": "hanng",
+      "comment": "Hay nha",
+      "timestamp": {
+        "$date": "2023-11-20T17:48:30.211Z"
+      }
+    }
+  ],
+  "imagePath": "d7417ad9-c1f8-4982-beec-d66c4fa45615.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 4,
+      "timestamp": {
+        "$date": "2023-11-20T17:48:26.556Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -2244,8 +4200,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "01024f9e-cd61-4b83-9ded-5d46b3539c3d.jpg"
+  "comments": [
+    {
+      "comment_id": "2687643e-16b7-44c4-bebd-84f95afb86c4",
+      "user": "hanng",
+      "comment": "kha hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:48:54.106Z"
+      }
+    }
+  ],
+  "imagePath": "01024f9e-cd61-4b83-9ded-5d46b3539c3d.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 3,
+      "timestamp": {
+        "$date": "2023-11-20T17:48:49.891Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -2279,8 +4253,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "586e906b-8931-4988-8238-b3cd8977b4af.jpg"
+  "comments": [
+    {
+      "comment_id": "30e972cd-375e-429f-8f5e-1881b5d61ec6",
+      "user": "hanng",
+      "comment": "tuyệt vời nha",
+      "timestamp": {
+        "$date": "2023-11-20T17:46:30.634Z"
+      }
+    }
+  ],
+  "imagePath": "586e906b-8931-4988-8238-b3cd8977b4af.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:46:21.591Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -2380,10 +4372,28 @@
       }
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "6b100c40-7841-46fa-b7e3-bf1a4c8a14bb",
+      "user": "hanng",
+      "comment": "hay nha ",
+      "timestamp": {
+        "$date": "2023-11-20T17:49:15.339Z"
+      }
+    }
+  ],
   "imagePath": "c1367b8a-1f21-47df-bd6e-572d0c9d220f.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:49:10.284Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -2417,8 +4427,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "67cb86c8-9c72-4113-ba35-6bb8576f271d.jpg"
+  "comments": [
+    {
+      "comment_id": "3badb99f-49c8-44fc-a99b-824fb11820c3",
+      "user": "hanng",
+      "comment": "khá hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:49:30.944Z"
+      }
+    }
+  ],
+  "imagePath": "67cb86c8-9c72-4113-ba35-6bb8576f271d.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:49:44.119Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -2514,8 +4542,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "bd398e92-7e54-40c0-9cc9-2f688ec5136a.jpg"
+  "comments": [
+    {
+      "comment_id": "859b0997-f431-47cd-9b3e-3619f4c8ab83",
+      "user": "hanng",
+      "comment": "khá hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:50:49.557Z"
+      }
+    }
+  ],
+  "imagePath": "bd398e92-7e54-40c0-9cc9-2f688ec5136a.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 4,
+      "timestamp": {
+        "$date": "2023-11-20T17:50:46.232Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -2543,10 +4589,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:34:05 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "1818b6c8-5701-4247-8ace-2e310c12b268",
+      "user": "hanng",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T17:51:12.165Z"
+      }
+    }
+  ],
   "imagePath": "16981b91-d694-41e5-a788-887ac70f5de6.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:51:07.769Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -2632,10 +4696,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:35:45 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "67a744b5-933f-4bd5-9424-8aa35eb42064",
+      "user": "hanng",
+      "comment": "khá hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:51:28.527Z"
+      }
+    }
+  ],
   "imagePath": "36682478-544b-404b-acce-715bde85c20d.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 4,
+      "timestamp": {
+        "$date": "2023-11-20T17:51:24.955Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -2669,8 +4751,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "80f15c30-1ac1-4f16-aaed-29cada3cec64.jpg"
+  "comments": [
+    {
+      "comment_id": "f83884a7-15e7-407b-94df-2b2f7edd85f0",
+      "user": "hanng",
+      "comment": "tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T17:52:19.546Z"
+      }
+    }
+  ],
+  "imagePath": "80f15c30-1ac1-4f16-aaed-29cada3cec64.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:52:15.139Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -2727,10 +4827,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:36:37 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "1fc5bbf6-4154-42fc-98ab-1bca748e3279",
+      "user": "hanng",
+      "comment": "khá hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:51:59.503Z"
+      }
+    }
+  ],
   "imagePath": "265bded1-ba29-4ec1-8e4f-7f5e1b0198b5.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 4,
+      "timestamp": {
+        "$date": "2023-11-20T17:51:54.976Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -2828,8 +4946,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "f023696e-8a8b-4b57-aba7-37b9fa336df4.jpg"
+  "comments": [
+    {
+      "comment_id": "e05aac07-38af-4425-ac95-e81fdd2d7888",
+      "user": "hanng",
+      "comment": "hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:52:36.649Z"
+      }
+    }
+  ],
+  "imagePath": "f023696e-8a8b-4b57-aba7-37b9fa336df4.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:52:35.309Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -2857,10 +4993,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:37:54 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "5a0da7a5-a811-46e8-88bf-ca26c8b933d4",
+      "user": "hanng",
+      "comment": "hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:52:58.068Z"
+      }
+    }
+  ],
   "imagePath": "75b2f789-3007-4e4d-b615-1e556694b772.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:52:54.694Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -2923,8 +5077,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "81341d69-cfaf-4bcb-99c8-327a30b219c1.jpg"
+  "comments": [
+    {
+      "comment_id": "459b3191-8aa9-44cf-872b-894b56c30c46",
+      "user": "hanng",
+      "comment": "khá hay",
+      "timestamp": {
+        "$date": "2023-11-20T17:53:21.368Z"
+      }
+    }
+  ],
+  "imagePath": "81341d69-cfaf-4bcb-99c8-327a30b219c1.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 4,
+      "timestamp": {
+        "$date": "2023-11-20T17:53:18.647Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3024,8 +5196,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "b937c7c7-25d6-485a-9508-d140f49cd219.jpg"
+  "comments": [
+    {
+      "comment_id": "f4e26919-006b-41ce-8881-eadc82ea6e0a",
+      "user": "hanng",
+      "comment": "khá hay ý nghĩa",
+      "timestamp": {
+        "$date": "2023-11-20T17:53:43.083Z"
+      }
+    }
+  ],
+  "imagePath": "b937c7c7-25d6-485a-9508-d140f49cd219.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 4,
+      "timestamp": {
+        "$date": "2023-11-20T17:53:34.570Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3059,8 +5249,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "ba4ba094-5aa5-45e2-a6ff-92c45e9ab373.jpg"
+  "comments": [
+    {
+      "comment_id": "632d6ee1-cb01-447e-a8ca-75bf1e4582bc",
+      "user": "hanng",
+      "comment": "tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T17:54:06.844Z"
+      }
+    }
+  ],
+  "imagePath": "ba4ba094-5aa5-45e2-a6ff-92c45e9ab373.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:53:59.906Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3160,8 +5368,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "29cc9e83-8c02-4206-bac7-47ed4bab3ff8.jpg"
+  "comments": [
+    {
+      "comment_id": "1f3c6411-55ee-4987-aaf0-810ce62ca573",
+      "user": "hanng",
+      "comment": "tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T17:54:22.434Z"
+      }
+    }
+  ],
+  "imagePath": "29cc9e83-8c02-4206-bac7-47ed4bab3ff8.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:54:18.135Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3196,7 +5422,16 @@
     }
   ],
   "comments": [],
-  "imagePath": "d066c718-f862-4c95-bf2d-a1ee3890fbc6.jpg"
+  "imagePath": "d066c718-f862-4c95-bf2d-a1ee3890fbc6.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 1,
+      "timestamp": {
+        "$date": "2023-11-20T17:45:24.460Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3261,8 +5496,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "e49edeaa-34ff-4f79-b829-ddac235e0f7e.jpg"
+  "comments": [
+    {
+      "comment_id": "2efcc9b4-60b4-42b9-a456-65f640d32f6a",
+      "user": "hanng",
+      "comment": "hay nha ",
+      "timestamp": {
+        "$date": "2023-11-20T17:44:12.353Z"
+      }
+    }
+  ],
+  "imagePath": "e49edeaa-34ff-4f79-b829-ddac235e0f7e.jpg",
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:51:41.964Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3348,10 +5601,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:41:55 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "d4045b78-840a-4a7e-9263-0ca433037e7f",
+      "user": "hanng",
+      "comment": "hay tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T17:50:27.398Z"
+      }
+    }
+  ],
   "imagePath": "f9d86b89-a16b-4060-a846-183b0eef899a.webp",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "hanng",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:50:21.504Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3379,8 +5650,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "200880bd-26cb-408c-ae89-47cd38585366.jpg"
+  "comments": [
+    {
+      "comment_id": "a48f2d94-fb79-4ebd-a96a-5df72f58c24d",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T17:01:38.312Z"
+      }
+    }
+  ],
+  "imagePath": "200880bd-26cb-408c-ae89-47cd38585366.jpg",
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:01:34.319Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3449,8 +5738,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "c715d32a-2f74-48a9-bdd5-94eaee648f35.webp"
+  "comments": [
+    {
+      "comment_id": "19e953b5-1f23-485a-addc-577e2064c561",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T16:13:53.445Z"
+      }
+    }
+  ],
+  "imagePath": "c715d32a-2f74-48a9-bdd5-94eaee648f35.webp",
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:13:49.338Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3484,8 +5791,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "be2ea316-6f30-40c1-8bac-999d684ae73d.jpg"
+  "comments": [
+    {
+      "comment_id": "d176af27-7a60-44bc-a7d6-c524d18e6f13",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T17:00:36.889Z"
+      }
+    }
+  ],
+  "imagePath": "be2ea316-6f30-40c1-8bac-999d684ae73d.jpg",
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T17:00:32.406Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3513,10 +5838,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:43:19 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "9d77b617-4a49-4510-9202-22b872b80b8b",
+      "user": "hoatg",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:56:52.022Z"
+      }
+    }
+  ],
   "imagePath": "45523f27-dc30-4475-a69c-a965d5768f96.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "hoatg",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:56:46.519Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3544,8 +5887,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "fd92b9c3-012a-45e2-843c-3c7c97789ebc.jpg"
+  "comments": [
+    {
+      "comment_id": "2d9d6ebd-401f-40ed-bb5c-02b87ca74eb9",
+      "user": "dungdt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T16:13:36.262Z"
+      }
+    }
+  ],
+  "imagePath": "fd92b9c3-012a-45e2-843c-3c7c97789ebc.jpg",
+  "ratings": [
+    {
+      "user": "dungdt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T16:13:32.149Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3573,8 +5934,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "a868857c-b1de-4846-ae10-98683b3db829.jpg"
+  "comments": [
+    {
+      "comment_id": "dc3770b2-1520-4232-b84b-53abaf01e031",
+      "user": "hoatg",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:56:06.305Z"
+      }
+    }
+  ],
+  "imagePath": "a868857c-b1de-4846-ae10-98683b3db829.jpg",
+  "ratings": [
+    {
+      "user": "hoatg",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:55:59.466Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3602,8 +5981,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "20f0dd04-1560-423e-a2e5-cdc9a0bafa27.jpg"
+  "comments": [
+    {
+      "comment_id": "97ab92ab-ffdb-47ca-acec-8eb9541a6397",
+      "user": "hoatg",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:56:24.656Z"
+      }
+    }
+  ],
+  "imagePath": "20f0dd04-1560-423e-a2e5-cdc9a0bafa27.jpg",
+  "ratings": [
+    {
+      "user": "hoatg",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:56:19.894Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3638,7 +6035,16 @@
     }
   ],
   "comments": [],
-  "imagePath": "14b86280-eb2a-40b4-bdae-89f4b6cb23af.webp"
+  "imagePath": "14b86280-eb2a-40b4-bdae-89f4b6cb23af.webp",
+  "ratings": [
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:55:01.386Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3660,8 +6066,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "d91d9564-7efd-495c-8d01-9a836b1131d4.jpg"
+  "comments": [
+    {
+      "comment_id": "e7a3ceac-6293-4144-b33e-6cbbe2e63180",
+      "user": "hoatg",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:55:46.057Z"
+      }
+    }
+  ],
+  "imagePath": "d91d9564-7efd-495c-8d01-9a836b1131d4.jpg",
+  "ratings": [
+    {
+      "user": "hoatg",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:55:41.945Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3695,8 +6119,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "cb2d7860-1071-4f0f-844e-abe9fb5e8c1b.jpg"
+  "comments": [
+    {
+      "comment_id": "968f4a43-9f29-4b8a-9471-2c83e8b95f47",
+      "user": "congtt",
+      "comment": "Sách hay",
+      "timestamp": {
+        "$date": "2023-11-20T15:54:06.124Z"
+      }
+    }
+  ],
+  "imagePath": "cb2d7860-1071-4f0f-844e-abe9fb5e8c1b.jpg",
+  "ratings": [
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:54:01.997Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3720,10 +6162,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:45:20 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "00f2c8c1-2855-4ac5-8d0e-920190ef5c4a",
+      "user": "congtt",
+      "comment": "Tuyệt vời ",
+      "timestamp": {
+        "$date": "2023-11-20T15:54:26.761Z"
+      }
+    }
+  ],
   "imagePath": "d467ffa8-479e-42c0-b0f9-796b77c25be6.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:54:17.796Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3757,8 +6217,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "fb6e0a65-08a4-4ba1-8044-7b8ca3b9bd6a.jpg"
+  "comments": [
+    {
+      "comment_id": "ef2fac9d-520c-430d-9cad-28f51421ef8b",
+      "user": "congtt",
+      "comment": "Sách hay",
+      "timestamp": {
+        "$date": "2023-11-20T15:51:57.539Z"
+      }
+    }
+  ],
+  "imagePath": "fb6e0a65-08a4-4ba1-8044-7b8ca3b9bd6a.jpg",
+  "ratings": [
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:51:53.757Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3782,10 +6260,28 @@
       "date_imported": "Sun, 19 Nov 2023 06:45:52 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "8b8a2419-5979-4f55-9471-3ead16e28e71",
+      "user": "congtt",
+      "comment": "Tuyệt vời ",
+      "timestamp": {
+        "$date": "2023-11-20T15:53:50.741Z"
+      }
+    }
+  ],
   "imagePath": "4552dd0e-0329-4ec9-b2b9-efab46c56c70.webp",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:53:44.978Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3819,8 +6315,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "fb9dd529-23e0-47e0-89f3-a047d4c6f2b3.jpg"
+  "comments": [
+    {
+      "comment_id": "c70b6170-0265-41b4-8fd6-334cfdb95614",
+      "user": "congtt",
+      "comment": "Tuyệt vời",
+      "timestamp": {
+        "$date": "2023-11-20T15:51:26.663Z"
+      }
+    }
+  ],
+  "imagePath": "fb9dd529-23e0-47e0-89f3-a047d4c6f2b3.jpg",
+  "ratings": [
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:51:21.467Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3854,8 +6368,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "3b14446a-419f-47c9-bf55-5aeb5a9d8c3e.jpg"
+  "comments": [
+    {
+      "comment_id": "535ede01-5c60-47c3-8589-55c44f48e4e9",
+      "user": "congtt",
+      "comment": "Sách hay",
+      "timestamp": {
+        "$date": "2023-11-20T15:51:41.826Z"
+      }
+    }
+  ],
+  "imagePath": "3b14446a-419f-47c9-bf55-5aeb5a9d8c3e.jpg",
+  "ratings": [
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:51:37.014Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3895,8 +6427,26 @@
       }
     }
   ],
-  "comments": [],
-  "imagePath": "a2e02e38-4983-407b-9df1-f0baa9423074.jpg"
+  "comments": [
+    {
+      "comment_id": "44df89f3-c1b5-411f-a52e-0b788f95f7bd",
+      "user": "congtt",
+      "comment": "Sách hay",
+      "timestamp": {
+        "$date": "2023-11-20T15:50:52.822Z"
+      }
+    }
+  ],
+  "imagePath": "a2e02e38-4983-407b-9df1-f0baa9423074.jpg",
+  "ratings": [
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:50:47.923Z"
+      }
+    }
+  ]
 },
 {
   "_id": {
@@ -3920,8 +6470,26 @@
       "date_imported": "Sun, 19 Nov 2023 06:46:50 GMT"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "comment_id": "8a3343b0-aa92-40d0-b5fd-56302d3125fd",
+      "user": "congtt",
+      "comment": "Sách hay, ý nghĩa",
+      "timestamp": {
+        "$date": "2023-11-20T15:51:10.935Z"
+      }
+    }
+  ],
   "imagePath": "0a81e05b-8185-4b0a-995e-b6fa8abd9bb5.jpg",
   "num_ratings": 0,
-  "overall_rating": 0
+  "overall_rating": 0,
+  "ratings": [
+    {
+      "user": "congtt",
+      "rating": 5,
+      "timestamp": {
+        "$date": "2023-11-20T15:51:02.320Z"
+      }
+    }
+  ]
 }]
