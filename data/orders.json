@@ -63,7 +63,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T02:22:56.732Z"
+    "$date": "2023-11-01T02:22:56.732Z"
   },
   "original_cost": 650000,
   "discount_cost": 0
@@ -118,7 +118,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T02:24:27.899Z"
+    "$date": "2023-11-01T02:24:27.899Z"
   },
   "original_cost": 450000,
   "discount_cost": 0
@@ -152,7 +152,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T02:41:59.581Z"
+    "$date": "2023-11-01T02:41:59.581Z"
   },
   "original_cost": 100000,
   "discount_cost": 0
@@ -186,7 +186,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T02:43:24.729Z"
+    "$date": "2023-11-01T02:43:24.729Z"
   },
   "original_cost": 150000,
   "discount_cost": 0
@@ -220,7 +220,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T02:45:02.116Z"
+    "$date": "2023-11-08T02:45:02.116Z"
   },
   "original_cost": 250000,
   "discount_cost": 0
@@ -261,7 +261,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T02:48:43.524Z"
+    "$date": "2023-11-03T02:48:43.524Z"
   },
   "original_cost": 300000,
   "discount_cost": 0
@@ -313,7 +313,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:14:42.616Z"
+    "$date": "2023-11-03T07:14:42.616Z"
   },
   "original_cost": 550000,
   "discount_cost": 0
@@ -365,7 +365,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:16:25.467Z"
+    "$date": "2023-11-03T07:16:25.467Z"
   },
   "original_cost": 850000,
   "discount_cost": 0
@@ -417,7 +417,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:18:55.038Z"
+    "$date": "2023-11-03T07:18:55.038Z"
   },
   "original_cost": 1100000,
   "discount_cost": 0
@@ -490,7 +490,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:19:41.745Z"
+    "$date": "2023-11-05T07:19:41.745Z"
   },
   "original_cost": 2350000,
   "discount_cost": 0
@@ -542,7 +542,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:21:08.174Z"
+    "$date": "2023-11-05T07:21:08.174Z"
   },
   "original_cost": 950000,
   "discount_cost": 0
@@ -615,7 +615,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:21:41.537Z"
+    "$date": "2023-11-05T07:21:41.537Z"
   },
   "original_cost": 1600000,
   "discount_cost": 0
@@ -708,7 +708,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:22:35.586Z"
+    "$date": "2023-11-05T07:22:35.586Z"
   },
   "original_cost": 2550000,
   "discount_cost": 0
@@ -839,7 +839,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:23:06.842Z"
+    "$date": "2023-11-10T07:23:06.842Z"
   },
   "original_cost": 3350000,
   "discount_cost": 0
@@ -910,7 +910,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:24:01.480Z"
+    "$date": "2023-11-10T07:24:01.480Z"
   },
   "original_cost": 1200000,
   "discount_cost": 0
@@ -982,7 +982,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:25:21.407Z"
+    "$date": "2023-11-10T07:25:21.407Z"
   },
   "original_cost": 1200000,
   "discount_cost": 0
@@ -1073,7 +1073,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:25:52.297Z"
+    "$date": "2023-11-12T07:25:52.297Z"
   },
   "original_cost": 1450000,
   "discount_cost": 0
@@ -1183,7 +1183,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:26:17.258Z"
+    "$date": "2023-11-12T07:26:17.258Z"
   },
   "original_cost": 1800000,
   "discount_cost": 0
@@ -1235,7 +1235,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:27:32.892Z"
+    "$date": "2023-11-12T07:27:32.892Z"
   },
   "original_cost": 850000,
   "discount_cost": 0
@@ -1307,7 +1307,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:28:08.307Z"
+    "$date": "2023-11-12T07:28:08.307Z"
   },
   "original_cost": 950000,
   "discount_cost": 0
@@ -1398,7 +1398,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:28:43.157Z"
+    "$date": "2023-11-12T07:28:43.157Z"
   },
   "original_cost": 1050000,
   "discount_cost": 0
@@ -1527,7 +1527,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:29:16.885Z"
+    "$date": "2023-11-15T07:29:16.885Z"
   },
   "original_cost": 1400000,
   "discount_cost": 0
@@ -1579,7 +1579,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:30:21.243Z"
+    "$date": "2023-11-15T07:30:21.243Z"
   },
   "original_cost": 900000,
   "discount_cost": 0
@@ -1651,7 +1651,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:30:47.798Z"
+    "$date": "2023-11-15T07:30:47.798Z"
   },
   "original_cost": 1600000,
   "discount_cost": 0
@@ -1743,7 +1743,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:31:25.918Z"
+    "$date": "2023-11-15T07:31:25.918Z"
   },
   "original_cost": 2450000,
   "discount_cost": 0
@@ -1855,7 +1855,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:31:56.567Z"
+    "$date": "2023-11-15T07:31:56.567Z"
   },
   "original_cost": 3400000,
   "discount_cost": 0
@@ -1986,7 +1986,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:32:23.328Z"
+    "$date": "2023-11-16T07:32:23.328Z"
   },
   "original_cost": 3750000,
   "discount_cost": 0
@@ -2155,7 +2155,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:32:47.250Z"
+    "$date": "2023-11-16T07:32:47.250Z"
   },
   "original_cost": 4400000,
   "discount_cost": 0
@@ -2207,7 +2207,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:33:30.512Z"
+    "$date": "2023-11-16T07:33:30.512Z"
   },
   "original_cost": 350000,
   "discount_cost": 0
@@ -2297,7 +2297,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:34:04.164Z"
+    "$date": "2023-11-16T07:34:04.164Z"
   },
   "original_cost": 1100000,
   "discount_cost": 0
@@ -2406,7 +2406,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:34:45.791Z"
+    "$date": "2023-11-18T07:34:45.791Z"
   },
   "original_cost": 1500000,
   "discount_cost": 0
@@ -2534,7 +2534,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:35:26.426Z"
+    "$date": "2023-11-18T07:35:26.426Z"
   },
   "original_cost": 1550000,
   "discount_cost": 0
@@ -2586,7 +2586,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:36:55.206Z"
+    "$date": "2023-11-18T07:36:55.206Z"
   },
   "original_cost": 350000,
   "discount_cost": 0
@@ -2657,7 +2657,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:37:19.332Z"
+    "$date": "2023-11-18T07:37:19.332Z"
   },
   "original_cost": 550000,
   "discount_cost": 0
@@ -2766,7 +2766,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:37:48.782Z"
+    "$date": "2023-11-18T07:37:48.782Z"
   },
   "original_cost": 1100000,
   "discount_cost": 0
@@ -3079,7 +3079,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:39:06.837Z"
+    "$date": "2023-11-02T07:39:06.837Z"
   },
   "original_cost": 2600000,
   "discount_cost": 0
@@ -3264,7 +3264,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:39:26.485Z"
+    "$date": "2023-11-02T07:39:26.485Z"
   },
   "original_cost": 3100000,
   "discount_cost": 0
@@ -3487,7 +3487,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:39:54.839Z"
+    "$date": "2023-11-02T07:39:54.839Z"
   },
   "original_cost": 3300000,
   "discount_cost": 0
@@ -3748,7 +3748,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:40:22.726Z"
+    "$date": "2023-11-02T07:40:22.726Z"
   },
   "original_cost": 3750000,
   "discount_cost": 0
@@ -4028,7 +4028,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:41:03.158Z"
+    "$date": "2023-11-04T07:41:03.158Z"
   },
   "original_cost": 4050000,
   "discount_cost": 0
@@ -4346,7 +4346,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:41:25.608Z"
+    "$date": "2023-11-04T07:41:25.608Z"
   },
   "original_cost": 4800000,
   "discount_cost": 0
@@ -4683,7 +4683,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:42:02.085Z"
+    "$date": "2023-11-04T07:42:02.085Z"
   },
   "original_cost": 5200000,
   "discount_cost": 0
@@ -5039,7 +5039,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:42:21.195Z"
+    "$date": "2023-11-04T07:42:21.195Z"
   },
   "original_cost": 5650000,
   "discount_cost": 0
@@ -5091,7 +5091,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:43:34.217Z"
+    "$date": "2023-11-04T07:43:34.217Z"
   },
   "original_cost": 1600000,
   "discount_cost": 0
@@ -5181,7 +5181,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:43:55.543Z"
+    "$date": "2023-11-04T07:43:55.543Z"
   },
   "original_cost": 1850000,
   "discount_cost": 0
@@ -5290,7 +5290,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:44:17.965Z"
+    "$date": "2023-11-04T07:44:17.965Z"
   },
   "original_cost": 2000000,
   "discount_cost": 0
@@ -5437,7 +5437,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:44:53.970Z"
+    "$date": "2023-11-04T07:44:53.970Z"
   },
   "original_cost": 2650000,
   "discount_cost": 0
@@ -5603,7 +5603,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:45:22.182Z"
+    "$date": "2023-10-30T07:45:22.182Z"
   },
   "original_cost": 2700000,
   "discount_cost": 0
@@ -5788,7 +5788,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:46:03.389Z"
+    "$date": "2023-10-30T07:46:03.389Z"
   },
   "original_cost": 2850000,
   "discount_cost": 0
@@ -5992,7 +5992,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:46:26.516Z"
+    "$date": "2023-10-30T07:46:26.516Z"
   },
   "original_cost": 3050000,
   "discount_cost": 0
@@ -6234,7 +6234,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:46:51.113Z"
+    "$date": "2023-10-30T07:46:51.113Z"
   },
   "original_cost": 4300000,
   "discount_cost": 0
@@ -6495,7 +6495,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:47:14.135Z"
+    "$date": "2023-10-29T07:47:14.135Z"
   },
   "original_cost": 4500000,
   "discount_cost": 0
@@ -6775,7 +6775,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:47:32.834Z"
+    "$date": "2023-10-29T07:47:32.834Z"
   },
   "original_cost": 4900000,
   "discount_cost": 0
@@ -7074,7 +7074,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:47:53.818Z"
+    "$date": "2023-10-29T07:47:53.818Z"
   },
   "original_cost": 5700000,
   "discount_cost": 0
@@ -7392,7 +7392,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:48:13.874Z"
+    "$date": "2023-10-25T07:48:13.874Z"
   },
   "original_cost": 5850000,
   "discount_cost": 0
@@ -7729,7 +7729,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T07:48:31.976Z"
+    "$date": "2023-10-25T07:48:31.976Z"
   },
   "original_cost": 6250000,
   "discount_cost": 0
@@ -7780,7 +7780,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T13:31:19.708Z"
+    "$date": "2023-10-25T13:31:19.708Z"
   },
   "original_cost": 900000,
   "discount_cost": 0
@@ -7831,7 +7831,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T14:47:35.564Z"
+    "$date": "2023-10-25T14:47:35.564Z"
   },
   "original_cost": 720000,
   "discount_cost": 130000
@@ -7882,7 +7882,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T14:56:21.081Z"
+    "$date": "2023-10-20T14:56:21.081Z"
   },
   "original_cost": 720000,
   "discount_cost": 130000
@@ -7933,7 +7933,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T14:57:36.669Z"
+    "$date": "2023-10-18T14:57:36.669Z"
   },
   "original_cost": 550000,
   "discount_cost": 0
@@ -8003,7 +8003,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:00:07.902Z"
+    "$date": "2023-10-18T15:00:07.902Z"
   },
   "original_cost": 737500,
   "discount_cost": 62500
@@ -8073,7 +8073,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:00:49.163Z"
+    "$date": "2023-10-18T15:00:49.163Z"
   },
   "original_cost": 737500,
   "discount_cost": 62500
@@ -8143,7 +8143,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:01:49.191Z"
+    "$date": "2023-10-18T15:01:49.191Z"
   },
   "original_cost": 437500,
   "discount_cost": 62500
@@ -8194,7 +8194,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:02:36.747Z"
+    "$date": "2023-10-17T15:02:36.747Z"
   },
   "original_cost": 387500,
   "discount_cost": 62500
@@ -8264,7 +8264,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:03:14.603Z"
+    "$date": "2023-10-17T15:03:14.603Z"
   },
   "original_cost": 435000,
   "discount_cost": 15000
@@ -8334,7 +8334,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:03:56.753Z"
+    "$date": "2023-10-17T15:03:56.753Z"
   },
   "original_cost": 500000,
   "discount_cost": 150000
@@ -8385,7 +8385,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:04:52.786Z"
+    "$date": "2023-10-17T15:04:52.786Z"
   },
   "original_cost": 950000,
   "discount_cost": 0
@@ -8455,7 +8455,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:05:29.533Z"
+    "$date": "2023-10-16T15:05:29.533Z"
   },
   "original_cost": 1100000,
   "discount_cost": 100000
@@ -8525,7 +8525,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:06:15.161Z"
+    "$date": "2023-10-16T15:06:15.161Z"
   },
   "original_cost": 1170000,
   "discount_cost": 180000
@@ -8576,7 +8576,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:06:59.560Z"
+    "$date": "2023-10-16T15:06:59.560Z"
   },
   "original_cost": 675000,
   "discount_cost": 75000
@@ -8627,7 +8627,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:07:36.452Z"
+    "$date": "2023-10-15T15:07:36.452Z"
   },
   "original_cost": 750000,
   "discount_cost": 0
@@ -8697,7 +8697,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:07:49.698Z"
+    "$date": "2023-10-15T15:07:49.698Z"
   },
   "original_cost": 800000,
   "discount_cost": 0
@@ -8767,7 +8767,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:11:01.663Z"
+    "$date": "2023-10-15T15:11:01.663Z"
   },
   "original_cost": 720000,
   "discount_cost": 80000
@@ -8819,7 +8819,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:11:51.174Z"
+    "$date": "2023-10-14T15:11:51.174Z"
   },
   "original_cost": 420000,
   "discount_cost": 80000
@@ -8871,7 +8871,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:16:37.622Z"
+    "$date": "2023-10-14T15:16:37.622Z"
   },
   "original_cost": 420000,
   "discount_cost": 80000
@@ -8923,7 +8923,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:17:49.119Z"
+    "$date": "2023-10-14T15:17:49.119Z"
   },
   "original_cost": 870000,
   "discount_cost": 180000
@@ -8994,7 +8994,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:18:28.635Z"
+    "$date": "2023-10-14T15:18:28.635Z"
   },
   "original_cost": 1207500,
   "discount_cost": 292500
@@ -9065,7 +9065,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:19:17.646Z"
+    "$date": "2023-10-14T15:19:17.646Z"
   },
   "original_cost": 1600000,
   "discount_cost": 0
@@ -9135,7 +9135,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:20:05.704Z"
+    "$date": "2023-10-14T15:20:05.704Z"
   },
   "original_cost": 650000,
   "discount_cost": 0
@@ -9186,7 +9186,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:21:17.484Z"
+    "$date": "2023-10-10T15:21:17.484Z"
   },
   "original_cost": 520000,
   "discount_cost": 80000
@@ -9238,7 +9238,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:22:07.031Z"
+    "$date": "2023-10-10T15:22:07.031Z"
   },
   "original_cost": 760000,
   "discount_cost": 90000
@@ -9309,7 +9309,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:22:58.596Z"
+    "$date": "2023-10-10T15:22:58.596Z"
   },
   "original_cost": 380000,
   "discount_cost": 20000
@@ -9380,7 +9380,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:23:55.039Z"
+    "$date": "2023-10-10T15:23:55.039Z"
   },
   "original_cost": 1650000,
   "discount_cost": 0
@@ -9451,7 +9451,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:24:49.563Z"
+    "$date": "2023-10-10T15:24:49.563Z"
   },
   "original_cost": 1480000,
   "discount_cost": 20000
@@ -9521,7 +9521,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:25:40.634Z"
+    "$date": "2023-10-08T15:25:40.634Z"
   },
   "original_cost": 1400000,
   "discount_cost": 0
@@ -9591,7 +9591,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:26:36.015Z"
+    "$date": "2023-10-08T15:26:36.015Z"
   },
   "original_cost": 1400000,
   "discount_cost": 0
@@ -9643,7 +9643,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:27:32.627Z"
+    "$date": "2023-10-08T15:27:32.627Z"
   },
   "original_cost": 700000,
   "discount_cost": 100000
@@ -9695,7 +9695,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:28:13.273Z"
+    "$date": "2023-10-08T15:28:13.273Z"
   },
   "original_cost": 1720000,
   "discount_cost": 130000
@@ -9765,7 +9765,7 @@
     }
   ],
   "timestamp": {
-    "$date": "2023-11-19T15:29:05.224Z"
+    "$date": "2023-10-08T15:29:05.224Z"
   },
   "original_cost": 665000,
   "discount_cost": 85000

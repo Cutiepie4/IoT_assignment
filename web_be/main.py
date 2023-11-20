@@ -1,4 +1,3 @@
-from enum import member
 from bson import Regex
 from flask import Flask, request, jsonify
 from flask_cors import CORS
