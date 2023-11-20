@@ -78,8 +78,11 @@ function Orders() {
             totalMoneyReceived: groupedOrders[dateKey].totalMoneyReceived,
         }));
 
+        formattedOrders.sort((a, b) => new Date(a.date) - new Date(b.date));
+
         return formattedOrders;
     };
+
 
     const calculateTotalBooksSold = (order) => {
         return order.orderItems.reduce((total, item) => total + item.copy_ids.length, 0);
