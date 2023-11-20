@@ -20,10 +20,10 @@ app.config['JWT_SECRET_KEY'] = 'nhom10'
 jwt = JWTManager(app)
 CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
-UPLOAD_FOLDER = 'C://Users//DELL//Desktop//IoT_assignment//web_fe//public//images//'
+UPLOAD_FOLDER = 'C://Users//Viettq//Documents//Code//IoT_assignment//web_fe//public//images//'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-esp32_host = 'http://192.168.0.104'
+esp32_host = 'http://192.168.0.106'
 
 def find_by_copy_id(id_copy):
     result = books_collection.aggregate([
