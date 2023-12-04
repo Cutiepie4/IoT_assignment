@@ -17,8 +17,8 @@ MFRC522 mfrc522(SS_PIN, RST_PIN);
 
 const char *ssid = "wifi nha ai day 2,4Ghz";
 const char *password = "khongcomatkhaudau";
-String serverUrl = "http://192.168.0.101:5000";
-String readCardApi = serverUrl + "/read-card";  // Replace with your server URL
+String serverUrl = "http://192.168.0.106:5000";
+String readCardApi = serverUrl + "/read-card"; 
 
 bool singleMode = false;
 bool continuousMode = false;
